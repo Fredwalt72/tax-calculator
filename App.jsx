@@ -1,17 +1,14 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
-
+import React, { useState, useMemo } from "react";
+ 
 // ── Translations ──────────────────────────────────────────────────────────
 const T = {
   en: {
     title: "INCOME TAX CALCULATOR",
-    subtitle: (countries, provinces, states) => `${countries} countries · ${provinces} Canadian provinces · ${states} US states`,
+    subtitle: (c, p, s) => `${c} countries · ${p} Canadian provinces · ${s} US states`,
     salaryLabel: "ANNUAL GROSS SALARY",
     salaryPlaceholder: "Enter your income here...",
     rankingLabel: "RANKED BY NET SALARY",
     searchPlaceholder: "Search...",
-    revealed: "revealed",
-    seeProvinces: "▼ Show",
-    collapse: "▲ Collapse",
     canada: "Canada",
     usa: "United States",
     caSubtitle: "13 provinces",
@@ -19,11 +16,11 @@ const T = {
     fedProv: "Federal + Provincial",
     fedState: "Federal + State",
     netYear: "NET / YR",
-    see: "SEE →",
+    seeProvinces: "▼ Show",
+    collapse: "▲ Collapse",
     gross: "GROSS",
     federal: "FEDERAL",
     provincial: "PROVINCIAL",
-    state: "STATE",
     totalTax: "TOTAL TAX",
     tax: "TAX",
     net: "NET",
@@ -31,15 +28,11 @@ const T = {
     fedLabel: "Federal",
     provLabel: "Provincial/State",
     totalLabel: "Total",
-    adLabel: "ADVERTISEMENT",
-    closeIn: (n) => `Close in ${n}s`,
-    close: "✕ Close",
-    resultFor: "Result for",
     caDetail: "Canada · Federal + Provincial",
     usDetail: "United States · Federal + State",
     disclaimer: "⚠ Federal + provincial/state income tax only. Social contributions, credits and deductions not included. Exchange rates are approximate. Consult a tax professional.",
     emptyTitle: "ENTER YOUR INCOME TO BEGIN",
-    emptySubtitle: (c, p, s) => `${c} countries · ${p} provinces · ${s} states · Click to reveal`,
+    emptySubtitle: (c, p, s) => `${c} countries · ${p} provinces · ${s} states`,
     currencies: [
       { code:"USD", label:"USD — US Dollar",          symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Canadian Dollar",    symbol:"$", perUSD:1.36 },
@@ -47,13 +40,6 @@ const T = {
       { code:"GBP", label:"GBP — British Pound",      symbol:"£", perUSD:0.79 },
       { code:"AUD", label:"AUD — Australian Dollar",  symbol:"$", perUSD:1.55 },
     ],
-    ads: [
-      { brand:"TurboTax",    tagline:"File your taxes in minutes",        cta:"Free trial",   color:"#0066cc", bg:"#e8f0fe", emoji:"📊" },
-      { brand:"Wealthsimple",tagline:"Invest with no management fees",    cta:"Get started",  color:"#00c07f", bg:"#e6f9f2", emoji:"💹" },
-      { brand:"Questrade",   tagline:"Buy ETFs commission-free",          cta:"Open account", color:"#e63327", bg:"#fdecea", emoji:"📈" },
-      { brand:"Tangerine",   tagline:"Savings account at 5.25% interest", cta:"Learn more",   color:"#ff6600", bg:"#fff3e8", emoji:"🏦" },
-    ],
-    adSponsored: "Advertisement · Sponsored",
   },
   fr: {
     title: "CALCULATEUR D'IMPÔT SUR LE REVENU",
@@ -62,9 +48,6 @@ const T = {
     salaryPlaceholder: "Inscrivez votre revenu ici...",
     rankingLabel: "CLASSEMENT PAR SALAIRE NET",
     searchPlaceholder: "Rechercher...",
-    revealed: "révélés",
-    seeProvinces: "▼ Voir",
-    collapse: "▲ Replier",
     canada: "Canada",
     usa: "États-Unis",
     caSubtitle: "13 provinces",
@@ -72,11 +55,11 @@ const T = {
     fedProv: "Fédéral + Provincial",
     fedState: "Fédéral + État",
     netYear: "NET / AN",
-    see: "VOIR →",
+    seeProvinces: "▼ Voir",
+    collapse: "▲ Replier",
     gross: "BRUT",
     federal: "FÉDÉRAL",
     provincial: "PROVINCIAL",
-    state: "ÉTAT",
     totalTax: "TOTAL IMPÔT",
     tax: "IMPÔT",
     net: "NET",
@@ -84,15 +67,11 @@ const T = {
     fedLabel: "Fédéral",
     provLabel: "Provincial/État",
     totalLabel: "Total",
-    adLabel: "PUBLICITÉ · AD",
-    closeIn: (n) => `Fermer dans ${n}s`,
-    close: "✕ Fermer",
-    resultFor: "Résultat pour",
     caDetail: "Canada · Fédéral + Provincial",
     usDetail: "États-Unis · Fédéral + État",
     disclaimer: "⚠ Impôt fédéral + provincial/étatique sur le revenu uniquement. Cotisations sociales, crédits et déductions non inclus. Taux de change approximatifs. Consultez un comptable.",
     emptyTitle: "ENTREZ VOTRE REVENU POUR COMMENCER",
-    emptySubtitle: (c, p, s) => `${c} pays · ${p} provinces · ${s} états · Cliquez pour révéler`,
+    emptySubtitle: (c, p, s) => `${c} pays · ${p} provinces · ${s} états`,
     currencies: [
       { code:"USD", label:"USD — Dollar américain",   symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dollar canadien",    symbol:"$", perUSD:1.36 },
@@ -100,13 +79,6 @@ const T = {
       { code:"GBP", label:"GBP — Livre sterling",     symbol:"£", perUSD:0.79 },
       { code:"AUD", label:"AUD — Dollar australien",  symbol:"$", perUSD:1.55 },
     ],
-    ads: [
-      { brand:"TurboTax",     tagline:"Préparez votre déclaration en minutes",  cta:"Essai gratuit",    color:"#0066cc", bg:"#e8f0fe", emoji:"📊" },
-      { brand:"Wealthsimple", tagline:"Investissez sans frais de gestion",       cta:"Commencer",        color:"#00c07f", bg:"#e6f9f2", emoji:"💹" },
-      { brand:"Questrade",    tagline:"Achetez des ETFs sans commission",        cta:"Ouvrir un compte", color:"#e63327", bg:"#fdecea", emoji:"📈" },
-      { brand:"Tangerine",    tagline:"Compte épargne à 5.25% d'intérêt",       cta:"En savoir plus",   color:"#ff6600", bg:"#fff3e8", emoji:"🏦" },
-    ],
-    adSponsored: "Publicité · Sponsorisé",
   },
   es: {
     title: "CALCULADORA DE IMPUESTO SOBRE LA RENTA",
@@ -115,9 +87,6 @@ const T = {
     salaryPlaceholder: "Introduce tu ingreso aquí...",
     rankingLabel: "CLASIFICACIÓN POR SALARIO NETO",
     searchPlaceholder: "Buscar...",
-    revealed: "revelados",
-    seeProvinces: "▼ Ver",
-    collapse: "▲ Colapsar",
     canada: "Canadá",
     usa: "Estados Unidos",
     caSubtitle: "13 provincias",
@@ -125,11 +94,11 @@ const T = {
     fedProv: "Federal + Provincial",
     fedState: "Federal + Estatal",
     netYear: "NETO / AÑO",
-    see: "VER →",
+    seeProvinces: "▼ Ver",
+    collapse: "▲ Colapsar",
     gross: "BRUTO",
     federal: "FEDERAL",
     provincial: "PROVINCIAL",
-    state: "ESTATAL",
     totalTax: "IMPUESTO TOTAL",
     tax: "IMPUESTO",
     net: "NETO",
@@ -137,15 +106,11 @@ const T = {
     fedLabel: "Federal",
     provLabel: "Provincial/Estatal",
     totalLabel: "Total",
-    adLabel: "PUBLICIDAD · AD",
-    closeIn: (n) => `Cerrar en ${n}s`,
-    close: "✕ Cerrar",
-    resultFor: "Resultado para",
     caDetail: "Canadá · Federal + Provincial",
     usDetail: "EE.UU. · Federal + Estatal",
     disclaimer: "⚠ Solo impuesto federal + provincial/estatal sobre la renta. Contribuciones sociales, créditos y deducciones no incluidos. Tipos de cambio aproximados. Consulte a un contador.",
     emptyTitle: "INTRODUCE TU INGRESO PARA COMENZAR",
-    emptySubtitle: (c, p, s) => `${c} países · ${p} provincias · ${s} estados · Haz clic para revelar`,
+    emptySubtitle: (c, p, s) => `${c} países · ${p} provincias · ${s} estados`,
     currencies: [
       { code:"USD", label:"USD — Dólar estadounidense", symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dólar canadiense",     symbol:"$", perUSD:1.36 },
@@ -153,21 +118,14 @@ const T = {
       { code:"GBP", label:"GBP — Libra esterlina",      symbol:"£", perUSD:0.79 },
       { code:"AUD", label:"AUD — Dólar australiano",    symbol:"$", perUSD:1.55 },
     ],
-    ads: [
-      { brand:"TurboTax",    tagline:"Declara tus impuestos en minutos",      cta:"Prueba gratis",  color:"#0066cc", bg:"#e8f0fe", emoji:"📊" },
-      { brand:"Wealthsimple",tagline:"Invierte sin comisiones de gestión",    cta:"Comenzar",       color:"#00c07f", bg:"#e6f9f2", emoji:"💹" },
-      { brand:"Questrade",   tagline:"Compra ETFs sin comisión",              cta:"Abrir cuenta",   color:"#e63327", bg:"#fdecea", emoji:"📈" },
-      { brand:"Tangerine",   tagline:"Cuenta de ahorro al 5.25% de interés", cta:"Saber más",      color:"#ff6600", bg:"#fff3e8", emoji:"🏦" },
-    ],
-    adSponsored: "Publicidad · Patrocinado",
   },
 };
-
+ 
 // ── Tax Data ──────────────────────────────────────────────────────────────
-
+ 
 const CA_USD = 1.36;
 const CA_FEDERAL = [[0,57375,.15],[57375,114750,.205],[114750,158519,.26],[158519,220000,.29],[220000,Infinity,.33]];
-
+ 
 const PROVINCES_CA = [
   { name:"Ontario",                   abbr:"ON", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Ontario.svg/320px-Flag_of_Ontario.svg.png",           brackets:[[0,51446,.0505],[51446,102894,.0915],[102894,150000,.1116],[150000,220000,.1216],[220000,Infinity,.1316]] },
   { name:"Québec",                    abbr:"QC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/320px-Flag_of_Quebec.svg.png",            brackets:[[0,51780,.14],[51780,103545,.19],[103545,126000,.24],[126000,Infinity,.2575]] },
@@ -183,9 +141,9 @@ const PROVINCES_CA = [
   { name:"Yukon",                     abbr:"YT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_Yukon.svg/320px-Flag_of_Yukon.svg.png",              brackets:[[0,57375,.064],[57375,114750,.09],[114750,158519,.109],[158519,500000,.128],[500000,Infinity,.15]] },
   { name:"Nunavut",                   abbr:"NU", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Flag_of_Nunavut.svg/320px-Flag_of_Nunavut.svg.png",           brackets:[[0,53268,.04],[53268,106537,.07],[106537,173205,.09],[173205,Infinity,.115]] },
 ];
-
+ 
 const US_FEDERAL = [[0,11600,.10],[11600,47150,.12],[47150,100525,.22],[100525,191950,.24],[191950,243725,.32],[243725,609350,.35],[609350,Infinity,.37]];
-
+ 
 const STATES_US = [
   { name:"Alabama",        abbr:"AL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Alabama.svg/320px-Flag_of_Alabama.svg.png",        brackets:[[0,500,.02],[500,3000,.04],[3000,Infinity,.05]] },
   { name:"Alaska",         abbr:"AK", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Alaska.svg/320px-Flag_of_Alaska.svg.png",         brackets:[[0,Infinity,0]] },
@@ -239,7 +197,7 @@ const STATES_US = [
   { name:"Wyoming",        abbr:"WY", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/320px-Flag_of_Wyoming.svg.png",        brackets:[[0,Infinity,0]] },
   { name:"Washington D.C.",abbr:"DC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_the_District_of_Columbia.svg/320px-Flag_of_the_District_of_Columbia.svg.png", brackets:[[0,10000,.04],[10000,40000,.06],[40000,60000,.065],[60000,250000,.085],[250000,500000,.0925],[500000,Infinity,.0975]] },
 ];
-
+ 
 const OTHER_COUNTRIES = [
   { name:"United Kingdom", flag:"🇬🇧", localPerUSD:0.79,  brackets:[[0,12570,0],[12570,50270,.20],[50270,125140,.40],[125140,Infinity,.45]] },
   { name:"France",         flag:"🇫🇷", localPerUSD:0.92,  brackets:[[0,10777,0],[10777,27478,.11],[27478,78570,.30],[78570,168994,.41],[168994,Infinity,.45]] },
@@ -270,9 +228,9 @@ const OTHER_COUNTRIES = [
   { name:"Saudi Arabia",   flag:"🇸🇦", localPerUSD:3.75,  brackets:[[0,Infinity,0]] },
   { name:"Hong Kong",      flag:"🇭🇰", localPerUSD:7.82,  brackets:[[0,50000,.02],[50000,100000,.06],[100000,150000,.10],[150000,200000,.14],[200000,Infinity,.17]] },
 ];
-
+ 
 // ── Helpers ───────────────────────────────────────────────────────────────
-
+ 
 function applyBrackets(income, brackets) {
   let tax = 0;
   for (const [min, max, rate] of brackets) {
@@ -281,7 +239,7 @@ function applyBrackets(income, brackets) {
   }
   return tax;
 }
-
+ 
 function calcEntry(salaryUSD, localPerUSD, fedBrackets, provBrackets) {
   const local     = salaryUSD * localPerUSD;
   const fedLocal  = applyBrackets(local, fedBrackets);
@@ -295,22 +253,22 @@ function calcEntry(salaryUSD, localPerUSD, fedBrackets, provBrackets) {
   const prov = salaryUSD > 0 ? (provTaxUSD  / salaryUSD) * 100 : 0;
   return { taxUSD, provTaxUSD, totalTaxUSD, netUSD, effectiveRate:eff, fedRate:fed, provRate:prov };
 }
-
+ 
 function makeFmt(currCode, perUSD) {
   return (usdVal) =>
     new Intl.NumberFormat("fr-CA", { style:"currency", currency:currCode, maximumFractionDigits:0 })
       .format(usdVal * perUSD);
 }
-
-function rateColor(rate, unlocked) {
-  if (!unlocked) return "#2a3a50";
+ 
+function rateColor(rate) {
   if (rate === 0) return "#4fffb0";
   if (rate < 15)  return "#77eeaa";
   if (rate < 25)  return "#eecc44";
   if (rate < 35)  return "#ee9933";
   return "#ee5555";
 }
-
+ 
+// ── Flag image ────────────────────────────────────────────────────────────
 function FlagImg({ src, abbr, size = 22 }) {
   const [err, setErr] = useState(false);
   if (err || !src) {
@@ -325,85 +283,36 @@ function FlagImg({ src, abbr, size = 22 }) {
       style={{ width:size+8, height:size*0.65, objectFit:"cover", borderRadius:2, flexShrink:0, display:"block" }} />
   );
 }
-
-// ── Language Switcher ─────────────────────────────────────────────────────
+ 
+// ── Language switcher ─────────────────────────────────────────────────────
 const LANGS = [
-  { code:"en", flag:"🇬🇧", tooltip:"English" },
-  { code:"fr", flag:"🇫🇷", tooltip:"Français" },
-  { code:"es", flag:"🇪🇸", tooltip:"Español" },
+  { code:"en", tooltip:"English",  img:"https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" },
+  { code:"fr", tooltip:"Français", img:"https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png" },
+  { code:"es", tooltip:"Español",  img:"https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" },
 ];
-
+ 
 function LangSwitcher({ lang, setLang }) {
   return (
-    <div style={{ display:"flex", gap:4, alignItems:"center" }}>
+    <div style={{ display:"flex", gap:6, alignItems:"center" }}>
       {LANGS.map(l => (
         <button key={l.code} onClick={() => setLang(l.code)} title={l.tooltip}
           style={{
-            background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
+            background:"transparent",
             border: `2px solid ${lang===l.code ? "#4fffb0" : "transparent"}`,
-            borderRadius:8,
-            padding:"3px 5px",
-            cursor:"pointer",
-            fontSize:22,
-            lineHeight:1,
+            borderRadius:6, padding:"2px", cursor:"pointer",
             transition:"all 0.18s",
-            opacity: lang===l.code ? 1 : 0.45,
-            transform: lang===l.code ? "scale(1.15)" : "scale(1)",
+            opacity: lang===l.code ? 1 : 0.35,
+            transform: lang===l.code ? "scale(1.18)" : "scale(1)",
+            boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.4)" : "none",
           }}>
-          {l.flag}
+          <img src={l.img} alt={l.tooltip}
+            style={{ width:36, height:24, objectFit:"cover", borderRadius:3, display:"block" }} />
         </button>
       ))}
     </div>
   );
 }
-
-// ── Ad Modal ──────────────────────────────────────────────────────────────
-function AdModal({ label, flagEl, onClose, t }) {
-  const [cd, setCd] = useState(5);
-  const ad = useRef(t.ads[Math.floor(Math.random() * t.ads.length)]).current;
-  useEffect(() => {
-    if (cd <= 0) return;
-    const timer = setTimeout(() => setCd(c => c - 1), 1000);
-    return () => clearTimeout(timer);
-  }, [cd]);
-  const canClose = cd <= 0;
-  return (
-    <div style={{ position:"fixed", inset:0, zIndex:1000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.88)", backdropFilter:"blur(5px)" }}>
-      <div style={{ background:"#0d1520", border:"1px solid #1e2e40", borderRadius:16, width:"min(420px,92vw)", overflow:"hidden", boxShadow:"0 20px 60px rgba(0,0,0,0.7)" }}>
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 14px", background:"#080b12", borderBottom:"1px solid #141e2c" }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#2a3a50", letterSpacing:"0.12em" }}>{t.adLabel}</span>
-          <button onClick={canClose ? onClose : undefined} style={{ background:canClose?"#1a2e40":"#0f1820", border:`1px solid ${canClose?"#4fffb0":"#1a2535"}`, borderRadius:6, color:canClose?"#4fffb0":"#2a3a50", padding:"4px 10px", cursor:canClose?"pointer":"default", fontSize:11, fontFamily:"'DM Mono',monospace", transition:"all 0.3s" }}>
-            {canClose ? t.close : t.closeIn(cd)}
-          </button>
-        </div>
-        {/* ── REPLACE WITH YOUR AD TAG ── */}
-        <div style={{ padding:"32px 24px", background:ad.bg, textAlign:"center" }}>
-          <div style={{ fontSize:48, marginBottom:10 }}>{ad.emoji}</div>
-          <div style={{ fontSize:22, fontWeight:700, color:ad.color, marginBottom:6 }}>{ad.brand}</div>
-          <div style={{ fontSize:15, color:"#444", marginBottom:20 }}>{ad.tagline}</div>
-          <button style={{ background:ad.color, color:"#fff", border:"none", borderRadius:8, padding:"11px 26px", fontSize:14, fontWeight:600, cursor:"pointer" }}>{ad.cta} →</button>
-          <div style={{ marginTop:14, fontSize:10, color:"#bbb" }}>{t.adSponsored}</div>
-        </div>
-        {/* ── END AD TAG ── */}
-        <div style={{ padding:"14px 18px", borderTop:"1px solid #141e2c", display:"flex", alignItems:"center", gap:10 }}>
-          {flagEl}
-          <div>
-            <div style={{ fontSize:11, color:"#3a5060" }}>{t.resultFor}</div>
-            <div style={{ fontSize:13, fontWeight:600, color:"#6a8aa0" }}>{label}</div>
-          </div>
-          <div style={{ marginLeft:"auto" }}>
-            {canClose
-              ? <div style={{ width:22,height:22,borderRadius:"50%",background:"rgba(79,255,176,0.15)",border:"2px solid #4fffb0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:12 }}>✓</div>
-              : <div style={{ width:22,height:22,borderRadius:"50%",border:"2px solid #1e2e40",borderTop:"2px solid #4fffb0",animation:"spin 1s linear infinite" }} />
-            }
-          </div>
-        </div>
-      </div>
-      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-    </div>
-  );
-}
-
+ 
 // ── Detail Panel ──────────────────────────────────────────────────────────
 function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t }) {
   return (
@@ -421,17 +330,18 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#2a4050", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
         </div>
       </div>
+ 
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(95px,1fr))", gap:8, marginBottom:16 }}>
         {[
-          { label:t.gross,      value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#5577aa" },
+          { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#5577aa" },
           ...(hasProv ? [
-            { label:t.federal,    value:fmt(calc.taxUSD),      color:"#dd7733" },
-            { label:t.provincial, value:fmt(calc.provTaxUSD),  color:"#ddaa33" },
-            { label:t.totalTax,   value:fmt(calc.totalTaxUSD), color:"#dd4444" },
+            { label:t.federal,   value:fmt(calc.taxUSD),      color:"#dd7733" },
+            { label:t.provincial,value:fmt(calc.provTaxUSD),  color:"#ddaa33" },
+            { label:t.totalTax,  value:fmt(calc.totalTaxUSD), color:"#dd4444" },
           ] : [
-            { label:t.tax,        value:fmt(calc.totalTaxUSD), color:"#dd4444" },
+            { label:t.tax,       value:fmt(calc.totalTaxUSD), color:"#dd4444" },
           ]),
-          { label:t.net,        value:fmt(calc.netUSD),        color:"#4fffb0" },
+          { label:t.net,       value:fmt(calc.netUSD),        color:"#4fffb0" },
         ].map(({ label:lbl, value, color }) => (
           <div key={lbl} style={{ background:"#040709", borderRadius:7, padding:"11px 12px" }}>
             <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e2e3e", letterSpacing:"0.1em", marginBottom:4 }}>{lbl}</div>
@@ -439,6 +349,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           </div>
         ))}
       </div>
+ 
       <div>
         <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
           <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e3e", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
@@ -458,53 +369,38 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
     </div>
   );
 }
-
-// ── Sub-row ───────────────────────────────────────────────────────────────
-function SubRow({ name, abbr, flagImg, subtitle, isUnlocked, isSelected, calc, maxNetUSD, fmt, onClick, t }) {
-  const rc = rateColor(calc?.effectiveRate, isUnlocked);
+ 
+// ── Sub-row (province / state) ────────────────────────────────────────────
+function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fmt, onClick, t }) {
+  const rc = rateColor(calc?.effectiveRate ?? 0);
   const barPct = maxNetUSD > 0 && calc ? (calc.netUSD / maxNetUSD) * 100 : 0;
   return (
     <div onClick={onClick}
       style={{ background:isSelected?"#0b1e2e":"#090d14", border:`1px solid ${isSelected?"#4fffb0":"#0e1820"}`, borderRadius:7, padding:"8px 12px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
       <FlagImg src={flagImg} abbr={abbr} size={18} />
       <div style={{ minWidth:140, flex:"0 0 140px" }}>
-        <div style={{ fontSize:11, fontWeight:500, color:isSelected?"#4fffb0":isUnlocked?"#a0a8bc":"#3a4a60" }}>{name}</div>
+        <div style={{ fontSize:11, fontWeight:500, color:isSelected?"#4fffb0":"#a0a8bc" }}>{name}</div>
         <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e3040" }}>{subtitle}</div>
       </div>
       <div style={{ flex:1, minWidth:30 }}>
-        {isUnlocked ? (
-          <div style={{ background:"#050809", borderRadius:3, height:3, overflow:"hidden" }}>
-            <div style={{ height:"100%", width:`${barPct}%`, background:isSelected?"#4fffb0":"#162535", borderRadius:3, transition:"width 0.5s" }} />
-          </div>
-        ) : (
-          <div style={{ display:"flex", alignItems:"center", gap:5 }}>
-            <div style={{ flex:1, height:3, background:"#0a1018", borderRadius:3, overflow:"hidden" }}>
-              <div style={{ height:"100%", width:"55%", background:"repeating-linear-gradient(90deg,#1a2535 0,#1a2535 5px,#0a1018 5px,#0a1018 9px)", borderRadius:3 }} />
-            </div>
-            <span style={{ fontSize:10 }}>🔒</span>
-          </div>
-        )}
+        <div style={{ background:"#050809", borderRadius:3, height:3, overflow:"hidden" }}>
+          <div style={{ height:"100%", width:`${barPct}%`, background:isSelected?"#4fffb0":"#162535", borderRadius:3, transition:"width 0.5s" }} />
+        </div>
       </div>
       <div style={{ textAlign:"right", minWidth:88 }}>
-        {isUnlocked && calc ? (
-          <>
-            <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b8bcc8" }}>{fmt(calc.netUSD)}</div>
-            <div style={{ fontSize:7, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
-          </>
-        ) : (
-          <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, color:"#1e2e40", letterSpacing:"0.1em" }}>••••••</div>
-        )}
+        <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b8bcc8" }}>{fmt(calc.netUSD)}</div>
+        <div style={{ fontSize:7, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 6px", borderRadius:4, fontSize:8, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:44, textAlign:"center" }}>
-        {isUnlocked && calc ? (calc.effectiveRate===0?"0%":`${calc.effectiveRate.toFixed(1)}%`) : t.see}
+        {calc.effectiveRate===0 ? "0%" : `${calc.effectiveRate.toFixed(1)}%`}
       </div>
     </div>
   );
 }
-
+ 
 // ── Country row ───────────────────────────────────────────────────────────
-function CountryRow({ rank, flag, name, isUnlocked, isSelected, netUSD, effectiveRate, maxNetUSD, fmt, onClick, t }) {
-  const rc = rateColor(effectiveRate, isUnlocked);
+function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNetUSD, fmt, onClick, t }) {
+  const rc = rateColor(effectiveRate);
   const barPct = maxNetUSD > 0 ? (netUSD / maxNetUSD) * 100 : 0;
   return (
     <div onClick={onClick}
@@ -516,41 +412,26 @@ function CountryRow({ rank, flag, name, isUnlocked, isSelected, netUSD, effectiv
       }}>{rank}</div>
       <span style={{ fontSize:17, minWidth:22 }}>{flag}</span>
       <div style={{ minWidth:140, flex:"0 0 140px" }}>
-        <div style={{ fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":isUnlocked?"#b0b8cc":"#4a5a70" }}>{name}</div>
+        <div style={{ fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b0b8cc" }}>{name}</div>
       </div>
       <div style={{ flex:1, minWidth:30 }}>
-        {isUnlocked ? (
-          <div style={{ background:"#050809", borderRadius:3, height:4, overflow:"hidden" }}>
-            <div style={{ height:"100%", width:`${barPct}%`, background:isSelected?"#4fffb0":"#162535", borderRadius:3, transition:"width 0.5s" }} />
-          </div>
-        ) : (
-          <div style={{ display:"flex", alignItems:"center", gap:5 }}>
-            <div style={{ flex:1, height:4, background:"#0a1018", borderRadius:3, overflow:"hidden" }}>
-              <div style={{ height:"100%", width:"55%", background:"repeating-linear-gradient(90deg,#1a2535 0,#1a2535 6px,#0a1018 6px,#0a1018 10px)", borderRadius:3 }} />
-            </div>
-            <span style={{ fontSize:11 }}>🔒</span>
-          </div>
-        )}
+        <div style={{ background:"#050809", borderRadius:3, height:4, overflow:"hidden" }}>
+          <div style={{ height:"100%", width:`${barPct}%`, background:isSelected?"#4fffb0":"#162535", borderRadius:3, transition:"width 0.5s" }} />
+        </div>
       </div>
       <div style={{ textAlign:"right", minWidth:92 }}>
-        {isUnlocked ? (
-          <>
-            <div style={{ fontFamily:"'DM Mono',monospace", fontSize:13, fontWeight:500, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
-            <div style={{ fontSize:8, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
-          </>
-        ) : (
-          <div style={{ fontFamily:"'DM Mono',monospace", fontSize:13, color:"#1e2e40", letterSpacing:"0.1em" }}>••••••</div>
-        )}
+        <div style={{ fontFamily:"'DM Mono',monospace", fontSize:13, fontWeight:500, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
+        <div style={{ fontSize:8, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 7px", borderRadius:4, fontSize:9, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:48, textAlign:"center" }}>
-        {isUnlocked ? (effectiveRate===0?"0%":`${effectiveRate.toFixed(1)}%`) : t.see}
+        {effectiveRate===0 ? "0%" : `${effectiveRate.toFixed(1)}%`}
       </div>
     </div>
   );
 }
-
+ 
 // ── Group header ──────────────────────────────────────────────────────────
-function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, unlockedCount, totalCount, t }) {
+function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
   return (
     <div onClick={onToggle}
       style={{ background:"#0a1520", border:"1px solid #1a2e40", borderRadius:8, padding:"9px 13px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
@@ -562,7 +443,7 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, unlockedCou
       <span style={{ fontSize:17 }}>{flag}</span>
       <div style={{ flex:1 }}>
         <div style={{ fontSize:12, fontWeight:600, color:"#8899bb" }}>{name}</div>
-        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e3545" }}>{subtitle} · {unlockedCount}/{totalCount} {t.revealed}</div>
+        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e3545" }}>{subtitle}</div>
       </div>
       <div style={{ fontSize:10, color:"#2a4a60", fontFamily:"'DM Mono',monospace" }}>
         {isOpen ? t.collapse : t.seeProvinces}
@@ -570,84 +451,67 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, unlockedCou
     </div>
   );
 }
-
+ 
 // ── Main App ──────────────────────────────────────────────────────────────
 export default function App() {
-  const [lang, setLang]         = useState("en"); // ← starts in English
-  const [salary, setSalary]     = useState("");
-  const [inputCurrency, setIC]  = useState("CAD");
-  const [search, setSearch]     = useState("");
-  const [unlocked, setUnlocked] = useState(new Set());
-  const [adTarget, setAdTarget] = useState(null);
-  const [selected, setSelected] = useState(null);
-  const [caOpen, setCaOpen]     = useState(false);
-  const [usOpen, setUsOpen]     = useState(false);
-
-  const t = T[lang];
+  const [lang, setLang]        = useState("en");
+  const [salary, setSalary]    = useState("");
+  const [inputCurrency, setIC] = useState("CAD");
+  const [search, setSearch]    = useState("");
+  const [selected, setSelected]= useState(null);
+  const [caOpen, setCaOpen]    = useState(false);
+  const [usOpen, setUsOpen]    = useState(false);
+ 
+  const t               = T[lang];
   const CURRENCY_OPTIONS = t.currencies;
-
-  const currInfo  = CURRENCY_OPTIONS.find(c => c.code === inputCurrency) || CURRENCY_OPTIONS[0];
-  const rawNum    = parseFloat(salary.replace(/[\s,\u00a0]/g,"")) || 0;
-  const salaryUSD = rawNum / currInfo.perUSD;
-  const fmt       = makeFmt(inputCurrency, currInfo.perUSD);
-
+  const currInfo        = CURRENCY_OPTIONS.find(c => c.code === inputCurrency) || CURRENCY_OPTIONS[0];
+  const rawNum          = parseFloat(salary.replace(/[\s,\u00a0]/g,"")) || 0;
+  const salaryUSD       = rawNum / currInfo.perUSD;
+  const fmt             = makeFmt(inputCurrency, currInfo.perUSD);
+ 
   const provCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(PROVINCES_CA.map(p => [p.name, calcEntry(salaryUSD, CA_USD, CA_FEDERAL, p.brackets)]));
   }, [salaryUSD]);
-
+ 
   const stateCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(STATES_US.map(s => [s.name, calcEntry(salaryUSD, 1, US_FEDERAL, s.brackets)]));
   }, [salaryUSD]);
-
+ 
   const countryCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(OTHER_COUNTRIES.map(c => [c.name, calcEntry(salaryUSD, c.localPerUSD, c.brackets, null)]));
   }, [salaryUSD]);
-
+ 
   const sortedList = useMemo(() => {
     if (!salaryUSD) return [];
     const caNet = Math.max(...PROVINCES_CA.map(p => provCalcs[p.name]?.netUSD || 0));
     const usNet = Math.max(...STATES_US.map(s => stateCalcs[s.name]?.netUSD || 0));
-    const items = [
+    return [
       { id:"__CA__", isGroup:true, group:"CA", flag:"🇨🇦", name:t.canada, netUSD:caNet, effectiveRate:0 },
       { id:"__US__", isGroup:true, group:"US", flag:"🇺🇸", name:t.usa,    netUSD:usNet, effectiveRate:0 },
       ...OTHER_COUNTRIES.map(c => ({ id:c.name, isGroup:false, flag:c.flag, name:c.name, ...countryCalcs[c.name] })),
-    ];
-    return items.sort((a,b) => b.netUSD - a.netUSD);
+    ].sort((a,b) => b.netUSD - a.netUSD);
   }, [salaryUSD, provCalcs, stateCalcs, countryCalcs, lang]);
-
+ 
   const maxNet       = sortedList[0]?.netUSD || 1;
-  const sortedProvs  = useMemo(() => [...PROVINCES_CA].sort((a,b) => (provCalcs[b.name]?.netUSD||0) - (provCalcs[a.name]?.netUSD||0)), [provCalcs]);
-  const sortedStates = useMemo(() => [...STATES_US].sort((a,b) => (stateCalcs[b.name]?.netUSD||0) - (stateCalcs[a.name]?.netUSD||0)), [stateCalcs]);
-  const totalEntries = OTHER_COUNTRIES.length + PROVINCES_CA.length + STATES_US.length;
-
-  function handleClick(id, label, flagEl) {
-    if (!salaryUSD) return;
-    if (unlocked.has(id)) { setSelected(prev => prev === id ? null : id); }
-    else { setAdTarget({ id, label, flagEl }); }
-  }
-
-  function handleAdClose() {
-    if (!adTarget) return;
-    setUnlocked(prev => new Set([...prev, adTarget.id]));
-    setSelected(adTarget.id);
-    setAdTarget(null);
-  }
-
+  const sortedProvs  = useMemo(() => [...PROVINCES_CA].sort((a,b) => (provCalcs[b.name]?.netUSD||0)-(provCalcs[a.name]?.netUSD||0)), [provCalcs]);
+  const sortedStates = useMemo(() => [...STATES_US].sort((a,b)    => (stateCalcs[b.name]?.netUSD||0)-(stateCalcs[a.name]?.netUSD||0)), [stateCalcs]);
+ 
+  // Resolve detail panel
   let detail = null;
   if (selected && salaryUSD) {
     const prov    = PROVINCES_CA.find(p => p.name === selected);
     const state   = STATES_US.find(s => s.name === selected);
     const country = OTHER_COUNTRIES.find(c => c.name === selected);
-    if (prov)    detail = { label:prov.name,    flagEl:<FlagImg src={prov.flagImg}   abbr={prov.abbr}   size={24}/>, subtitle:t.caDetail, calc:provCalcs[prov.name],      hasProv:true };
-    else if (state)  detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],    hasProv:true };
+    if (prov)     detail = { label:prov.name,    flagEl:<FlagImg src={prov.flagImg}   abbr={prov.abbr}   size={24}/>, subtitle:t.caDetail, calc:provCalcs[prov.name],       hasProv:true  };
+    else if (state)   detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],     hasProv:true  };
     else if (country) detail = { label:country.name, flagEl:<span style={{fontSize:26}}>{country.flag}</span>,           subtitle:null,        calc:countryCalcs[country.name], hasProv:false };
   }
-
-  const matchesSearch = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
-
+ 
+  const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
+ 
   return (
     <div style={{ minHeight:"100vh", background:"#080b12", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0" }}>
       <style>{`
@@ -657,37 +521,32 @@ export default function App() {
         ::-webkit-scrollbar-track{background:#0d1117}
         ::-webkit-scrollbar-thumb{background:#2a3045;border-radius:2px}
         .inp:focus{outline:none;border-color:#4fffb0 !important;box-shadow:0 0 0 3px rgba(79,255,176,0.07)}
+        .row:hover{background:#0e1520 !important}
+        .grow:hover{background:#0c1d2c !important}
         @keyframes fi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes spin{to{transform:rotate(360deg)}}
         select{appearance:none;-webkit-appearance:none}
         select option{background:#0d1520}
-        .subrow:hover{background:#0e1520 !important}
-        .grouprow:hover{background:#0c1d2c !important}
-        .countryrow:hover{background:#0e1520 !important}
       `}</style>
-
-      {/* Header */}
+ 
+      {/* ── Header ── */}
       <div style={{ background:"linear-gradient(180deg,#0d1520,#080b12)", borderBottom:"1px solid #131d2c", padding:"18px 22px 16px" }}>
-        <div style={{ maxWidth:980, margin:"0 auto" }}>
-          {/* Top bar: title left, flags right */}
-          <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
-            <div>
-              <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:5 }}>
-                <div style={{ width:5, height:28, background:"#4fffb0", borderRadius:3 }} />
-                <h1 style={{ fontFamily:"'Bebas Neue'", fontSize:28, letterSpacing:"0.08em", color:"#fff", lineHeight:1 }}>{t.title}</h1>
-              </div>
-              <p style={{ color:"#2e4055", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
-                {t.subtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
-              </p>
+        <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
+          <div>
+            <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:5 }}>
+              <div style={{ width:5, height:28, background:"#4fffb0", borderRadius:3 }} />
+              <h1 style={{ fontFamily:"'Bebas Neue'", fontSize:28, letterSpacing:"0.08em", color:"#fff", lineHeight:1 }}>{t.title}</h1>
             </div>
-            <LangSwitcher lang={lang} setLang={setLang} />
+            <p style={{ color:"#2e4055", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
+              {t.subtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
+            </p>
           </div>
+          <LangSwitcher lang={lang} setLang={setLang} />
         </div>
       </div>
-
+ 
       <div style={{ maxWidth:980, margin:"0 auto", padding:"20px 18px" }}>
-
-        {/* Salary input */}
+ 
+        {/* ── Salary input ── */}
         <div style={{ marginBottom:20 }}>
           <label style={{ display:"block", fontSize:9, fontFamily:"'DM Mono',monospace", color:"#4fffb0", letterSpacing:"0.16em", marginBottom:7 }}>{t.salaryLabel}</label>
           <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
@@ -705,76 +564,72 @@ export default function App() {
             </select>
           </div>
         </div>
-
+ 
         {salaryUSD > 0 ? (
           <div style={{ animation:"fi 0.3s ease" }}>
+ 
+            {/* Detail panel */}
             {detail && <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} />}
-
+ 
+            {/* List header */}
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, flexWrap:"wrap", gap:8 }}>
-              <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e40", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
-                <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e3545", background:"#0a1520", padding:"2px 7px", borderRadius:4, border:"1px solid #152030" }}>
-                  🔒 {unlocked.size}/{totalEntries}
-                </span>
-              </div>
+              <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e40", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
               <input className="inp" type="text" placeholder={t.searchPlaceholder} value={search} onChange={e => setSearch(e.target.value)}
                 style={{ background:"#0a1218", border:"1px solid #152030", borderRadius:7, color:"#aab0c0", padding:"6px 11px", fontSize:11, width:190, transition:"all 0.2s" }}
               />
             </div>
-
+ 
+            {/* List */}
             <div style={{ display:"flex", flexDirection:"column", gap:4 }}>
               {sortedList
-                .filter(r => matchesSearch(r.name) || (r.group==="CA" && sortedProvs.some(p=>matchesSearch(p.name))) || (r.group==="US" && sortedStates.some(s=>matchesSearch(s.name))))
+                .filter(r => match(r.name) || (r.group==="CA" && sortedProvs.some(p=>match(p.name))) || (r.group==="US" && sortedStates.some(s=>match(s.name))))
                 .map((r, i) => {
                   const rank = i + 1;
-                  if (r.id === "__CA__") {
-                    const unlockedProvs = PROVINCES_CA.filter(p => unlocked.has(p.name)).length;
-                    return (
-                      <div key="__CA__">
-                        <GroupHeader rank={rank} flag="🇨🇦" name={t.canada} subtitle={t.caSubtitle} isOpen={caOpen} onToggle={() => setCaOpen(o=>!o)} unlockedCount={unlockedProvs} totalCount={PROVINCES_CA.length} t={t} />
-                        {caOpen && (
-                          <div style={{ marginLeft:14, marginTop:3, display:"flex", flexDirection:"column", gap:3 }}>
-                            {sortedProvs.filter(p=>matchesSearch(p.name)).map(p => (
-                              <SubRow key={p.name} name={p.name} abbr={p.abbr} flagImg={p.flagImg}
-                                subtitle={t.fedProv} isUnlocked={unlocked.has(p.name)} isSelected={selected===p.name}
-                                calc={provCalcs[p.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
-                                onClick={() => handleClick(p.name, p.name, <FlagImg src={p.flagImg} abbr={p.abbr} size={18}/>)}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-                  if (r.id === "__US__") {
-                    const unlockedStates = STATES_US.filter(s => unlocked.has(s.name)).length;
-                    return (
-                      <div key="__US__">
-                        <GroupHeader rank={rank} flag="🇺🇸" name={t.usa} subtitle={t.usSubtitle} isOpen={usOpen} onToggle={() => setUsOpen(o=>!o)} unlockedCount={unlockedStates} totalCount={STATES_US.length} t={t} />
-                        {usOpen && (
-                          <div style={{ marginLeft:14, marginTop:3, display:"flex", flexDirection:"column", gap:3 }}>
-                            {sortedStates.filter(s=>matchesSearch(s.name)).map(s => (
-                              <SubRow key={s.name} name={s.name} abbr={s.abbr} flagImg={s.flagImg}
-                                subtitle={t.fedState} isUnlocked={unlocked.has(s.name)} isSelected={selected===s.name}
-                                calc={stateCalcs[s.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
-                                onClick={() => handleClick(s.name, s.name, <FlagImg src={s.flagImg} abbr={s.abbr} size={18}/>)}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
+ 
+                  if (r.id === "__CA__") return (
+                    <div key="__CA__">
+                      <GroupHeader rank={rank} flag="🇨🇦" name={t.canada} subtitle={t.caSubtitle} isOpen={caOpen} onToggle={() => setCaOpen(o=>!o)} t={t} />
+                      {caOpen && (
+                        <div style={{ marginLeft:14, marginTop:3, display:"flex", flexDirection:"column", gap:3 }}>
+                          {sortedProvs.filter(p=>match(p.name)).map(p => (
+                            <SubRow key={p.name} name={p.name} abbr={p.abbr} flagImg={p.flagImg}
+                              subtitle={t.fedProv} isSelected={selected===p.name}
+                              calc={provCalcs[p.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
+                              onClick={() => setSelected(prev => prev===p.name ? null : p.name)}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+ 
+                  if (r.id === "__US__") return (
+                    <div key="__US__">
+                      <GroupHeader rank={rank} flag="🇺🇸" name={t.usa} subtitle={t.usSubtitle} isOpen={usOpen} onToggle={() => setUsOpen(o=>!o)} t={t} />
+                      {usOpen && (
+                        <div style={{ marginLeft:14, marginTop:3, display:"flex", flexDirection:"column", gap:3 }}>
+                          {sortedStates.filter(s=>match(s.name)).map(s => (
+                            <SubRow key={s.name} name={s.name} abbr={s.abbr} flagImg={s.flagImg}
+                              subtitle={t.fedState} isSelected={selected===s.name}
+                              calc={stateCalcs[s.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
+                              onClick={() => setSelected(prev => prev===s.name ? null : s.name)}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+ 
                   return (
                     <CountryRow key={r.id} rank={rank} flag={r.flag} name={r.name}
-                      isUnlocked={unlocked.has(r.id)} isSelected={selected===r.id}
+                      isSelected={selected===r.id}
                       netUSD={r.netUSD} effectiveRate={r.effectiveRate} maxNetUSD={maxNet} fmt={fmt} t={t}
-                      onClick={() => handleClick(r.id, r.name, <span style={{fontSize:22}}>{r.flag}</span>)}
+                      onClick={() => setSelected(prev => prev===r.id ? null : r.id)}
                     />
                   );
                 })}
             </div>
-
+ 
             <div style={{ marginTop:16, padding:"10px 14px", background:"#090d14", borderRadius:8, border:"1px solid #101820" }}>
               <p style={{ fontSize:9, color:"#182230", lineHeight:1.9, fontFamily:"'DM Mono',monospace" }}>{t.disclaimer}</p>
             </div>
@@ -789,8 +644,6 @@ export default function App() {
           </div>
         )}
       </div>
-
-      {adTarget && <AdModal label={adTarget.label} flagEl={adTarget.flagEl} onClose={handleAdClose} t={t} />}
     </div>
   );
 }
