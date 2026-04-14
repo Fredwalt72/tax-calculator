@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
- 
+
 // ── Translations ──────────────────────────────────────────────────────────
 const T = {
   en: {
@@ -33,6 +33,8 @@ const T = {
     disclaimer: "⚠ Federal + provincial/state income tax only. Social contributions, credits and deductions not included. Exchange rates are approximate. Consult a tax professional.",
     emptyTitle: "ENTER YOUR INCOME TO BEGIN",
     emptySubtitle: (c, p, s) => `${c} countries · ${p} provinces · ${s} states`,
+    periodAnnual: "/ Year",
+    periodMonthly: "/ Month",
     currencies: [
       { code:"USD", label:"USD — US Dollar",          symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Canadian Dollar",    symbol:"$", perUSD:1.36 },
@@ -72,6 +74,8 @@ const T = {
     disclaimer: "⚠ Impôt fédéral + provincial/étatique sur le revenu uniquement. Cotisations sociales, crédits et déductions non inclus. Taux de change approximatifs. Consultez un comptable.",
     emptyTitle: "ENTREZ VOTRE REVENU POUR COMMENCER",
     emptySubtitle: (c, p, s) => `${c} pays · ${p} provinces · ${s} états`,
+    periodAnnual: "/ An",
+    periodMonthly: "/ Mois",
     currencies: [
       { code:"USD", label:"USD — Dollar américain",   symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dollar canadien",    symbol:"$", perUSD:1.36 },
@@ -111,6 +115,8 @@ const T = {
     disclaimer: "⚠ Solo impuesto federal + provincial/estatal sobre la renta. Contribuciones sociales, créditos y deducciones no incluidos. Tipos de cambio aproximados. Consulte a un contador.",
     emptyTitle: "INTRODUCE TU INGRESO PARA COMENZAR",
     emptySubtitle: (c, p, s) => `${c} países · ${p} provincias · ${s} estados`,
+    periodAnnual: "/ Año",
+    periodMonthly: "/ Mes",
     currencies: [
       { code:"USD", label:"USD — Dólar estadounidense", symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dólar canadiense",     symbol:"$", perUSD:1.36 },
@@ -120,12 +126,12 @@ const T = {
     ],
   },
 };
- 
+
 // ── Tax Data ──────────────────────────────────────────────────────────────
- 
+
 const CA_USD = 1.36;
 const CA_FEDERAL = [[0,57375,.15],[57375,114750,.205],[114750,158519,.26],[158519,220000,.29],[220000,Infinity,.33]];
- 
+
 const PROVINCES_CA = [
   { name:"Ontario",                   abbr:"ON", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Ontario.svg/320px-Flag_of_Ontario.svg.png",           brackets:[[0,51446,.0505],[51446,102894,.0915],[102894,150000,.1116],[150000,220000,.1216],[220000,Infinity,.1316]] },
   { name:"Québec",                    abbr:"QC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/320px-Flag_of_Quebec.svg.png",            brackets:[[0,51780,.14],[51780,103545,.19],[103545,126000,.24],[126000,Infinity,.2575]] },
@@ -141,9 +147,9 @@ const PROVINCES_CA = [
   { name:"Yukon",                     abbr:"YT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_Yukon.svg/320px-Flag_of_Yukon.svg.png",              brackets:[[0,57375,.064],[57375,114750,.09],[114750,158519,.109],[158519,500000,.128],[500000,Infinity,.15]] },
   { name:"Nunavut",                   abbr:"NU", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Flag_of_Nunavut.svg/320px-Flag_of_Nunavut.svg.png",           brackets:[[0,53268,.04],[53268,106537,.07],[106537,173205,.09],[173205,Infinity,.115]] },
 ];
- 
+
 const US_FEDERAL = [[0,11600,.10],[11600,47150,.12],[47150,100525,.22],[100525,191950,.24],[191950,243725,.32],[243725,609350,.35],[609350,Infinity,.37]];
- 
+
 const STATES_US = [
   { name:"Alabama",        abbr:"AL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Alabama.svg/320px-Flag_of_Alabama.svg.png",        brackets:[[0,500,.02],[500,3000,.04],[3000,Infinity,.05]] },
   { name:"Alaska",         abbr:"AK", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Alaska.svg/320px-Flag_of_Alaska.svg.png",         brackets:[[0,Infinity,0]] },
@@ -197,7 +203,7 @@ const STATES_US = [
   { name:"Wyoming",        abbr:"WY", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/320px-Flag_of_Wyoming.svg.png",        brackets:[[0,Infinity,0]] },
   { name:"Washington D.C.",abbr:"DC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_the_District_of_Columbia.svg/320px-Flag_of_the_District_of_Columbia.svg.png", brackets:[[0,10000,.04],[10000,40000,.06],[40000,60000,.065],[60000,250000,.085],[250000,500000,.0925],[500000,Infinity,.0975]] },
 ];
- 
+
 const OTHER_COUNTRIES = [
   { name:"United Kingdom", flag:"🇬🇧", localPerUSD:0.79,  brackets:[[0,12570,0],[12570,50270,.20],[50270,125140,.40],[125140,Infinity,.45]] },
   { name:"France",         flag:"🇫🇷", localPerUSD:0.92,  brackets:[[0,10777,0],[10777,27478,.11],[27478,78570,.30],[78570,168994,.41],[168994,Infinity,.45]] },
@@ -228,9 +234,9 @@ const OTHER_COUNTRIES = [
   { name:"Saudi Arabia",   flag:"🇸🇦", localPerUSD:3.75,  brackets:[[0,Infinity,0]] },
   { name:"Hong Kong",      flag:"🇭🇰", localPerUSD:7.82,  brackets:[[0,50000,.02],[50000,100000,.06],[100000,150000,.10],[150000,200000,.14],[200000,Infinity,.17]] },
 ];
- 
+
 // ── Helpers ───────────────────────────────────────────────────────────────
- 
+
 function applyBrackets(income, brackets) {
   let tax = 0;
   for (const [min, max, rate] of brackets) {
@@ -239,7 +245,7 @@ function applyBrackets(income, brackets) {
   }
   return tax;
 }
- 
+
 function calcEntry(salaryUSD, localPerUSD, fedBrackets, provBrackets) {
   const local     = salaryUSD * localPerUSD;
   const fedLocal  = applyBrackets(local, fedBrackets);
@@ -253,13 +259,13 @@ function calcEntry(salaryUSD, localPerUSD, fedBrackets, provBrackets) {
   const prov = salaryUSD > 0 ? (provTaxUSD  / salaryUSD) * 100 : 0;
   return { taxUSD, provTaxUSD, totalTaxUSD, netUSD, effectiveRate:eff, fedRate:fed, provRate:prov };
 }
- 
+
 function makeFmt(currCode, perUSD) {
   return (usdVal) =>
     new Intl.NumberFormat("fr-CA", { style:"currency", currency:currCode, maximumFractionDigits:0 })
       .format(usdVal * perUSD);
 }
- 
+
 function rateColor(rate) {
   if (rate === 0) return "#4fffb0";
   if (rate < 15)  return "#77eeaa";
@@ -267,7 +273,7 @@ function rateColor(rate) {
   if (rate < 35)  return "#ee9933";
   return "#ee5555";
 }
- 
+
 // ── Flag image ────────────────────────────────────────────────────────────
 function FlagImg({ src, abbr, size = 22 }) {
   const [err, setErr] = useState(false);
@@ -283,36 +289,36 @@ function FlagImg({ src, abbr, size = 22 }) {
       style={{ width:size+8, height:size*0.65, objectFit:"cover", borderRadius:2, flexShrink:0, display:"block" }} />
   );
 }
- 
+
 // ── Language switcher ─────────────────────────────────────────────────────
 const LANGS = [
-  { code:"en", tooltip:"English",  img:"https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" },
-  { code:"fr", tooltip:"Français", img:"https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png" },
-  { code:"es", tooltip:"Español",  img:"https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" },
+  { code:"en", tooltip:"English",  flag:"🇬🇧" },
+  { code:"fr", tooltip:"Français", flag:"🇫🇷" },
+  { code:"es", tooltip:"Español",  flag:"🇪🇸" },
 ];
- 
+
 function LangSwitcher({ lang, setLang }) {
   return (
-    <div style={{ display:"flex", gap:6, alignItems:"center" }}>
+    <div style={{ display:"flex", gap:4, alignItems:"center" }}>
       {LANGS.map(l => (
         <button key={l.code} onClick={() => setLang(l.code)} title={l.tooltip}
           style={{
-            background:"transparent",
-            border: `2px solid ${lang===l.code ? "#4fffb0" : "transparent"}`,
-            borderRadius:6, padding:"2px", cursor:"pointer",
+            background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
+            border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.15)"}`,
+            borderRadius:8, padding:"4px 6px", cursor:"pointer",
             transition:"all 0.18s",
-            opacity: lang===l.code ? 1 : 0.35,
-            transform: lang===l.code ? "scale(1.18)" : "scale(1)",
-            boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.4)" : "none",
+            opacity: lang===l.code ? 1 : 0.55,
+            transform: lang===l.code ? "scale(1.15)" : "scale(1)",
+            boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.3)" : "none",
+            fontSize:24, lineHeight:1,
           }}>
-          <img src={l.img} alt={l.tooltip}
-            style={{ width:36, height:24, objectFit:"cover", borderRadius:3, display:"block" }} />
+          {l.flag}
         </button>
       ))}
     </div>
   );
 }
- 
+
 // ── Detail Panel ──────────────────────────────────────────────────────────
 function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t }) {
   return (
@@ -330,7 +336,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#2a4050", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
         </div>
       </div>
- 
+
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(95px,1fr))", gap:8, marginBottom:16 }}>
         {[
           { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#5577aa" },
@@ -349,7 +355,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           </div>
         ))}
       </div>
- 
+
       <div>
         <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
           <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e3e", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
@@ -369,7 +375,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
     </div>
   );
 }
- 
+
 // ── Sub-row (province / state) ────────────────────────────────────────────
 function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fmt, onClick, t }) {
   const rc = rateColor(calc?.effectiveRate ?? 0);
@@ -397,7 +403,7 @@ function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fm
     </div>
   );
 }
- 
+
 // ── Country row ───────────────────────────────────────────────────────────
 function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNetUSD, fmt, onClick, t }) {
   const rc = rateColor(effectiveRate);
@@ -429,7 +435,7 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
     </div>
   );
 }
- 
+
 // ── Group header ──────────────────────────────────────────────────────────
 function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
   return (
@@ -451,7 +457,7 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
     </div>
   );
 }
- 
+
 // ── Main App ──────────────────────────────────────────────────────────────
 export default function App() {
   const [lang, setLang]        = useState("en");
@@ -461,29 +467,31 @@ export default function App() {
   const [selected, setSelected]= useState(null);
   const [caOpen, setCaOpen]    = useState(false);
   const [usOpen, setUsOpen]    = useState(false);
- 
+  const [period, setPeriod]    = useState("annual");
+
   const t               = T[lang];
   const CURRENCY_OPTIONS = t.currencies;
   const currInfo        = CURRENCY_OPTIONS.find(c => c.code === inputCurrency) || CURRENCY_OPTIONS[0];
   const rawNum          = parseFloat(salary.replace(/[\s,\u00a0]/g,"")) || 0;
-  const salaryUSD       = rawNum / currInfo.perUSD;
-  const fmt             = makeFmt(inputCurrency, currInfo.perUSD);
- 
+  const salaryUSD       = (period === "monthly" ? rawNum * 12 : rawNum) / currInfo.perUSD;
+  const displayDivisor  = period === "monthly" ? 12 : 1;
+  const fmt             = (usdVal) => makeFmt(inputCurrency, currInfo.perUSD)(usdVal / displayDivisor);
+
   const provCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(PROVINCES_CA.map(p => [p.name, calcEntry(salaryUSD, CA_USD, CA_FEDERAL, p.brackets)]));
   }, [salaryUSD]);
- 
+
   const stateCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(STATES_US.map(s => [s.name, calcEntry(salaryUSD, 1, US_FEDERAL, s.brackets)]));
   }, [salaryUSD]);
- 
+
   const countryCalcs = useMemo(() => {
     if (!salaryUSD) return {};
     return Object.fromEntries(OTHER_COUNTRIES.map(c => [c.name, calcEntry(salaryUSD, c.localPerUSD, c.brackets, null)]));
   }, [salaryUSD]);
- 
+
   const sortedList = useMemo(() => {
     if (!salaryUSD) return [];
     const caNet = Math.max(...PROVINCES_CA.map(p => provCalcs[p.name]?.netUSD || 0));
@@ -494,11 +502,11 @@ export default function App() {
       ...OTHER_COUNTRIES.map(c => ({ id:c.name, isGroup:false, flag:c.flag, name:c.name, ...countryCalcs[c.name] })),
     ].sort((a,b) => b.netUSD - a.netUSD);
   }, [salaryUSD, provCalcs, stateCalcs, countryCalcs, lang]);
- 
+
   const maxNet       = sortedList[0]?.netUSD || 1;
   const sortedProvs  = useMemo(() => [...PROVINCES_CA].sort((a,b) => (provCalcs[b.name]?.netUSD||0)-(provCalcs[a.name]?.netUSD||0)), [provCalcs]);
   const sortedStates = useMemo(() => [...STATES_US].sort((a,b)    => (stateCalcs[b.name]?.netUSD||0)-(stateCalcs[a.name]?.netUSD||0)), [stateCalcs]);
- 
+
   // Resolve detail panel
   let detail = null;
   if (selected && salaryUSD) {
@@ -509,9 +517,9 @@ export default function App() {
     else if (state)   detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],     hasProv:true  };
     else if (country) detail = { label:country.name, flagEl:<span style={{fontSize:26}}>{country.flag}</span>,           subtitle:null,        calc:countryCalcs[country.name], hasProv:false };
   }
- 
+
   const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
- 
+
   return (
     <div style={{ minHeight:"100vh", background:"#080b12", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0" }}>
       <style>{`
@@ -527,7 +535,7 @@ export default function App() {
         select{appearance:none;-webkit-appearance:none}
         select option{background:#0d1520}
       `}</style>
- 
+
       {/* ── Header ── */}
       <div style={{ background:"linear-gradient(180deg,#0d1520,#080b12)", borderBottom:"1px solid #131d2c", padding:"18px 22px 16px" }}>
         <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
@@ -543,9 +551,9 @@ export default function App() {
           <LangSwitcher lang={lang} setLang={setLang} />
         </div>
       </div>
- 
+
       <div style={{ maxWidth:980, margin:"0 auto", padding:"20px 18px" }}>
- 
+
         {/* ── Salary input ── */}
         <div style={{ marginBottom:20 }}>
           <label style={{ display:"block", fontSize:9, fontFamily:"'DM Mono',monospace", color:"#4fffb0", letterSpacing:"0.16em", marginBottom:7 }}>{t.salaryLabel}</label>
@@ -562,15 +570,23 @@ export default function App() {
               style={{ background:"#0d1520", border:"1.5px solid #192838", borderRadius:9, color:"#aab8cc", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer" }}>
               {CURRENCY_OPTIONS.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
             </select>
+            <div style={{ display:"flex", borderRadius:9, overflow:"hidden", border:"1.5px solid #192838", flexShrink:0 }}>
+              {["annual","monthly"].map(p => (
+                <button key={p} onClick={() => setPeriod(p)}
+                  style={{ background: period===p ? "rgba(79,255,176,0.12)" : "#0d1520", border:"none", borderRight: p==="annual" ? "1px solid #192838" : "none", color: period===p ? "#4fffb0" : "#5a6a80", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer", fontWeight: period===p ? 600 : 400, transition:"all 0.18s", whiteSpace:"nowrap" }}>
+                  {p === "annual" ? t.periodAnnual : t.periodMonthly}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
- 
+
         {salaryUSD > 0 ? (
           <div style={{ animation:"fi 0.3s ease" }}>
- 
+
             {/* Detail panel */}
             {detail && <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} />}
- 
+
             {/* List header */}
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, flexWrap:"wrap", gap:8 }}>
               <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e40", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
@@ -578,14 +594,14 @@ export default function App() {
                 style={{ background:"#0a1218", border:"1px solid #152030", borderRadius:7, color:"#aab0c0", padding:"6px 11px", fontSize:11, width:190, transition:"all 0.2s" }}
               />
             </div>
- 
+
             {/* List */}
             <div style={{ display:"flex", flexDirection:"column", gap:4 }}>
               {sortedList
                 .filter(r => match(r.name) || (r.group==="CA" && sortedProvs.some(p=>match(p.name))) || (r.group==="US" && sortedStates.some(s=>match(s.name))))
                 .map((r, i) => {
                   const rank = i + 1;
- 
+
                   if (r.id === "__CA__") return (
                     <div key="__CA__">
                       <GroupHeader rank={rank} flag="🇨🇦" name={t.canada} subtitle={t.caSubtitle} isOpen={caOpen} onToggle={() => setCaOpen(o=>!o)} t={t} />
@@ -602,7 +618,7 @@ export default function App() {
                       )}
                     </div>
                   );
- 
+
                   if (r.id === "__US__") return (
                     <div key="__US__">
                       <GroupHeader rank={rank} flag="🇺🇸" name={t.usa} subtitle={t.usSubtitle} isOpen={usOpen} onToggle={() => setUsOpen(o=>!o)} t={t} />
@@ -619,7 +635,7 @@ export default function App() {
                       )}
                     </div>
                   );
- 
+
                   return (
                     <CountryRow key={r.id} rank={rank} flag={r.flag} name={r.name}
                       isSelected={selected===r.id}
@@ -629,7 +645,7 @@ export default function App() {
                   );
                 })}
             </div>
- 
+
             <div style={{ marginTop:16, padding:"10px 14px", background:"#090d14", borderRadius:8, border:"1px solid #101820" }}>
               <p style={{ fontSize:9, color:"#182230", lineHeight:1.9, fontFamily:"'DM Mono',monospace" }}>{t.disclaimer}</p>
             </div>
@@ -637,8 +653,8 @@ export default function App() {
         ) : (
           <div style={{ textAlign:"center", padding:"50px 20px" }}>
             <div style={{ fontSize:52, marginBottom:12 }}>💰</div>
-            <div style={{ fontFamily:"'Bebas Neue'", fontSize:24, letterSpacing:"0.1em", marginBottom:5, color:"#1e2e40" }}>{t.emptyTitle}</div>
-            <div style={{ fontSize:11, color:"#111820", fontFamily:"'DM Mono',monospace" }}>
+            <div style={{ fontFamily:"'Bebas Neue'", fontSize:24, letterSpacing:"0.1em", marginBottom:5, color:"#4a7090" }}>{t.emptyTitle}</div>
+            <div style={{ fontSize:11, color:"#2e4a60", fontFamily:"'DM Mono',monospace" }}>
               {t.emptySubtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
             </div>
           </div>
