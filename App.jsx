@@ -279,7 +279,7 @@ function FlagImg({ src, abbr, size = 22 }) {
   const [err, setErr] = useState(false);
   if (err || !src) {
     return (
-      <div style={{ width:size+8, height:size*0.65, borderRadius:2, background:"#1a2a3a", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontFamily:"'DM Mono',monospace", color:"#4a6a80", fontWeight:700, letterSpacing:"0.04em", flexShrink:0 }}>
+      <div style={{ width:size+8, height:size*0.65, borderRadius:2, background:"#1a2a3a", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontFamily:"'DM Mono',monospace", color:"#80a8c0", fontWeight:700, letterSpacing:"0.04em", flexShrink:0 }}>
         {abbr}
       </div>
     );
@@ -299,21 +299,21 @@ const LANGS = [
 
 function LangSwitcher({ lang, setLang }) {
   return (
-    <div style={{ display:"flex", gap:4, alignItems:"center" }}>
+    <div style={{ display:"flex", gap:6, alignItems:"center" }}>
       {LANGS.map(l => (
-        <button key={l.code} onClick={() => setLang(l.code)} title={l.tooltip}
+        <div key={l.code} onClick={() => setLang(l.code)} title={l.tooltip}
           style={{
-            background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
-            border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.15)"}`,
-            borderRadius:8, padding:"4px 6px", cursor:"pointer",
+            background: lang===l.code ? "rgba(79,255,176,0.12)" : "rgba(255,255,255,0.04)",
+            border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.12)"}`,
+            borderRadius:8, padding:"5px 8px", cursor:"pointer",
             transition:"all 0.18s",
-            opacity: lang===l.code ? 1 : 0.55,
-            transform: lang===l.code ? "scale(1.15)" : "scale(1)",
-            boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.3)" : "none",
-            fontSize:24, lineHeight:1,
+            opacity: lang===l.code ? 1 : 0.6,
+            transform: lang===l.code ? "scale(1.12)" : "scale(1)",
+            boxShadow: lang===l.code ? "0 0 10px rgba(79,255,176,0.3)" : "none",
+            display:"flex", alignItems:"center", justifyContent:"center",
           }}>
-          {l.flag}
-        </button>
+          <span style={{ fontSize:26, lineHeight:1, display:"block" }}>{l.flag}</span>
+        </div>
       ))}
     </div>
   );
@@ -332,14 +332,14 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           </div>
         </div>
         <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0a1520", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"3px 7px", letterSpacing:"0.1em" }}>{currCode}</span>
-          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#2a4050", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
+          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0d1e32", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"3px 7px", letterSpacing:"0.1em" }}>{currCode}</span>
+          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#7898b8", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
         </div>
       </div>
 
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(95px,1fr))", gap:8, marginBottom:16 }}>
         {[
-          { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#5577aa" },
+          { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#7799cc" },
           ...(hasProv ? [
             { label:t.federal,   value:fmt(calc.taxUSD),      color:"#dd7733" },
             { label:t.provincial,value:fmt(calc.provTaxUSD),  color:"#ddaa33" },
@@ -350,7 +350,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           { label:t.net,       value:fmt(calc.netUSD),        color:"#4fffb0" },
         ].map(({ label:lbl, value, color }) => (
           <div key={lbl} style={{ background:"#040709", borderRadius:7, padding:"11px 12px" }}>
-            <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e2e3e", letterSpacing:"0.1em", marginBottom:4 }}>{lbl}</div>
+            <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em", marginBottom:4 }}>{lbl}</div>
             <div style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:500, color }}>{value}</div>
           </div>
         ))}
@@ -358,7 +358,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
 
       <div>
         <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e3e", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
+          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
           <span style={{ fontSize:11, fontFamily:"'DM Mono',monospace", color:"#ff9955" }}>{calc.effectiveRate.toFixed(1)}%</span>
         </div>
         <div style={{ background:"#040709", borderRadius:3, height:6, overflow:"hidden" }}>
@@ -382,11 +382,11 @@ function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fm
   const barPct = maxNetUSD > 0 && calc ? (calc.netUSD / maxNetUSD) * 100 : 0;
   return (
     <div onClick={onClick}
-      style={{ background:isSelected?"#0b1e2e":"#090d14", border:`1px solid ${isSelected?"#4fffb0":"#0e1820"}`, borderRadius:7, padding:"8px 12px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
+      style={{ background:isSelected?"#0b1e2e":"#0c1525", border:`1px solid ${isSelected?"#4fffb0":"#1a2e48"}`, borderRadius:7, padding:"8px 12px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
       <FlagImg src={flagImg} abbr={abbr} size={18} />
       <div style={{ minWidth:140, flex:"0 0 140px" }}>
         <div style={{ fontSize:11, fontWeight:500, color:isSelected?"#4fffb0":"#a0a8bc" }}>{name}</div>
-        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e3040" }}>{subtitle}</div>
+        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#7090b0" }}>{subtitle}</div>
       </div>
       <div style={{ flex:1, minWidth:30 }}>
         <div style={{ background:"#050809", borderRadius:3, height:3, overflow:"hidden" }}>
@@ -395,7 +395,7 @@ function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fm
       </div>
       <div style={{ textAlign:"right", minWidth:88 }}>
         <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b8bcc8" }}>{fmt(calc.netUSD)}</div>
-        <div style={{ fontSize:7, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
+        <div style={{ fontSize:7, color:"#8aaac8", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 6px", borderRadius:4, fontSize:8, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:44, textAlign:"center" }}>
         {calc.effectiveRate===0 ? "0%" : `${calc.effectiveRate.toFixed(1)}%`}
@@ -410,11 +410,11 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
   const barPct = maxNetUSD > 0 ? (netUSD / maxNetUSD) * 100 : 0;
   return (
     <div onClick={onClick}
-      style={{ background:isSelected?"#0b1e2e":"#090d14", border:`1px solid ${isSelected?"#4fffb0":"#101820"}`, borderRadius:8, padding:"9px 13px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
+      style={{ background:isSelected?"#0b1e2e":"#0c1525", border:`1px solid ${isSelected?"#4fffb0":"#1a2e48"}`, borderRadius:8, padding:"9px 13px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
       <div style={{ width:19,height:19,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:8,fontWeight:700,fontFamily:"'DM Mono',monospace",
-        background:rank===1?"rgba(79,255,176,0.1)":rank<4?"rgba(100,150,255,0.07)":"#0a0e14",
-        color:rank===1?"#4fffb0":rank===2?"#5588ff":rank===3?"#ffaa30":"#1e2e40",
-        border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#0e1620"}`
+        background:rank===1?"rgba(79,255,176,0.1)":rank<4?"rgba(100,150,255,0.07)":"#0c1525",
+        color:rank===1?"#4fffb0":rank===2?"#5588ff":rank===3?"#ffaa30":"#8aaac8",
+        border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#1a2e48"}`
       }}>{rank}</div>
       <span style={{ fontSize:17, minWidth:22 }}>{flag}</span>
       <div style={{ minWidth:140, flex:"0 0 140px" }}>
@@ -427,7 +427,7 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
       </div>
       <div style={{ textAlign:"right", minWidth:92 }}>
         <div style={{ fontFamily:"'DM Mono',monospace", fontSize:13, fontWeight:500, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
-        <div style={{ fontSize:8, color:"#1a2535", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
+        <div style={{ fontSize:8, color:"#8aaac8", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 7px", borderRadius:4, fontSize:9, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:48, textAlign:"center" }}>
         {effectiveRate===0 ? "0%" : `${effectiveRate.toFixed(1)}%`}
@@ -440,18 +440,18 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
 function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
   return (
     <div onClick={onToggle}
-      style={{ background:"#0a1520", border:"1px solid #1a2e40", borderRadius:8, padding:"9px 13px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
+      style={{ background:"#0d1e32", border:"1px solid #1a2e40", borderRadius:8, padding:"9px 13px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s" }}>
       <div style={{ width:19,height:19,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:8,fontWeight:700,fontFamily:"'DM Mono',monospace",
-        background:rank===1?"rgba(79,255,176,0.1)":rank<4?"rgba(100,150,255,0.07)":"#0a0e14",
-        color:rank===1?"#4fffb0":rank===2?"#5588ff":rank===3?"#ffaa30":"#1e2e40",
-        border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#0e1620"}`
+        background:rank===1?"rgba(79,255,176,0.1)":rank<4?"rgba(100,150,255,0.07)":"#0c1525",
+        color:rank===1?"#4fffb0":rank===2?"#5588ff":rank===3?"#ffaa30":"#8aaac8",
+        border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#1a2e48"}`
       }}>{rank}</div>
       <span style={{ fontSize:17 }}>{flag}</span>
       <div style={{ flex:1 }}>
-        <div style={{ fontSize:12, fontWeight:600, color:"#8899bb" }}>{name}</div>
-        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#1e3545" }}>{subtitle}</div>
+        <div style={{ fontSize:12, fontWeight:600, color:"#aabbd8" }}>{name}</div>
+        <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#7aa0c0" }}>{subtitle}</div>
       </div>
-      <div style={{ fontSize:10, color:"#2a4a60", fontFamily:"'DM Mono',monospace" }}>
+      <div style={{ fontSize:10, color:"#7898b8", fontFamily:"'DM Mono',monospace" }}>
         {isOpen ? t.collapse : t.seeProvinces}
       </div>
     </div>
@@ -521,7 +521,7 @@ export default function App() {
   const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
 
   return (
-    <div style={{ minHeight:"100vh", background:"#080b12", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0" }}>
+    <div style={{ minHeight:"100vh", background:"#0a0f1a", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
@@ -544,7 +544,7 @@ export default function App() {
               <div style={{ width:5, height:28, background:"#4fffb0", borderRadius:3 }} />
               <h1 style={{ fontFamily:"'Bebas Neue'", fontSize:28, letterSpacing:"0.08em", color:"#fff", lineHeight:1 }}>{t.title}</h1>
             </div>
-            <p style={{ color:"#2e4055", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
+            <p style={{ color:"#8aaac8", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
               {t.subtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
             </p>
           </div>
@@ -563,17 +563,17 @@ export default function App() {
               <input className="inp" type="text" value={salary}
                 onChange={e => { const r=e.target.value.replace(/[^0-9]/g,""); setSalary(r?Number(r).toLocaleString("fr-CA"):""); }}
                 placeholder={t.salaryPlaceholder}
-                style={{ width:"100%", padding:"12px 12px 12px 30px", background:"#0d1520", border:"1.5px solid #192838", borderRadius:9, color:"#fff", fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:500, transition:"all 0.2s" }}
+                style={{ width:"100%", padding:"12px 12px 12px 30px", background:"#0d1a28", border:"1.5px solid #192838", borderRadius:9, color:"#fff", fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:500, transition:"all 0.2s" }}
               />
             </div>
             <select className="inp" value={inputCurrency} onChange={e => setIC(e.target.value)}
-              style={{ background:"#0d1520", border:"1.5px solid #192838", borderRadius:9, color:"#aab8cc", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer" }}>
+              style={{ background:"#0d1a28", border:"1.5px solid #192838", borderRadius:9, color:"#c0c8d8", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer" }}>
               {CURRENCY_OPTIONS.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
             </select>
             <div style={{ display:"flex", borderRadius:9, overflow:"hidden", border:"1.5px solid #192838", flexShrink:0 }}>
               {["annual","monthly"].map(p => (
                 <button key={p} onClick={() => setPeriod(p)}
-                  style={{ background: period===p ? "rgba(79,255,176,0.12)" : "#0d1520", border:"none", borderRight: p==="annual" ? "1px solid #192838" : "none", color: period===p ? "#4fffb0" : "#5a6a80", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer", fontWeight: period===p ? 600 : 400, transition:"all 0.18s", whiteSpace:"nowrap" }}>
+                  style={{ background: period===p ? "rgba(79,255,176,0.12)" : "#0d1a28", border:"none", borderRight: p==="annual" ? "1px solid #192838" : "none", color: period===p ? "#4fffb0" : "#8898b8", padding:"12px 14px", fontSize:11, fontFamily:"'DM Mono',monospace", cursor:"pointer", fontWeight: period===p ? 600 : 400, transition:"all 0.18s", whiteSpace:"nowrap" }}>
                   {p === "annual" ? t.periodAnnual : t.periodMonthly}
                 </button>
               ))}
@@ -589,9 +589,9 @@ export default function App() {
 
             {/* List header */}
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, flexWrap:"wrap", gap:8 }}>
-              <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#1e2e40", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
+              <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
               <input className="inp" type="text" placeholder={t.searchPlaceholder} value={search} onChange={e => setSearch(e.target.value)}
-                style={{ background:"#0a1218", border:"1px solid #152030", borderRadius:7, color:"#aab0c0", padding:"6px 11px", fontSize:11, width:190, transition:"all 0.2s" }}
+                style={{ background:"#0d1a2e", border:"1px solid #152030", borderRadius:7, color:"#c0c8d8", padding:"6px 11px", fontSize:11, width:190, transition:"all 0.2s" }}
               />
             </div>
 
@@ -646,15 +646,15 @@ export default function App() {
                 })}
             </div>
 
-            <div style={{ marginTop:16, padding:"10px 14px", background:"#090d14", borderRadius:8, border:"1px solid #101820" }}>
-              <p style={{ fontSize:9, color:"#182230", lineHeight:1.9, fontFamily:"'DM Mono',monospace" }}>{t.disclaimer}</p>
+            <div style={{ marginTop:16, padding:"10px 14px", background:"#0c1525", borderRadius:8, border:"1px solid #101820" }}>
+              <p style={{ fontSize:9, color:"#8ab0cc", lineHeight:1.9, fontFamily:"'DM Mono',monospace" }}>{t.disclaimer}</p>
             </div>
           </div>
         ) : (
           <div style={{ textAlign:"center", padding:"50px 20px" }}>
             <div style={{ fontSize:52, marginBottom:12 }}>💰</div>
-            <div style={{ fontFamily:"'Bebas Neue'", fontSize:24, letterSpacing:"0.1em", marginBottom:5, color:"#4a7090" }}>{t.emptyTitle}</div>
-            <div style={{ fontSize:11, color:"#2e4a60", fontFamily:"'DM Mono',monospace" }}>
+            <div style={{ fontFamily:"'Bebas Neue'", fontSize:24, letterSpacing:"0.1em", marginBottom:5, color:"#88b0cc" }}>{t.emptyTitle}</div>
+            <div style={{ fontSize:11, color:"#7ab0d0", fontFamily:"'DM Mono',monospace" }}>
               {t.emptySubtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
             </div>
           </div>
