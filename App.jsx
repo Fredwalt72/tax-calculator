@@ -63,7 +63,7 @@ const T = {
     privacyTitle: "Privacy Policy",
     privacyText: "This website does not collect any personal information. No account registration is required. The salary figures you enter are processed entirely in your browser and are never sent to our servers. We may use anonymous analytics (page views, country of origin) to improve the tool. We do not sell, share, or monetize any user data. This site may display advertisements through Google AdSense; Google's privacy policy governs how ad-related data is handled.",
     aboutPageTitle: "About Us",
-    aboutPageText: "TaxComparator.app is an independent tool built to help individuals understand and compare income tax rates around the world. We are not affiliated with any government, tax authority, or financial institution. Our goal is to provide clear, unbiased, and accessible tax information to help people make informed financial decisions.",
+    aboutPageText: "NetPay.tax is an independent tool built to help individuals understand and compare income tax rates around the world. We are not affiliated with any government, tax authority, or financial institution. Our goal is to provide clear, unbiased, and accessible tax information to help people make informed financial decisions.",
     footerDisclaimer: "For informational purposes only. Not financial or tax advice. Consult a qualified professional.",
     footerLinks: ["Privacy Policy", "About", "Contact"],
     contactTitle: "Contact",
@@ -137,7 +137,7 @@ const T = {
     privacyTitle: "Politique de confidentialité",
     privacyText: "Ce site web ne collecte aucune information personnelle. Aucune inscription n'est requise. Les montants de salaire que vous saisissez sont traités entièrement dans votre navigateur et ne sont jamais envoyés à nos serveurs. Nous pouvons utiliser des analyses anonymes (pages vues, pays d'origine) pour améliorer l'outil. Nous ne vendons, partageons ni monétisons aucune donnée utilisateur. Ce site peut afficher des publicités via Google AdSense ; la politique de confidentialité de Google régit la façon dont les données liées aux annonces sont traitées.",
     aboutPageTitle: "À propos",
-    aboutPageText: "TaxComparator.app est un outil indépendant conçu pour aider les particuliers à comprendre et comparer les taux d'imposition sur le revenu dans le monde. Nous ne sommes affiliés à aucun gouvernement, autorité fiscale ou institution financière. Notre objectif est de fournir des informations fiscales claires, impartiales et accessibles.",
+    aboutPageText: "NetPay.tax est un outil indépendant conçu pour aider les particuliers à comprendre et comparer les taux d'imposition sur le revenu dans le monde. Nous ne sommes affiliés à aucun gouvernement, autorité fiscale ou institution financière. Notre objectif est de fournir des informations fiscales claires, impartiales et accessibles.",
     footerDisclaimer: "À titre informatif uniquement. Pas de conseil financier ou fiscal. Consultez un professionnel qualifié.",
     footerLinks: ["Politique de confidentialité", "À propos", "Contact"],
     contactTitle: "Contact",
@@ -211,7 +211,7 @@ const T = {
     privacyTitle: "Política de privacidad",
     privacyText: "Este sitio web no recopila ninguna información personal. No se requiere registro de cuenta. Los montos de salario que introduces se procesan completamente en tu navegador y nunca se envían a nuestros servidores. Podemos usar análisis anónimos para mejorar la herramienta. No vendemos, compartimos ni monetizamos ningún dato de usuario. Este sitio puede mostrar anuncios a través de Google AdSense; la política de privacidad de Google rige cómo se manejan los datos relacionados con los anuncios.",
     aboutPageTitle: "Acerca de nosotros",
-    aboutPageText: "TaxComparator.app es una herramienta independiente creada para ayudar a las personas a entender y comparar las tasas del impuesto sobre la renta en todo el mundo. No estamos afiliados a ningún gobierno, autoridad fiscal o institución financiera.",
+    aboutPageText: "NetPay.tax es una herramienta independiente creada para ayudar a las personas a entender y comparar las tasas del impuesto sobre la renta en todo el mundo. No estamos afiliados a ningún gobierno, autoridad fiscal o institución financiera.",
     footerDisclaimer: "Solo con fines informativos. No es asesoramiento financiero ni fiscal. Consulte a un profesional calificado.",
     footerLinks: ["Política de privacidad", "Acerca de", "Contacto"],
     contactTitle: "Contacto",
@@ -441,7 +441,7 @@ function LangSwitcher({ lang, setLang }) {
 // ── Detail Panel ──────────────────────────────────────────────────────────
 function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t }) {
   return (
-    <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:18, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
+    <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16, flexWrap:"wrap", gap:8 }}>
         <div style={{ display:"flex", alignItems:"center", gap:10 }}>
           {flagEl}
@@ -672,7 +672,7 @@ function Footer({ t }) {
     <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
         <div>
-          <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>TaxComparator.app</div>
+          <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>NetPay.tax</div>
           <p style={{ fontSize:11, color:"#5a7a98", maxWidth:500 }}>{t.footerDisclaimer}</p>
         </div>
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
@@ -685,7 +685,7 @@ function Footer({ t }) {
         </div>
       </div>
       <div style={{ marginTop:16, fontSize:10, color:"#3a5570", textAlign:"center" }}>
-        © {new Date().getFullYear()} TaxComparator.app — {t.footerDisclaimer}
+        © {new Date().getFullYear()} NetPay.tax — {t.footerDisclaimer}
       </div>
     </footer>
   );
@@ -825,7 +825,11 @@ export default function App() {
           <div style={{ animation:"fi 0.3s ease" }}>
 
             {/* Detail panel */}
-            {detail && <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} />}
+            {detail && (
+              <div style={{ position:"sticky", top:8, zIndex:100, marginBottom:18 }}>
+                <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} />
+              </div>
+            )}
 
             {/* List header */}
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, flexWrap:"wrap", gap:8 }}>
