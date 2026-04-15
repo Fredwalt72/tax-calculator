@@ -205,7 +205,8 @@ const STATES_US = [
 ];
 
 const OTHER_COUNTRIES = [
-  { name:"United Kingdom", flag:"🇬🇧", localPerUSD:0.79,  brackets:[[0,12570,0],[12570,50270,.20],[50270,125140,.40],[125140,Infinity,.45]] },
+  { name:"England & Wales",flag:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", localPerUSD:0.79,  brackets:[[0,12570,0],[12570,50270,.20],[50270,125140,.40],[125140,Infinity,.45]] },
+  { name:"Scotland",          flag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", localPerUSD:0.79,  brackets:[[0,12570,0],[12570,14876,.19],[14876,26561,.20],[26561,43662,.21],[43662,75000,.42],[75000,125140,.45],[125140,Infinity,.48]] },
   { name:"France",         flag:"🇫🇷", localPerUSD:0.92,  brackets:[[0,10777,0],[10777,27478,.11],[27478,78570,.30],[78570,168994,.41],[168994,Infinity,.45]] },
   { name:"Germany",        flag:"🇩🇪", localPerUSD:0.92,  brackets:[[0,11784,0],[11784,17005,.14],[17005,66760,.24],[66760,277826,.42],[277826,Infinity,.45]] },
   { name:"Australia",      flag:"🇦🇺", localPerUSD:1.55,  brackets:[[0,18200,0],[18200,45000,.19],[45000,120000,.325],[120000,180000,.37],[180000,Infinity,.45]] },
@@ -233,6 +234,25 @@ const OTHER_COUNTRIES = [
   { name:"UAE",            flag:"🇦🇪", localPerUSD:3.67,  brackets:[[0,Infinity,0]] },
   { name:"Saudi Arabia",   flag:"🇸🇦", localPerUSD:3.75,  brackets:[[0,Infinity,0]] },
   { name:"Hong Kong",      flag:"🇭🇰", localPerUSD:7.82,  brackets:[[0,50000,.02],[50000,100000,.06],[100000,150000,.10],[150000,200000,.14],[200000,Infinity,.17]] },
+  { name:"Greece",          flag:"🇬🇷", localPerUSD:0.92,  brackets:[[0,10000,0],[10000,20000,.09],[20000,30000,.28],[30000,40000,.36],[40000,Infinity,.44]] },
+  { name:"Finland",         flag:"🇫🇮", localPerUSD:5.42,  brackets:[[0,19900,0],[19900,29700,.0641],[29700,49000,.1745],[49000,85800,.2180],[85800,Infinity,.3160]] },
+  { name:"Austria",         flag:"🇦🇹", localPerUSD:0.92,  brackets:[[0,11693,0],[11693,19134,.20],[19134,32075,.30],[32075,62080,.41],[62080,93120,.48],[93120,1000000,.50],[1000000,Infinity,.55]] },
+  { name:"Belgium",         flag:"🇧🇪", localPerUSD:0.92,  brackets:[[0,15820,0],[15820,27920,.25],[27920,48320,.40],[48320,Infinity,.50]] },
+  { name:"Czech Republic",  flag:"🇨🇿", localPerUSD:23.2,  brackets:[[0,1582812,.15],[1582812,Infinity,.23]] },
+  { name:"Hungary",         flag:"🇭🇺", localPerUSD:356,   brackets:[[0,Infinity,.15]] },
+  { name:"Romania",         flag:"🇷🇴", localPerUSD:4.68,  brackets:[[0,Infinity,.10]] },
+  { name:"Israel",          flag:"🇮🇱", localPerUSD:3.70,  brackets:[[0,81480,.10],[81480,116760,.14],[116760,187440,.20],[187440,260520,.31],[260520,542160,.35],[542160,698280,.47],[698280,Infinity,.50]] },
+  { name:"Turkey",          flag:"🇹🇷", localPerUSD:32.5,  brackets:[[0,110000,.15],[110000,230000,.20],[230000,580000,.27],[580000,3000000,.35],[3000000,Infinity,.40]] },
+  { name:"Chile",           flag:"🇨🇱", localPerUSD:950,   brackets:[[0,8380560,0],[8380560,18657240,.04],[18657240,31095400,.08],[31095400,43533560,.135],[43533560,56221480,.23],[56221480,74962040,.304],[74962040,Infinity,.35]] },
+  { name:"Argentina",       flag:"🇦🇷", localPerUSD:900,   brackets:[[0,1030700,0],[1030700,2061400,.05],[2061400,3092100,.09],[3092100,4122800,.12],[4122800,5153500,.15],[5153500,6184200,.19],[6184200,7729250,.23],[7729250,11593875,.27],[11593875,15458500,.31],[15458500,Infinity,.35]] },
+  { name:"Colombia",        flag:"🇨🇴", localPerUSD:3900,  brackets:[[0,52000000,0],[52000000,80000000,.19],[80000000,120000000,.28],[120000000,Infinity,.33]] },
+  { name:"Malaysia",        flag:"🇲🇾", localPerUSD:4.72,  brackets:[[0,5000,0],[5000,20000,.01],[20000,35000,.03],[35000,50000,.08],[50000,70000,.13],[70000,100000,.21],[100000,250000,.24],[250000,400000,.245],[400000,600000,.25],[600000,1000000,.26],[1000000,2000000,.28],[2000000,Infinity,.30]] },
+  { name:"Philippines",     flag:"🇵🇭", localPerUSD:56.5,  brackets:[[0,250000,0],[250000,400000,.15],[400000,800000,.20],[800000,2000000,.25],[2000000,8000000,.30],[8000000,Infinity,.35]] },
+  { name:"Indonesia",       flag:"🇮🇩", localPerUSD:15700, brackets:[[0,60000000,.05],[60000000,250000000,.15],[250000000,500000000,.25],[500000000,5000000000,.30],[5000000000,Infinity,.35]] },
+  { name:"Vietnam",         flag:"🇻🇳", localPerUSD:25000, brackets:[[0,60000000,.05],[60000000,120000000,.10],[120000000,216000000,.15],[216000000,384000000,.20],[384000000,624000000,.25],[624000000,960000000,.30],[960000000,Infinity,.35]] },
+  { name:"Egypt",           flag:"🇪🇬", localPerUSD:48.5,  brackets:[[0,30000,0],[30000,45000,.10],[45000,60000,.15],[60000,200000,.20],[200000,400000,.225],[400000,Infinity,.25]] },
+  { name:"Nigeria",         flag:"🇳🇬", localPerUSD:1580,  brackets:[[0,300000,.07],[300000,600000,.11],[600000,1100000,.15],[1100000,1600000,.19],[1600000,3200000,.21],[3200000,Infinity,.24]] },
+  { name:"Kenya",           flag:"🇰🇪", localPerUSD:130,   brackets:[[0,288000,.10],[288000,388000,.25],[388000,6000000,.30],[6000000,Infinity,.35]] },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -460,7 +480,12 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
 
 // ── Main App ──────────────────────────────────────────────────────────────
 export default function App() {
-  const [lang, setLang]        = useState("en");
+  const [lang, setLang] = useState(() => {
+    const bl = (navigator.language || navigator.userLanguage || "en").slice(0,2).toLowerCase();
+    if (bl === "fr") return "fr";
+    if (bl === "es") return "es";
+    return "en";
+  });
   const [salary, setSalary]    = useState("");
   const [inputCurrency, setIC] = useState("CAD");
   const [search, setSearch]    = useState("");
