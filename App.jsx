@@ -35,6 +35,39 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} countries · ${p} provinces · ${s} states`,
     periodAnnual: "/ Year",
     periodMonthly: "/ Month",
+    // Editorial content
+    aboutTitle: "About This Calculator",
+    aboutText: "Our free income tax calculator lets you instantly compare your net salary across 47+ countries, 13 Canadian provinces, and 51 US states. Whether you are planning an international move, negotiating a job offer abroad, or simply curious about how your country stacks up, this tool gives you a clear picture of how much you actually keep after federal and regional income taxes.",
+    howTitle: "How It Works",
+    howSteps: [
+      { icon:"1️⃣", title:"Enter your salary", text:"Type your annual or monthly gross salary in the currency of your choice: USD, CAD, EUR, GBP or AUD." },
+      { icon:"2️⃣", title:"See the ranking", text:"The tool instantly ranks every country and region from the highest to lowest net salary, so you can see at a glance where you keep the most money." },
+      { icon:"3️⃣", title:"Click for details", text:"Click any country, province or state to see a breakdown: gross salary, federal tax, regional tax, total tax, net salary and effective rate." },
+    ],
+    faqTitle: "Frequently Asked Questions",
+    faqs: [
+      { q:"What taxes are included in the calculation?", a:"This calculator includes federal income tax and provincial or state income tax only. It does not include social security contributions, health insurance premiums, pension contributions, sales taxes (GST/HST/VAT), or any other deductions. The results show your estimated income tax burden only." },
+      { q:"Why are the results shown in USD?", a:"All results are normalized to USD for easy international comparison. You can enter your salary in CAD, EUR, GBP or AUD and the calculator will convert it automatically using approximate exchange rates. The detail panel always shows amounts in the currency you entered." },
+      { q:"How accurate are these tax rates?", a:"Tax brackets are based on the most recent publicly available rates for each jurisdiction. However, tax laws change frequently, and individual circumstances (deductions, credits, filing status, age) can significantly affect your actual tax bill. Always consult a qualified tax professional before making financial decisions." },
+      { q:"Does the calculator account for tax deductions and credits?", a:"No. The calculator applies the standard progressive tax brackets without deductions, credits, or exemptions. In reality, most taxpayers benefit from various deductions (RRSP contributions, mortgage interest, medical expenses) that reduce their taxable income. Your actual net salary may be higher than shown." },
+      { q:"What is the effective tax rate?", a:"The effective tax rate is the percentage of your total gross income that goes to income taxes. It is different from the marginal tax rate, which applies only to your last dollar of income. For example, someone earning $80,000 in Ontario might have a marginal rate of 31.48% but an effective rate closer to 22%." },
+      { q:"Why does Alberta have a lower tax rate than Québec?", a:"Alberta benefits from a flat 10% provincial income tax with no surtax, and the province collects significant oil and gas revenues that reduce the need for higher personal income taxes. Québec, by contrast, funds an extensive public services network — including subsidized daycare, tuition, and healthcare — which requires higher provincial tax rates, up to 25.75%." },
+    ],
+    tipsTitle: "International Tax Planning Tips",
+    tips: [
+      { icon:"🌍", title:"Consider total compensation, not just salary", text:"A $120,000 salary in New York and the same salary in Texas are very different after state taxes. New York adds up to 10.9% state income tax, while Texas has none. Always compare net take-home pay, not gross figures." },
+      { icon:"🏠", title:"Remote work and tax residency", text:"Working remotely for a foreign company does not automatically mean you pay taxes where your employer is based. Tax residency is usually determined by where you physically live. Spending more than 183 days in a country typically establishes tax residency there." },
+      { icon:"📋", title:"Double taxation treaties", text:"Most developed countries have tax treaties that prevent the same income from being taxed twice. If you work internationally, these treaties can significantly reduce your total tax burden. Check whether your home and host countries have such an agreement." },
+      { icon:"💡", title:"Maximize registered accounts", text:"In Canada, RRSP and TFSA contributions can significantly reduce your taxable income or grow wealth tax-free. In the US, 401(k) and IRA accounts serve a similar purpose. These vehicles can lower your effective tax rate by several percentage points." },
+    ],
+    privacyTitle: "Privacy Policy",
+    privacyText: "This website does not collect any personal information. No account registration is required. The salary figures you enter are processed entirely in your browser and are never sent to our servers. We may use anonymous analytics (page views, country of origin) to improve the tool. We do not sell, share, or monetize any user data. This site may display advertisements through Google AdSense; Google's privacy policy governs how ad-related data is handled.",
+    aboutPageTitle: "About Us",
+    aboutPageText: "TaxComparator.app is an independent tool built to help individuals understand and compare income tax rates around the world. We are not affiliated with any government, tax authority, or financial institution. Our goal is to provide clear, unbiased, and accessible tax information to help people make informed financial decisions.",
+    footerDisclaimer: "For informational purposes only. Not financial or tax advice. Consult a qualified professional.",
+    footerLinks: ["Privacy Policy", "About", "Contact"],
+    contactTitle: "Contact",
+    contactText: "For corrections, suggestions, or partnership inquiries, please reach out via the contact form below.",
     currencies: [
       { code:"USD", label:"USD — US Dollar",          symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Canadian Dollar",    symbol:"$", perUSD:1.36 },
@@ -76,6 +109,39 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} pays · ${p} provinces · ${s} états`,
     periodAnnual: "/ An",
     periodMonthly: "/ Mois",
+    // Editorial content
+    aboutTitle: "À propos de ce calculateur",
+    aboutText: "Notre calculateur d'impôt gratuit vous permet de comparer instantanément votre salaire net dans plus de 47 pays, 13 provinces canadiennes et 51 États américains. Que vous planifiez un déménagement à l'international, négociiez une offre d'emploi à l'étranger ou soyez simplement curieux de savoir comment votre pays se compare, cet outil vous donne une image claire de ce que vous conservez réellement après les impôts fédéraux et régionaux.",
+    howTitle: "Comment ça fonctionne",
+    howSteps: [
+      { icon:"1️⃣", title:"Entrez votre salaire", text:"Saisissez votre salaire brut annuel ou mensuel dans la devise de votre choix : USD, CAD, EUR, GBP ou AUD." },
+      { icon:"2️⃣", title:"Consultez le classement", text:"L'outil classe instantanément chaque pays et région du salaire net le plus élevé au plus bas, pour voir d'un coup d'œil où vous gardez le plus d'argent." },
+      { icon:"3️⃣", title:"Cliquez pour les détails", text:"Cliquez sur n'importe quel pays, province ou État pour voir la décomposition : salaire brut, impôt fédéral, impôt régional, impôt total, salaire net et taux effectif." },
+    ],
+    faqTitle: "Questions fréquemment posées",
+    faqs: [
+      { q:"Quelles taxes sont incluses dans le calcul ?", a:"Ce calculateur inclut uniquement l'impôt fédéral sur le revenu et l'impôt provincial ou étatique. Il n'inclut pas les cotisations sociales, les primes d'assurance maladie, les cotisations de retraite, les taxes de vente (TPS/TVH/TVA) ou toute autre déduction. Les résultats montrent uniquement votre charge fiscale estimée sur le revenu." },
+      { q:"Pourquoi les résultats sont-ils affichés en USD ?", a:"Tous les résultats sont normalisés en USD pour faciliter la comparaison internationale. Vous pouvez entrer votre salaire en CAD, EUR, GBP ou AUD et le calculateur le convertira automatiquement en utilisant des taux de change approximatifs." },
+      { q:"Dans quelle mesure ces taux d'imposition sont-ils exacts ?", a:"Les tranches d'imposition sont basées sur les taux les plus récents disponibles publiquement pour chaque juridiction. Cependant, les lois fiscales changent fréquemment et les circonstances individuelles peuvent affecter considérablement votre facture fiscale réelle. Consultez toujours un professionnel fiscal qualifié avant de prendre des décisions financières." },
+      { q:"Le calculateur tient-il compte des déductions et crédits d'impôt ?", a:"Non. Le calculateur applique les tranches d'imposition progressives standard sans déductions, crédits ni exemptions. Dans la réalité, la plupart des contribuables bénéficient de diverses déductions (cotisations REER, frais médicaux) qui réduisent leur revenu imposable. Votre salaire net réel peut être plus élevé que celui affiché." },
+      { q:"Qu'est-ce que le taux effectif d'imposition ?", a:"Le taux effectif d'imposition est le pourcentage de votre revenu brut total qui va aux impôts sur le revenu. Il diffère du taux marginal, qui ne s'applique qu'au dernier dollar de revenu. Par exemple, quelqu'un gagnant 80 000 $ en Ontario pourrait avoir un taux marginal de 31,48 % mais un taux effectif d'environ 22 %." },
+      { q:"Pourquoi l'Alberta a-t-elle un taux d'imposition plus bas que le Québec ?", a:"L'Alberta bénéficie d'un impôt provincial fixe de 10 % et perçoit d'importantes redevances pétrolières et gazières qui réduisent le besoin de taux d'imposition personnels plus élevés. Le Québec, en revanche, finance un vaste réseau de services publics — incluant les garderies subventionnées, les frais de scolarité et les soins de santé — ce qui nécessite des taux provinciaux plus élevés, jusqu'à 25,75 %." },
+    ],
+    tipsTitle: "Conseils de planification fiscale internationale",
+    tips: [
+      { icon:"🌍", title:"Considérez la rémunération totale, pas seulement le salaire", text:"Un salaire de 120 000 $ à New York et le même salaire au Texas sont très différents après les impôts d'État. New York ajoute jusqu'à 10,9 % d'impôt d'État, tandis que le Texas n'en a aucun. Comparez toujours le salaire net, pas les chiffres bruts." },
+      { icon:"🏠", title:"Travail à distance et résidence fiscale", text:"Travailler à distance pour une entreprise étrangère ne signifie pas automatiquement que vous payez des impôts là où est basé votre employeur. La résidence fiscale est généralement déterminée par l'endroit où vous vivez physiquement. Passer plus de 183 jours dans un pays établit généralement la résidence fiscale." },
+      { icon:"📋", title:"Conventions fiscales contre la double imposition", text:"La plupart des pays développés ont des traités fiscaux qui empêchent le même revenu d'être imposé deux fois. Si vous travaillez à l'international, ces conventions peuvent réduire considérablement votre charge fiscale totale." },
+      { icon:"💡", title:"Maximisez vos comptes enregistrés", text:"Au Canada, les cotisations REER et CELI peuvent réduire considérablement votre revenu imposable ou faire fructifier votre patrimoine à l'abri de l'impôt. Ces véhicules peuvent abaisser votre taux effectif d'imposition de plusieurs points de pourcentage." },
+    ],
+    privacyTitle: "Politique de confidentialité",
+    privacyText: "Ce site web ne collecte aucune information personnelle. Aucune inscription n'est requise. Les montants de salaire que vous saisissez sont traités entièrement dans votre navigateur et ne sont jamais envoyés à nos serveurs. Nous pouvons utiliser des analyses anonymes (pages vues, pays d'origine) pour améliorer l'outil. Nous ne vendons, partageons ni monétisons aucune donnée utilisateur. Ce site peut afficher des publicités via Google AdSense ; la politique de confidentialité de Google régit la façon dont les données liées aux annonces sont traitées.",
+    aboutPageTitle: "À propos",
+    aboutPageText: "TaxComparator.app est un outil indépendant conçu pour aider les particuliers à comprendre et comparer les taux d'imposition sur le revenu dans le monde. Nous ne sommes affiliés à aucun gouvernement, autorité fiscale ou institution financière. Notre objectif est de fournir des informations fiscales claires, impartiales et accessibles.",
+    footerDisclaimer: "À titre informatif uniquement. Pas de conseil financier ou fiscal. Consultez un professionnel qualifié.",
+    footerLinks: ["Politique de confidentialité", "À propos", "Contact"],
+    contactTitle: "Contact",
+    contactText: "Pour des corrections, suggestions ou demandes de partenariat, veuillez nous contacter via le formulaire ci-dessous.",
     currencies: [
       { code:"USD", label:"USD — Dollar américain",   symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dollar canadien",    symbol:"$", perUSD:1.36 },
@@ -117,6 +183,39 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} países · ${p} provincias · ${s} estados`,
     periodAnnual: "/ Año",
     periodMonthly: "/ Mes",
+    // Editorial content
+    aboutTitle: "Acerca de esta calculadora",
+    aboutText: "Nuestra calculadora de impuestos gratuita te permite comparar instantáneamente tu salario neto en más de 47 países, 13 provincias canadienses y 51 estados de EE.UU. Ya sea que estés planeando una mudanza internacional, negociando una oferta de trabajo en el extranjero o simplemente tengas curiosidad sobre cómo se compara tu país, esta herramienta te da una imagen clara de cuánto conservas realmente después de los impuestos federales y regionales.",
+    howTitle: "Cómo funciona",
+    howSteps: [
+      { icon:"1️⃣", title:"Introduce tu salario", text:"Escribe tu salario bruto anual o mensual en la moneda de tu elección: USD, CAD, EUR, GBP o AUD." },
+      { icon:"2️⃣", title:"Consulta el ranking", text:"La herramienta clasifica instantáneamente cada país y región del salario neto más alto al más bajo, para ver de un vistazo dónde conservas más dinero." },
+      { icon:"3️⃣", title:"Haz clic para ver detalles", text:"Haz clic en cualquier país, provincia o estado para ver el desglose: salario bruto, impuesto federal, impuesto regional, impuesto total, salario neto y tasa efectiva." },
+    ],
+    faqTitle: "Preguntas frecuentes",
+    faqs: [
+      { q:"¿Qué impuestos se incluyen en el cálculo?", a:"Esta calculadora incluye solo el impuesto federal sobre la renta y el impuesto provincial o estatal. No incluye contribuciones a la seguridad social, primas de seguro médico, cotizaciones de pensión, impuestos sobre ventas (IVA) ni ninguna otra deducción. Los resultados muestran únicamente tu carga fiscal estimada sobre la renta." },
+      { q:"¿Por qué los resultados se muestran en USD?", a:"Todos los resultados se normalizan en USD para facilitar la comparación internacional. Puedes introducir tu salario en CAD, EUR, GBP o AUD y la calculadora lo convertirá automáticamente usando tipos de cambio aproximados." },
+      { q:"¿Qué tan precisas son estas tasas impositivas?", a:"Los tramos impositivos se basan en las tasas más recientes disponibles públicamente para cada jurisdicción. Sin embargo, las leyes fiscales cambian con frecuencia y las circunstancias individuales pueden afectar significativamente tu factura fiscal real. Consulta siempre a un profesional fiscal calificado antes de tomar decisiones financieras." },
+      { q:"¿La calculadora tiene en cuenta deducciones y créditos fiscales?", a:"No. La calculadora aplica los tramos impositivos progresivos estándar sin deducciones, créditos ni exenciones. En realidad, la mayoría de los contribuyentes se benefician de varias deducciones que reducen su renta imponible. Tu salario neto real puede ser más alto que el mostrado." },
+      { q:"¿Qué es la tasa efectiva de impuesto?", a:"La tasa efectiva de impuesto es el porcentaje de tu ingreso bruto total que va a impuestos sobre la renta. Es diferente de la tasa marginal, que solo se aplica a tu último dólar de ingreso. Por ejemplo, alguien que gana $80,000 podría tener una tasa marginal del 31% pero una tasa efectiva cercana al 22%." },
+      { q:"¿Por qué Alberta tiene una tasa impositiva más baja que Québec?", a:"Alberta se beneficia de un impuesto provincial fijo del 10% y recauda importantes regalías del petróleo y gas que reducen la necesidad de tasas más altas. Québec, en cambio, financia una extensa red de servicios públicos que requiere tasas provinciales más altas, hasta el 25,75%." },
+    ],
+    tipsTitle: "Consejos de planificación fiscal internacional",
+    tips: [
+      { icon:"🌍", title:"Considera la compensación total, no solo el salario", text:"Un salario de $120,000 en Nueva York y el mismo salario en Texas son muy diferentes después de los impuestos estatales. Nueva York añade hasta 10.9% de impuesto estatal, mientras que Texas no tiene ninguno. Siempre compara el salario neto, no las cifras brutas." },
+      { icon:"🏠", title:"Trabajo remoto y residencia fiscal", text:"Trabajar de forma remota para una empresa extranjera no significa automáticamente que pagas impuestos donde está tu empleador. La residencia fiscal generalmente se determina por dónde vives físicamente. Pasar más de 183 días en un país generalmente establece residencia fiscal allí." },
+      { icon:"📋", title:"Convenios para evitar la doble imposición", text:"La mayoría de los países desarrollados tienen tratados fiscales que evitan que el mismo ingreso sea gravado dos veces. Si trabajas internacionalmente, estos convenios pueden reducir significativamente tu carga fiscal total." },
+      { icon:"💡", title:"Maximiza tus cuentas de ahorro registradas", text:"En Canadá, las contribuciones al RRSP y TFSA pueden reducir significativamente tu ingreso imponible o hacer crecer tu patrimonio libre de impuestos. En EE.UU., las cuentas 401(k) e IRA sirven un propósito similar." },
+    ],
+    privacyTitle: "Política de privacidad",
+    privacyText: "Este sitio web no recopila ninguna información personal. No se requiere registro de cuenta. Los montos de salario que introduces se procesan completamente en tu navegador y nunca se envían a nuestros servidores. Podemos usar análisis anónimos para mejorar la herramienta. No vendemos, compartimos ni monetizamos ningún dato de usuario. Este sitio puede mostrar anuncios a través de Google AdSense; la política de privacidad de Google rige cómo se manejan los datos relacionados con los anuncios.",
+    aboutPageTitle: "Acerca de nosotros",
+    aboutPageText: "TaxComparator.app es una herramienta independiente creada para ayudar a las personas a entender y comparar las tasas del impuesto sobre la renta en todo el mundo. No estamos afiliados a ningún gobierno, autoridad fiscal o institución financiera.",
+    footerDisclaimer: "Solo con fines informativos. No es asesoramiento financiero ni fiscal. Consulte a un profesional calificado.",
+    footerLinks: ["Política de privacidad", "Acerca de", "Contacto"],
+    contactTitle: "Contacto",
+    contactText: "Para correcciones, sugerencias o consultas de asociación, contáctenos a través del formulario a continuación.",
     currencies: [
       { code:"USD", label:"USD — Dólar estadounidense", symbol:"$", perUSD:1 },
       { code:"CAD", label:"CAD — Dólar canadiense",     symbol:"$", perUSD:1.36 },
@@ -478,6 +577,120 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
   );
 }
 
+
+// ── Section: About + How It Works ────────────────────────────────────────
+function AboutSection({ t }) {
+  return (
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+      {/* About */}
+      <div style={{ marginBottom:36 }}>
+        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutTitle}</h2>
+        <p style={{ fontSize:14, color:"#9ab8d0", lineHeight:1.8, maxWidth:760 }}>{t.aboutText}</p>
+      </div>
+      {/* How it works */}
+      <div style={{ marginBottom:36 }}>
+        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.howTitle}</h2>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:14 }}>
+          {t.howSteps.map((step,i) => (
+            <div key={i} style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"16px 18px" }}>
+              <div style={{ fontSize:24, marginBottom:8 }}>{step.icon}</div>
+              <div style={{ fontSize:13, fontWeight:600, color:"#c0d8f0", marginBottom:6 }}>{step.title}</div>
+              <div style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.7 }}>{step.text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Section: FAQ ─────────────────────────────────────────────────────────
+function FAQSection({ t }) {
+  const [open, setOpen] = React.useState(null);
+  return (
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.faqTitle}</h2>
+      <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+        {t.faqs.map((faq, i) => (
+          <div key={i} style={{ background:"#0d1a2e", border:`1px solid ${open===i?"#4fffb0":"#1e3050"}`, borderRadius:10, overflow:"hidden", transition:"border 0.2s" }}>
+            <div onClick={() => setOpen(open===i ? null : i)}
+              style={{ padding:"14px 18px", cursor:"pointer", display:"flex", justifyContent:"space-between", alignItems:"center", gap:12 }}>
+              <span style={{ fontSize:13, fontWeight:500, color:"#c0d0e8", lineHeight:1.5 }}>{faq.q}</span>
+              <span style={{ fontSize:16, color:"#4fffb0", flexShrink:0 }}>{open===i ? "▲" : "▼"}</span>
+            </div>
+            {open===i && (
+              <div style={{ padding:"0 18px 16px", fontSize:13, color:"#7a9ab8", lineHeight:1.8, borderTop:"1px solid #1e3050" }}>
+                <div style={{ paddingTop:12 }}>{faq.a}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Section: Tips ─────────────────────────────────────────────────────────
+function TipsSection({ t }) {
+  return (
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.tipsTitle}</h2>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:14 }}>
+        {t.tips.map((tip, i) => (
+          <div key={i} style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"18px" }}>
+            <div style={{ fontSize:26, marginBottom:10 }}>{tip.icon}</div>
+            <div style={{ fontSize:13, fontWeight:600, color:"#c0d8f0", marginBottom:8 }}>{tip.title}</div>
+            <div style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.7 }}>{tip.text}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Section: Privacy & About ─────────────────────────────────────────────
+function PrivacySection({ t }) {
+  return (
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:20 }}>
+        <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
+          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.privacyTitle}</h2>
+          <p style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.8 }}>{t.privacyText}</p>
+        </div>
+        <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
+          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutPageTitle}</h2>
+          <p style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.8 }}>{t.aboutPageText}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────
+function Footer({ t }) {
+  return (
+    <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050" }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
+        <div>
+          <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>TaxComparator.app</div>
+          <p style={{ fontSize:11, color:"#5a7a98", maxWidth:500 }}>{t.footerDisclaimer}</p>
+        </div>
+        <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
+          {t.footerLinks.map((link, i) => (
+            <span key={i} style={{ fontSize:12, color:"#6a9ab8", cursor:"pointer", textDecoration:"underline" }}
+              onClick={() => alert(i===0 ? t.privacyText : i===1 ? t.aboutPageText : t.contactText)}>
+              {link}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div style={{ marginTop:16, fontSize:10, color:"#3a5570", textAlign:"center" }}>
+        © {new Date().getFullYear()} TaxComparator.app — {t.footerDisclaimer}
+      </div>
+    </footer>
+  );
+}
+
 // ── Main App ──────────────────────────────────────────────────────────────
 export default function App() {
   const [lang, setLang] = useState(() => {
@@ -576,6 +789,8 @@ export default function App() {
           <LangSwitcher lang={lang} setLang={setLang} />
         </div>
       </div>
+
+      <AboutSection t={t} />
 
       <div style={{ maxWidth:980, margin:"0 auto", padding:"20px 18px" }}>
 
@@ -685,6 +900,10 @@ export default function App() {
           </div>
         )}
       </div>
+      <FAQSection t={t} />
+      <TipsSection t={t} />
+      <PrivacySection t={t} />
+      <Footer t={t} />
     </div>
   );
 }
