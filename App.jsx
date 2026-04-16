@@ -35,6 +35,23 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} countries · ${p} provinces · ${s} states`,
     periodAnnual: "/ Year",
     periodMonthly: "/ Month",
+    bigMacLabel: "🍔 Big Mac Index",
+    bigMacExplainTitle: "What is the Big Mac Index?",
+    bigMacExplain: "Created by The Economist in 1986, the Big Mac Index uses the price of a McDonald's Big Mac to compare the purchasing power of currencies worldwide. Since a Big Mac is made to the same recipe in ~100 countries, its price difference reveals whether a currency is over or under-valued against the USD.",
+    netBigMacLabel: "🍔 NetBigMac Index",
+    netBigMacExplainTitle: "What is the NetBigMac Index?",
+    netBigMacExplain: "The NetBigMac Index is an original NetPay.tax indicator. It measures how many Big Macs you can buy with $100 of gross salary once income tax is removed. It combines the tax burden and local cost of living into one intuitive number — the higher, the better your real purchasing power.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "per $100 gross",
+    bigMacPrice: "Local price",
+    shareLabel: "Share",
+    shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
+    shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Amusing Facts",
+    funFactTitle: "Amusing Facts",
+    funFactClose: "✕ Close",
+    funFactNext: "Next fact →",
+    funFactNone: "No fun fact available yet for this region.",
     // Editorial content
     aboutTitle: "About This Calculator",
     aboutText: "Our free income tax calculator lets you instantly compare your net salary across 47+ countries, 13 Canadian provinces, and 51 US states. Whether you are planning an international move, negotiating a job offer abroad, or simply curious about how your country stacks up, this tool gives you a clear picture of how much you actually keep after federal and regional income taxes.",
@@ -65,6 +82,30 @@ const T = {
     aboutPageTitle: "About Us",
     aboutPageText: "NetPay.tax is an independent tool built to help individuals understand and compare income tax rates around the world. We are not affiliated with any government, tax authority, or financial institution. Our goal is to provide clear, unbiased, and accessible tax information to help people make informed financial decisions.",
     footerDisclaimer: "For informational purposes only. Not financial or tax advice. Consult a qualified professional.",
+    bigMacLabel: "🍔 Big Mac Index",
+    bigMacExplainTitle: "What is the Big Mac Index?",
+    bigMacExplain: "Created by The Economist in 1986, the Big Mac Index uses the price of a McDonald's Big Mac to compare the purchasing power of currencies worldwide. Since a Big Mac is made to the same recipe in ~100 countries, its price difference reveals whether a currency is over or under-valued against the USD.",
+    netBigMacLabel: "🍔 NetBigMac Index",
+    netBigMacExplainTitle: "What is the NetBigMac Index?",
+    netBigMacExplain: "The NetBigMac Index is an original NetPay.tax indicator. It measures how many Big Macs you can buy with $100 of gross salary once income tax is removed. It combines the tax burden and local cost of living into one intuitive number — the higher, the better your real purchasing power.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "per $100 gross",
+    bigMacPrice: "Local price",
+    shareLabel: "Share",
+    shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
+    shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Amusing Facts",
+    funFactTitle: "Amusing Facts",
+    funFactClose: "✕ Close",
+    funFactNext: "Next fact →",
+    funFactNone: "No fun fact available yet for this region.",
+    contactSend: "Send Message",
+    contactName: "Your name",
+    contactEmail: "Your email",
+    contactMessage: "Your message",
+    contactSuccess: "✅ Message sent! We'll get back to you shortly.",
+    contactError: "❌ Error sending message. Please try again.",
+    contactSending: "Sending...",
     footerLinks: ["Privacy Policy", "About", "Contact"],
     contactTitle: "Contact",
     contactText: "For corrections, suggestions, or partnership inquiries, please reach out via the contact form below.",
@@ -109,6 +150,23 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} pays · ${p} provinces · ${s} états`,
     periodAnnual: "/ An",
     periodMonthly: "/ Mois",
+    bigMacLabel: "🍔 Indice Big Mac",
+    bigMacExplainTitle: "Qu'est-ce que l'indice Big Mac ?",
+    bigMacExplain: "Créé par The Economist en 1986, l'indice Big Mac utilise le prix d'un Big Mac McDonald's pour comparer le pouvoir d'achat des monnaies dans le monde. Puisqu'un Big Mac est préparé selon la même recette dans ~100 pays, la différence de prix révèle si une monnaie est surévaluée ou sous-évaluée par rapport au dollar américain.",
+    netBigMacLabel: "🍔 Indice NetBigMac",
+    netBigMacExplainTitle: "Qu'est-ce que l'indice NetBigMac ?",
+    netBigMacExplain: "L'indice NetBigMac est un indicateur original de NetPay.tax. Il mesure combien de Big Macs vous pouvez acheter avec 100 $ de salaire brut une fois l'impôt sur le revenu retiré. Il combine la charge fiscale et le coût de la vie local en un seul chiffre intuitif — plus c'est élevé, meilleur est votre pouvoir d'achat réel.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "par 100 $ brut",
+    bigMacPrice: "Prix local",
+    shareLabel: "Partager",
+    shareMsg: (country, net, curr, score) => `Au/En ${country}, je garde ${net} ${curr} apres impot — Score NetBigMac : ${score} 🍔\nCalcule le tien : https://netpay.tax`,
+    shareMsgSite: "Calculateur d'impot gratuit — comparez votre salaire net dans 47+ pays, toutes les provinces canadiennes et etats americains 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Faits amusants",
+    funFactTitle: "Faits amusants",
+    funFactClose: "✕ Fermer",
+    funFactNext: "Fait suivant →",
+    funFactNone: "Aucun fait disponible pour cette région pour l'instant.",
     // Editorial content
     aboutTitle: "À propos de ce calculateur",
     aboutText: "Notre calculateur d'impôt gratuit vous permet de comparer instantanément votre salaire net dans plus de 47 pays, 13 provinces canadiennes et 51 États américains. Que vous planifiez un déménagement à l'international, négociiez une offre d'emploi à l'étranger ou soyez simplement curieux de savoir comment votre pays se compare, cet outil vous donne une image claire de ce que vous conservez réellement après les impôts fédéraux et régionaux.",
@@ -139,6 +197,30 @@ const T = {
     aboutPageTitle: "À propos",
     aboutPageText: "NetPay.tax est un outil indépendant conçu pour aider les particuliers à comprendre et comparer les taux d'imposition sur le revenu dans le monde. Nous ne sommes affiliés à aucun gouvernement, autorité fiscale ou institution financière. Notre objectif est de fournir des informations fiscales claires, impartiales et accessibles.",
     footerDisclaimer: "À titre informatif uniquement. Pas de conseil financier ou fiscal. Consultez un professionnel qualifié.",
+    bigMacLabel: "🍔 Indice Big Mac",
+    bigMacExplainTitle: "Qu'est-ce que l'indice Big Mac ?",
+    bigMacExplain: "Créé par The Economist en 1986, l'indice Big Mac utilise le prix d'un Big Mac McDonald's pour comparer le pouvoir d'achat des monnaies dans le monde. Puisqu'un Big Mac est préparé selon la même recette dans ~100 pays, la différence de prix révèle si une monnaie est surévaluée ou sous-évaluée par rapport au dollar américain.",
+    netBigMacLabel: "🍔 Indice NetBigMac",
+    netBigMacExplainTitle: "Qu'est-ce que l'indice NetBigMac ?",
+    netBigMacExplain: "L'indice NetBigMac est un indicateur original de NetPay.tax. Il mesure combien de Big Macs vous pouvez acheter avec 100 $ de salaire brut une fois l'impôt sur le revenu retiré. Il combine la charge fiscale et le coût de la vie local en un seul chiffre intuitif — plus c'est élevé, meilleur est votre pouvoir d'achat réel.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "par 100 $ brut",
+    bigMacPrice: "Prix local",
+    shareLabel: "Partager",
+    shareMsg: (country, net, curr, score) => `Au/En ${country}, je garde ${net} ${curr} apres impot — Score NetBigMac : ${score} 🍔\nCalcule le tien : https://netpay.tax`,
+    shareMsgSite: "Calculateur d'impot gratuit — comparez votre salaire net dans 47+ pays, toutes les provinces canadiennes et etats americains 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Faits amusants",
+    funFactTitle: "Faits amusants",
+    funFactClose: "✕ Fermer",
+    funFactNext: "Fait suivant →",
+    funFactNone: "Aucun fait disponible pour cette région pour l'instant.",
+    contactSend: "Envoyer le message",
+    contactName: "Votre nom",
+    contactEmail: "Votre courriel",
+    contactMessage: "Votre message",
+    contactSuccess: "✅ Message envoyé ! Nous vous répondrons bientôt.",
+    contactError: "❌ Erreur lors de l'envoi. Veuillez réessayer.",
+    contactSending: "Envoi...",
     footerLinks: ["Politique de confidentialité", "À propos", "Contact"],
     contactTitle: "Contact",
     contactText: "Pour des corrections, suggestions ou demandes de partenariat, veuillez nous contacter via le formulaire ci-dessous.",
@@ -183,6 +265,23 @@ const T = {
     emptySubtitle: (c, p, s) => `${c} países · ${p} provincias · ${s} estados`,
     periodAnnual: "/ Año",
     periodMonthly: "/ Mes",
+    bigMacLabel: "🍔 Índice Big Mac",
+    bigMacExplainTitle: "¿Qué es el índice Big Mac?",
+    bigMacExplain: "Creado por The Economist en 1986, el índice Big Mac usa el precio de un Big Mac de McDonald's para comparar el poder adquisitivo de las monedas en todo el mundo. Como un Big Mac se prepara con la misma receta en ~100 países, la diferencia de precio revela si una moneda está sobrevalorada o infravalorada respecto al dólar.",
+    netBigMacLabel: "🍔 Índice NetBigMac",
+    netBigMacExplainTitle: "¿Qué es el índice NetBigMac?",
+    netBigMacExplain: "El índice NetBigMac es un indicador original de NetPay.tax. Mide cuántas hamburguesas Big Mac puedes comprar con $100 de salario bruto una vez descontados los impuestos sobre la renta. Combina la carga fiscal y el coste de vida local en un solo número intuitivo: cuanto más alto, mejor es tu poder adquisitivo real.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "por $100 bruto",
+    bigMacPrice: "Precio local",
+    shareLabel: "Compartir",
+    shareMsg: (country, net, curr, score) => `En ${country}, conservo ${net} ${curr} despues de impuestos — Puntuacion NetBigMac: ${score} 🍔\nCalcula el tuyo: https://netpay.tax`,
+    shareMsgSite: "Calculadora de impuestos gratuita — compara tu salario neto en 47+ paises, todas las provincias canadienses y estados de EE.UU. 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Datos curiosos",
+    funFactTitle: "Datos curiosos",
+    funFactClose: "✕ Cerrar",
+    funFactNext: "Siguiente dato →",
+    funFactNone: "No hay datos disponibles para esta región por el momento.",
     // Editorial content
     aboutTitle: "Acerca de esta calculadora",
     aboutText: "Nuestra calculadora de impuestos gratuita te permite comparar instantáneamente tu salario neto en más de 47 países, 13 provincias canadienses y 51 estados de EE.UU. Ya sea que estés planeando una mudanza internacional, negociando una oferta de trabajo en el extranjero o simplemente tengas curiosidad sobre cómo se compara tu país, esta herramienta te da una imagen clara de cuánto conservas realmente después de los impuestos federales y regionales.",
@@ -213,6 +312,30 @@ const T = {
     aboutPageTitle: "Acerca de nosotros",
     aboutPageText: "NetPay.tax es una herramienta independiente creada para ayudar a las personas a entender y comparar las tasas del impuesto sobre la renta en todo el mundo. No estamos afiliados a ningún gobierno, autoridad fiscal o institución financiera.",
     footerDisclaimer: "Solo con fines informativos. No es asesoramiento financiero ni fiscal. Consulte a un profesional calificado.",
+    bigMacLabel: "🍔 Índice Big Mac",
+    bigMacExplainTitle: "¿Qué es el índice Big Mac?",
+    bigMacExplain: "Creado por The Economist en 1986, el índice Big Mac usa el precio de un Big Mac de McDonald's para comparar el poder adquisitivo de las monedas en todo el mundo. Como un Big Mac se prepara con la misma receta en ~100 países, la diferencia de precio revela si una moneda está sobrevalorada o infravalorada respecto al dólar.",
+    netBigMacLabel: "🍔 Índice NetBigMac",
+    netBigMacExplainTitle: "¿Qué es el índice NetBigMac?",
+    netBigMacExplain: "El índice NetBigMac es un indicador original de NetPay.tax. Mide cuántas hamburguesas Big Mac puedes comprar con $100 de salario bruto una vez descontados los impuestos sobre la renta. Combina la carga fiscal y el coste de vida local en un solo número intuitivo: cuanto más alto, mejor es tu poder adquisitivo real.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "por $100 bruto",
+    bigMacPrice: "Precio local",
+    shareLabel: "Compartir",
+    shareMsg: (country, net, curr, score) => `En ${country}, conservo ${net} ${curr} despues de impuestos — Puntuacion NetBigMac: ${score} 🍔\nCalcula el tuyo: https://netpay.tax`,
+    shareMsgSite: "Calculadora de impuestos gratuita — compara tu salario neto en 47+ paises, todas las provincias canadienses y estados de EE.UU. 🌍\nhttps://netpay.tax",
+    funFactBtn: "🎲 Datos curiosos",
+    funFactTitle: "Datos curiosos",
+    funFactClose: "✕ Cerrar",
+    funFactNext: "Siguiente dato →",
+    funFactNone: "No hay datos disponibles para esta región por el momento.",
+    contactSend: "Enviar mensaje",
+    contactName: "Tu nombre",
+    contactEmail: "Tu correo",
+    contactMessage: "Tu mensaje",
+    contactSuccess: "✅ ¡Mensaje enviado! Te responderemos pronto.",
+    contactError: "❌ Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+    contactSending: "Enviando...",
     footerLinks: ["Política de privacidad", "Acerca de", "Contacto"],
     contactTitle: "Contacto",
     contactText: "Para correcciones, sugerencias o consultas de asociación, contáctenos a través del formulario a continuación.",
@@ -354,6 +477,249 @@ const OTHER_COUNTRIES = [
   { name:"Kenya",           flag:"🇰🇪", localPerUSD:130,   brackets:[[0,288000,.10],[288000,388000,.25],[388000,6000000,.30],[6000000,Infinity,.35]] },
 ];
 
+
+// ── Fun Facts ─────────────────────────────────────────────────────────────
+const FUN_FACTS = {
+  "United States": [
+    { en: "The US federal income tax was introduced in 1913 with the 16th Amendment. The initial top rate was just 7% — for income over $500,000 (roughly $15M today).", fr: "L'impôt fédéral américain a été introduit en 1913 avec le 16e amendement. Le taux maximum initial était de seulement 7 % — pour les revenus dépassant 500 000 $.", es: "El impuesto federal de EE.UU. se introdujo en 1913. La tasa máxima inicial era solo del 7% para ingresos superiores a $500,000." },
+    { en: "During WWII, the top US marginal tax rate reached 94% on income above $200,000. Today it is 37%.", fr: "Pendant la Seconde Guerre mondiale, le taux marginal maximal américain atteignait 94 % sur les revenus supérieurs à 200 000 $. Aujourd'hui, il est de 37 %.", es: "Durante la Segunda Guerra Mundial, la tasa marginal máxima de EE.UU. alcanzó el 94%. Hoy es del 37%." },
+  ],
+  "England & Wales": [
+    { en: "The UK income tax was originally introduced in 1799 by Prime Minister William Pitt the Younger to fund the Napoleonic Wars. It was meant to be temporary!", fr: "L'impôt sur le revenu au Royaume-Uni a été introduit en 1799 par William Pitt le Jeune pour financer les guerres napoléoniennes. Il devait être temporaire !", es: "El impuesto sobre la renta del Reino Unido fue introducido en 1799 para financiar las guerras napoleónicas. ¡Se suponía que era temporal!" },
+    { en: "The UK has a unique 'Marriage Allowance' that lets lower earners transfer part of their personal allowance to a higher-earning spouse, saving up to £252/year.", fr: "Le Royaume-Uni a une 'allocation de mariage' unique qui permet aux personnes à faible revenu de transférer une partie de leur abattement personnel à leur conjoint.", es: "El Reino Unido tiene una 'Marriage Allowance' que permite a los contribuyentes de bajos ingresos transferir parte de su desgravación personal al cónyuge." },
+  ],
+  "Scotland": [
+    { en: "Scotland has its own income tax rates set by the Scottish Parliament since 2017, making it the only part of the UK with devolved income tax powers. It has 6 tax bands — more than any other UK nation.", fr: "L'Écosse fixe ses propres taux d'imposition depuis 2017. C'est la seule partie du Royaume-Uni avec des pouvoirs fiscaux décentralisés, avec 6 tranches d'imposition.", es: "Escocia fija sus propias tasas de impuesto sobre la renta desde 2017, siendo la única parte del Reino Unido con poderes fiscales descentralizados. Tiene 6 tramos fiscales." },
+  ],
+  "Canada": [
+    { en: "Canada introduced its federal income tax in 1917 — also as a 'temporary' wartime measure to fund WWI. It never went away.", fr: "Le Canada a introduit son impôt fédéral sur le revenu en 1917 — aussi comme mesure 'temporaire' de guerre pour financer la Première Guerre mondiale. Il n'a jamais disparu.", es: "Canadá introdujo su impuesto federal sobre la renta en 1917, también como medida 'temporal' de guerra para la Primera Guerra Mundial. Nunca desapareció." },
+  ],
+  "Ontario": [
+    { en: "Ontario has a 'surtax' — a tax on your tax — that kicks in when provincial tax exceeds $5,315. You pay an extra 20% on the excess, then 56% on anything above $6,802. Ontario is the only province with a surtax.", fr: "L'Ontario a une 'surtaxe' — un impôt sur votre impôt — qui s'applique quand l'impôt provincial dépasse 5 315 $. C'est la seule province avec une surtaxe.", es: "Ontario tiene un 'sobretax' — un impuesto sobre tu impuesto — que se activa cuando el impuesto provincial supera $5,315. Es la única provincia con un sobretax." },
+  ],
+  "Québec": [
+    { en: "Quebec has the highest provincial income tax in Canada — up to 25.75% — but in return offers North America's most generous family benefits: daycare at $10/day and heavily subsidized tuition.", fr: "Le Québec a le taux provincial le plus élevé au Canada — jusqu'à 25,75 % — mais offre en contrepartie les avantages familiaux les plus généreux en Amérique du Nord : garderies à 10 $/jour et droits de scolarité très bas.", es: "Quebec tiene el impuesto provincial más alto de Canadá, hasta 25,75%, pero ofrece las prestaciones familiares más generosas de América del Norte: guarderías a $10/día y matrículas universitarias muy subvencionadas." },
+    { en: "Quebecers file TWO separate income tax returns each year — one federal and one provincial — unlike every other province where the CRA handles both.", fr: "Les Québécois remplissent DEUX déclarations de revenus distinctes chaque année — une fédérale et une provinciale — contrairement aux autres provinces où l'ARC s'occupe des deux.", es: "Los quebecos presentan DOS declaraciones de impuestos separadas cada año, una federal y una provincial, a diferencia del resto de provincias donde la CRA gestiona ambas." },
+  ],
+  "Alberta": [
+    { en: "Alberta is the only Canadian province with NO provincial sales tax (PST). Combined with its low 10% flat provincial income tax rate, it is regularly ranked the lowest-taxed province in Canada.", fr: "L'Alberta est la seule province canadienne sans taxe de vente provinciale. Avec son taux provincial fixe de 10 %, c'est régulièrement la province la moins taxée au Canada.", es: "Alberta es la única provincia canadiense sin impuesto provincial sobre ventas. Con su tasa provincial plana del 10%, es regularmente la provincia menos gravada de Canadá." },
+  ],
+  "Colombie-Britannique": [
+    { en: "British Columbia introduced a carbon tax in 2008, making it the first North American jurisdiction to do so. The revenue is used to reduce other taxes, making it 'revenue-neutral'.", fr: "La Colombie-Britannique a introduit une taxe carbone en 2008, première juridiction nord-américaine à le faire. Les revenus servent à réduire d'autres taxes.", es: "Columbia Británica introdujo un impuesto al carbono en 2008, siendo la primera jurisdicción de América del Norte en hacerlo. Los ingresos se usan para reducir otros impuestos." },
+  ],
+  "France": [
+    { en: "France introduced income tax in 1914 — just before WWI. Before that, it relied heavily on indirect taxes on salt, wine and tobacco.", fr: "La France a introduit l'impôt sur le revenu en 1914, juste avant la Première Guerre mondiale. Avant cela, elle s'appuyait sur les taxes indirectes sur le sel, le vin et le tabac.", es: "Francia introdujo el impuesto sobre la renta en 1914, justo antes de la Primera Guerra Mundial. Antes dependía de impuestos indirectos sobre la sal, el vino y el tabaco." },
+    { en: "France is one of the few countries where households — not individuals — file taxes together. A family of 4 might pay less than two singles earning the same total, thanks to the 'quotient familial' system.", fr: "La France est l'un des rares pays où les ménages — pas les individus — déclarent leurs impôts ensemble. Le système du 'quotient familial' avantage les grandes familles.", es: "Francia es uno de los pocos países donde los hogares declaran impuestos juntos. El sistema de 'quotient familial' beneficia a las familias numerosas." },
+  ],
+  "Germany": [
+    { en: "Germany has a 'church tax' (Kirchensteuer) of 8-9% added on top of income tax for registered church members. You can officially leave your church to avoid it.", fr: "L'Allemagne a une 'taxe d'église' (Kirchensteuer) de 8-9 % ajoutée à l'impôt sur le revenu pour les membres d'église enregistrés. On peut officiellement quitter son église pour l'éviter.", es: "Alemania tiene un 'impuesto eclesiástico' (Kirchensteuer) del 8-9% añadido al impuesto sobre la renta para los miembros registrados de la iglesia. ¡Puedes darte de baja de tu iglesia para evitarlo!" },
+  ],
+  "Switzerland": [
+    { en: "In Switzerland, tax rates vary dramatically between cantons. The difference between the lowest (Zug) and highest (Geneva) canton can be over 20 percentage points on the same income.", fr: "En Suisse, les taux d'imposition varient considérablement entre les cantons. La différence entre le canton le moins taxé (Zoug) et le plus taxé (Genève) peut dépasser 20 points de pourcentage.", es: "En Suiza, las tasas impositivas varían drásticamente entre cantones. La diferencia entre el cantón más bajo (Zug) y el más alto (Ginebra) puede superar 20 puntos porcentuales." },
+  ],
+  "Sweden": [
+    { en: "Sweden once had a top marginal income tax rate of 102% in the 1970s — meaning some high earners theoretically owed more in tax than they earned. Author Astrid Lindgren (Pippi Longstocking) famously protested it.", fr: "La Suède avait autrefois un taux marginal maximum de 102 % dans les années 1970 — certains hauts revenus devaient théoriquement plus en impôts qu'ils ne gagnaient. L'auteure Astrid Lindgren (Fifi Brindacier) l'a célèbrement dénoncé.", es: "Suecia tuvo en los años 70 una tasa marginal máxima del 102%, lo que significaba que algunos contribuyentes debían en impuestos más de lo que ganaban. La autora Astrid Lindgren (Pippi Calzaslargas) lo protestó famosamente." },
+  ],
+  "Norway": [
+    { en: "Norway's sovereign wealth fund — funded by oil revenues — is worth over $1.7 trillion, or about $300,000 per Norwegian citizen. This reduces the pressure on personal income taxes.", fr: "Le fonds souverain norvégien — alimenté par les revenus pétroliers — vaut plus de 1 700 milliards $, soit environ 300 000 $ par citoyen norvégien. Cela réduit la pression sur les impôts personnels.", es: "El fondo soberano de Noruega, financiado por ingresos petroleros, vale más de 1,7 billones de dólares, unos 300.000 $ por ciudadano noruego. Esto reduce la presión sobre los impuestos personales." },
+  ],
+  "Denmark": [
+    { en: "Denmark consistently ranks as the world's happiest country despite having one of the highest tax rates globally. Danes call their taxes 'membership fees' for a well-functioning society.", fr: "Le Danemark est régulièrement classé comme le pays le plus heureux au monde malgré l'un des taux d'imposition les plus élevés. Les Danois appellent leurs impôts des 'frais d'adhésion' à une société bien fonctionnelle.", es: "Dinamarca ocupa constantemente el primer lugar como el país más feliz del mundo a pesar de tener una de las tasas impositivas más altas. Los daneses llaman a sus impuestos 'cuotas de membresía' de una sociedad que funciona bien." },
+  ],
+  "Japan": [
+    { en: "Japan has an unusual 'inhabitant tax' that is collected by municipalities and prefectures on top of national income tax. It is paid the year AFTER earnings — meaning new retirees still get a bill.", fr: "Le Japon a une 'taxe d'habitant' inhabituelle perçue par les municipalités en plus de l'impôt national. Elle est payée l'année SUIVANT les revenus — les nouveaux retraités reçoivent encore une facture.", es: "Japón tiene un inusual 'impuesto de habitante' recaudado por los municipios además del impuesto nacional. Se paga el año SIGUIENTE a los ingresos, lo que significa que los nuevos jubilados aún reciben una factura." },
+  ],
+  "Australia": [
+    { en: "Australia has a 'Medicare Levy' of 2% on taxable income to fund the public health system, on top of regular income tax. Higher earners pay an additional 1.5% surcharge if they don't have private health insurance.", fr: "L'Australie a une 'taxe Medicare' de 2 % sur le revenu imposable pour financer le système de santé public. Les hauts revenus paient une surtaxe supplémentaire s'ils n'ont pas d'assurance maladie privée.", es: "Australia tiene un 'Medicare Levy' del 2% sobre la renta imponible para financiar el sistema de salud público. Los contribuyentes de altos ingresos pagan un recargo adicional si no tienen seguro médico privado." },
+  ],
+  "New Zealand": [
+    { en: "New Zealand has no capital gains tax on most investments, making it unusual among OECD countries. Property investors have historically paid no tax on profits from selling homes.", fr: "La Nouvelle-Zélande n'a pas d'impôt sur les plus-values pour la plupart des investissements, ce qui la distingue des pays de l'OCDE. Les investisseurs immobiliers n'ont historiquement payé aucun impôt sur les profits de vente de maisons.", es: "Nueva Zelanda no tiene impuesto sobre las ganancias de capital para la mayoría de las inversiones, lo que la hace inusual entre los países de la OCDE." },
+  ],
+  "Singapore": [
+    { en: "Singapore offers a flat 15% tax option for non-resident professionals, OR the standard progressive rates — whichever is higher. This unusual 'pay the higher rate' rule discourages tax avoidance.", fr: "Singapour offre une option d'impôt fixe de 15 % pour les professionnels non-résidents, OU les taux progressifs standard — le plus élevé des deux s'applique.", es: "Singapur ofrece una opción de tasa plana del 15% para profesionales no residentes, O las tasas progresivas estándar, la que sea más alta. Esta inusual regla disuade la evasión fiscal." },
+  ],
+  "UAE": [
+    { en: "The UAE has zero personal income tax, funded largely by oil revenues and a 9% corporate tax (introduced in 2023). It is one of the few nations where individuals can legally earn millions with zero income tax obligation.", fr: "Les Émirats arabes unis ont un impôt sur le revenu des personnes physiques nul, financé principalement par les revenus pétroliers. C'est l'un des rares pays où les individus peuvent légalement gagner des millions sans aucune obligation fiscale.", es: "Los EAU tienen cero impuesto sobre la renta personal, financiado principalmente por los ingresos petroleros. Es uno de los pocos países donde las personas pueden ganar millones legalmente sin ninguna obligación fiscal." },
+  ],
+  "Saudi Arabia": [
+    { en: "Saudi Arabia has no personal income tax for individuals. However, Saudi nationals pay Zakat — a religious obligation of 2.5% on wealth held for one year — which partially functions as a wealth tax.", fr: "L'Arabie saoudite n'a pas d'impôt sur le revenu des personnes. Cependant, les ressortissants saoudiens paient la Zakat — une obligation religieuse de 2,5 % sur la richesse — qui fonctionne partiellement comme un impôt sur la fortune.", es: "Arabia Saudita no tiene impuesto sobre la renta personal. Sin embargo, los ciudadanos saudíes pagan Zakat, una obligación religiosa del 2,5% sobre la riqueza, que funciona parcialmente como un impuesto sobre el patrimonio." },
+  ],
+  "Hong Kong": [
+    { en: "Hong Kong has a unique 'Salaries Tax' with a 15% flat cap. No matter how much you earn, you can opt to pay just 15% on your total income instead of the progressive rates. This makes it a magnet for high earners.", fr: "Hong Kong a une 'taxe sur les salaires' avec un plafond fixe de 15 %. Peu importe vos revenus, vous pouvez choisir de payer seulement 15 % au lieu des taux progressifs.", es: "Hong Kong tiene un 'Impuesto Salarial' con un límite plano del 15%. Sin importar cuánto ganes, puedes optar por pagar solo el 15% en lugar de las tasas progresivas." },
+  ],
+  "Russia": [
+    { en: "Russia introduced a flat 13% income tax in 2001, replacing a complex progressive system. It was one of the first major economies to adopt a flat tax, and tax revenues actually increased as compliance improved.", fr: "La Russie a introduit un impôt fixe de 13 % en 2001, remplaçant un système progressif complexe. C'était l'une des premières grandes économies à adopter une taxe forfaitaire. Les recettes fiscales ont augmenté.", es: "Rusia introdujo un impuesto plano del 13% en 2001. Fue una de las primeras grandes economías en adoptar un impuesto plano, y los ingresos fiscales aumentaron a medida que mejoró el cumplimiento." },
+  ],
+  "China": [
+    { en: "China has a unique system where employers withhold and remit income tax monthly. Until 2019, workers almost never filed their own returns — the state handled everything automatically.", fr: "La Chine a un système unique où les employeurs retiennent et versent l'impôt sur le revenu mensuellement. Jusqu'en 2019, les travailleurs ne remplissaient presque jamais leurs propres déclarations.", es: "China tiene un sistema único donde los empleadores retienen y remiten el impuesto sobre la renta mensualmente. Hasta 2019, los trabajadores casi nunca presentaban sus propias declaraciones de impuestos." },
+  ],
+  "India": [
+    { en: "India offers TWO separate income tax regimes to choose from each year — the old regime with many deductions, or a new simplified regime with lower rates but no deductions. Taxpayers pick whichever saves them more money.", fr: "L'Inde propose DEUX régimes fiscaux distincts au choix chaque année — l'ancien régime avec de nombreuses déductions, ou un nouveau régime simplifié. Les contribuables choisissent celui qui leur convient le mieux.", es: "India ofrece DOS regímenes fiscales separados para elegir cada año: el antiguo con muchas deducciones o el nuevo simplificado con tasas más bajas pero sin deducciones. Los contribuyentes eligen el que más les convenga." },
+  ],
+  "Brazil": [
+    { en: "Brazil's tax system is considered one of the most complex in the world. The average Brazilian company spends over 1,500 hours per year on tax compliance — the global average is 230 hours.", fr: "Le système fiscal brésilien est considéré comme l'un des plus complexes au monde. Une entreprise brésilienne moyenne passe plus de 1 500 heures par an en conformité fiscale — la moyenne mondiale est de 230 heures.", es: "El sistema fiscal de Brasil es considerado uno de los más complejos del mundo. La empresa brasileña promedio dedica más de 1.500 horas al año al cumplimiento fiscal, frente a las 230 horas de promedio mundial." },
+  ],
+  "Mexico": [
+    { en: "Mexico has an annual 'Declaracion Anual' that every self-employed person must file. However, salaried workers often do NOT file if their employer already withheld the correct amount — a surprisingly simple system for most employees.", fr: "Le Mexique a une 'Declaracion Anual' annuelle que chaque travailleur indépendant doit déposer. Cependant, les salariés ne déclarent souvent PAS si leur employeur a déjà retenu le bon montant.", es: "México tiene una 'Declaración Anual' que cada trabajador independiente debe presentar. Sin embargo, los empleados asalariados a menudo NO declaran si su empleador ya retuvo el monto correcto." },
+  ],
+  "Netherlands": [
+    { en: "The Netherlands has a famous '30% ruling' — highly skilled expats can receive 30% of their salary tax-free for up to 5 years. This makes Amsterdam one of Europe's top destinations for international tech and finance workers.", fr: "Les Pays-Bas ont la fameuse 'règle des 30 %' — les expatriés très qualifiés peuvent recevoir 30 % de leur salaire en franchise d'impôt pendant 5 ans. Cela fait d'Amsterdam l'une des premières destinations européennes pour les travailleurs internationaux.", es: "Los Países Bajos tienen la famosa 'regla del 30%': los expatriados altamente cualificados pueden recibir el 30% de su salario libre de impuestos durante 5 años. Esto convierte a Ámsterdam en uno de los principales destinos europeos para trabajadores internacionales." },
+  ],
+  "Spain": [
+    { en: "Spain has a special 'Beckham Law' (named after David Beckham) that allows high-earning foreign workers to pay a flat 24% tax for 6 years instead of the regular progressive rates up to 47%. It was created in 2004.", fr: "L'Espagne a une 'loi Beckham' spéciale (nommée d'après David Beckham) qui permet aux travailleurs étrangers à hauts revenus de payer un impôt fixe de 24 % pendant 6 ans. Elle a été créée en 2004.", es: "España tiene la especial 'Ley Beckham' (nombrada así por David Beckham) que permite a los trabajadores extranjeros de altos ingresos pagar una tasa plana del 24% durante 6 años en lugar de las tasas progresivas de hasta el 47%." },
+  ],
+  "Italy": [
+    { en: "Italy offers a flat 100,000 EUR/year tax on all foreign income for new residents — regardless of how much you earn abroad. This 'non-dom' regime attracted many high-net-worth individuals to move to Italy.", fr: "L'Italie offre un impôt fixe de 100 000 € par an sur tous les revenus étrangers pour les nouveaux résidents — peu importe ce que vous gagnez à l'étranger. Ce régime a attiré de nombreux individus fortunés en Italie.", es: "Italia ofrece un impuesto fijo de 100.000 euros al año sobre todos los ingresos extranjeros para nuevos residentes, independientemente de cuánto ganen en el extranjero. Este régimen atrajo a muchas personas adineradas a mudarse a Italia." },
+  ],
+  "Portugal": [
+    { en: "Portugal's NHR (Non-Habitual Resident) regime offered foreign retirees and workers a flat 10-20% tax rate for 10 years. It attracted thousands of expats and remote workers but was controversially abolished in 2024.", fr: "Le régime NHR (résident non habituel) du Portugal offrait aux retraités et travailleurs étrangers un taux fixe de 10-20 % pendant 10 ans. Il a attiré des milliers d'expatriés mais a été controversialement aboli en 2024.", es: "El régimen NHR (Residente No Habitual) de Portugal ofrecía a jubilados y trabajadores extranjeros una tasa plana del 10-20% durante 10 años. Atrajo a miles de expatriados pero fue abolido polémicamente en 2024." },
+  ],
+  "Ireland": [
+    { en: "Ireland has one of Europe's most business-friendly corporate tax rates at 12.5%, which attracted Google, Facebook, Apple and dozens of multinationals to set up European HQs in Dublin. Personal income taxes are, however, quite high.", fr: "L'Irlande a l'un des taux d'imposition des sociétés les plus favorables d'Europe à 12,5 %, ce qui a attiré Google, Facebook et Apple à Dublin. Les impôts sur le revenu des particuliers sont cependant assez élevés.", es: "Irlanda tiene uno de los tipos del impuesto corporativo más favorables de Europa, el 12,5%, lo que atrajo a Google, Facebook y Apple a establecer sus sedes europeas en Dublín. Sin embargo, los impuestos personales son bastante altos." },
+  ],
+  "South Korea": [
+    { en: "South Korea has a special 19% flat tax rate for foreign workers in specific industries. Additionally, Koreans who earn income abroad must report it, but enforcement for overseas income has historically been very lax.", fr: "La Corée du Sud a un taux d'imposition fixe spécial de 19 % pour les travailleurs étrangers dans certaines industries. La Corée a historiquement été très peu stricte sur les revenus à l'étranger.", es: "Corea del Sur tiene una tasa plana especial del 19% para trabajadores extranjeros en industrias específicas. Históricamente ha sido muy poco estricta con los ingresos obtenidos en el extranjero." },
+  ],
+  "Thailand": [
+    { en: "Thailand changed its tax rules in 2024: foreign income brought into Thailand is now taxable regardless of when it was earned — closing a famous loophole used by expats and digital nomads for decades.", fr: "La Thaïlande a modifié ses règles fiscales en 2024 : les revenus étrangers transférés en Thaïlande sont désormais imposables, quelle que soit la date de leur gain — fermant une fameuse faille utilisée par les expatriés pendant des décennies.", es: "Tailandia cambió sus reglas fiscales en 2024: los ingresos extranjeros traídos a Tailandia ahora son gravables independientemente de cuándo se ganaron, cerrando una famosa laguna utilizada por expatriados durante décadas." },
+  ],
+  "Poland": [
+    { en: "Poland introduced a 'Middle Class Relief' tax break in 2022 that was so complex — applied only at specific income bands — that many workers accidentally ended up owing MORE tax. It was abolished after just one year.", fr: "La Pologne a introduit un allégement fiscal pour la 'classe moyenne' en 2022 si complexe que de nombreux travailleurs ont fini par devoir PLUS d'impôts. Il a été aboli après seulement un an.", es: "Polonia introdujo un alivio fiscal para la 'clase media' en 2022 que era tan complejo que muchos trabajadores terminaron debiendo MÁS impuestos. Fue abolido después de solo un año." },
+  ],
+  "South Africa": [
+    { en: "South Africa's SARS (South African Revenue Service) was once ranked as one of the most efficient tax authorities in the developing world, with a voluntary compliance rate of over 95%. That reputation has since declined with corruption scandals.", fr: "Le SARS (Service des recettes d'Afrique du Sud) était autrefois classé parmi les autorités fiscales les plus efficaces des pays en développement, avec un taux de conformité volontaire de plus de 95 %.", es: "El SARS de Sudáfrica fue alguna vez considerado una de las autoridades fiscales más eficientes del mundo en desarrollo, con una tasa de cumplimiento voluntario de más del 95%." },
+  ],
+  "Greece": [
+    { en: "Greece introduced a flat 7% income tax for foreign retirees who move to Greece — to attract pensioners and boost the economy after the 2010 debt crisis devastated the country.", fr: "La Grèce a introduit un impôt fixe de 7 % sur le revenu pour les retraités étrangers qui s'y installent — pour attirer les pensionnés et relancer l'économie après la crise de la dette de 2010.", es: "Grecia introdujo un impuesto plano del 7% sobre la renta para los jubilados extranjeros que se mudan allí, para atraer pensionistas y reactivar la economía tras la crisis de deuda de 2010." },
+  ],
+  "Finland": [
+    { en: "Finland publishes every citizen's income tax return publicly each year. On 'Tax Day' (usually in November), anyone can call the tax authority and ask how much their neighbor — or their boss — pays in taxes.", fr: "La Finlande publie la déclaration de revenus de chaque citoyen publiquement chaque année. Le 'Jour des impôts', n'importe qui peut appeler les autorités fiscales et demander combien son voisin — ou son patron — paie en impôts.", es: "Finlandia publica públicamente la declaración de impuestos de cada ciudadano cada año. El 'Día de Impuestos', cualquiera puede llamar a la autoridad fiscal y preguntar cuánto paga en impuestos su vecino o su jefe." },
+  ],
+  "Austria": [
+    { en: "Austria has the highest top marginal income tax rate in the German-speaking world at 55% (for income over EUR 1M). Even so, Austria consistently ranks among Europe's wealthiest and most satisfied populations.", fr: "L'Autriche a le taux marginal maximum le plus élevé des pays germanophones à 55 % (pour les revenus supérieurs à 1 M€). Pourtant, l'Autriche se classe régulièrement parmi les populations européennes les plus riches et les plus satisfaites.", es: "Austria tiene la tasa marginal máxima más alta del mundo germanohablante, el 55% para ingresos superiores a 1 millón de euros. Aun así, Austria se clasifica constantemente entre las poblaciones europeas más ricas y satisfechas." },
+  ],
+  "Belgium": [
+    { en: "Belgium has one of the highest top income tax rates in the world at 50%, plus local taxes. However, it is famous for generous employee benefits: company cars, meal vouchers, and expense accounts that are often tax-exempt.", fr: "La Belgique a l'un des taux d'imposition les plus élevés au monde à 50 %. Cependant, elle est célèbre pour ses généreux avantages aux employés : voitures de société, chèques-repas et notes de frais souvent exonérés d'impôt.", es: "Bélgica tiene una de las tasas máximas de impuesto sobre la renta más altas del mundo, el 50%. Sin embargo, es famosa por los generosos beneficios para empleados: coches de empresa, vales de comida y gastos de representación a menudo exentos de impuestos." },
+  ],
+  "Israel": [
+    { en: "Israel offers new immigrants (Olim) and returning residents a 10-year tax exemption on all foreign income. This policy, known as the 'Olim Benefit', has attracted thousands of wealthy Jewish diaspora members to move to Israel.", fr: "Israël offre aux nouveaux immigrants et résidents de retour une exonération fiscale de 10 ans sur tous les revenus étrangers. Cette politique, connue sous le nom d'avantage 'Olim', a attiré des milliers de membres aisés de la diaspora juive.", es: "Israel ofrece a los nuevos inmigrantes (Olim) una exención fiscal de 10 años sobre todos los ingresos extranjeros. Esta política ha atraído a miles de miembros adinerados de la diáspora judía a mudarse a Israel." },
+  ],
+  "Turkey": [
+    { en: "Turkey has a special 50% income tax deduction for authors, scientists, artists and athletes on royalties and prize money. A Turkish novelist pays half the income tax on their book earnings compared to a regular worker.", fr: "La Turquie offre une déduction fiscale de 50 % sur le revenu pour les auteurs, scientifiques, artistes et athlètes sur les redevances. Un romancier turc paie deux fois moins d'impôt sur ses revenus de livres.", es: "Turquía tiene una deducción especial del 50% en el impuesto sobre la renta para autores, científicos, artistas y atletas sobre regalías y premios. ¡Un novelista turco paga la mitad del impuesto sobre los ingresos de sus libros!" },
+  ],
+  "Mexico": [
+    { en: "Mexico's richest 1% pay a lower effective tax rate than the middle class — a study showed that the wealthiest Mexicans pay about 7% effective rate thanks to legal tax structures, while formal employees pay 15-20%.", fr: "Le 1 % le plus riche du Mexique paie un taux effectif d'imposition inférieur à celui de la classe moyenne — les Mexicains les plus riches paient environ 7 % de taux effectif grâce à des structures fiscales légales.", es: "El 1% más rico de México paga una tasa efectiva de impuesto más baja que la clase media: los mexicanos más ricos pagan alrededor del 7% de tasa efectiva gracias a estructuras fiscales legales, mientras los empleados formales pagan 15-20%." },
+  ],
+  "Chile": [
+    { en: "Chile is one of Latin America's most stable economies, partly thanks to its mandatory pension savings system (AFP) requiring workers to save 10% of their salary. However, pension income is taxed as regular income in retirement.", fr: "Le Chili est l'une des économies les plus stables d'Amérique latine, en partie grâce à son système d'épargne-retraite obligatoire (AFP) exigeant des travailleurs d'épargner 10 % de leur salaire.", es: "Chile es una de las economías más estables de América Latina, en parte gracias a su sistema de ahorro previsional obligatorio (AFP) que exige a los trabajadores ahorrar el 10% de su salario." },
+  ],
+  "Colombia": [
+    { en: "Colombia has a 'simple taxation regime' for small businesses that replaces income tax, industry tax, VAT and other obligations with a single flat rate between 1-11% of gross revenue. It radically simplified taxes for millions of entrepreneurs.", fr: "La Colombie a un 'régime de taxation simple' pour les petites entreprises qui remplace l'impôt sur le revenu, la taxe industrielle et la TVA par un taux unique de 1 à 11 % du chiffre d'affaires brut.", es: "Colombia tiene un 'régimen simple de tributación' para pequeñas empresas que reemplaza el impuesto sobre la renta, el impuesto de industria, el IVA y otras obligaciones con una tasa plana de entre 1-11% de los ingresos brutos." },
+  ],
+  "Malaysia": [
+    { en: "Malaysia introduced a 'Departure Levy' in 2019 — a tax you pay when you leave the country on an international flight. It ranges from RM 8 for economy class to RM 150 for premium class.", fr: "La Malaisie a introduit une 'taxe de départ' en 2019 — un impôt payé lors d'un vol international au départ du pays. Elle varie de 8 RM en classe économique à 150 RM en classe premium.", es: "Malasia introdujo un 'Impuesto de Salida' en 2019, un impuesto que se paga al salir del país en un vuelo internacional. Varía de 8 RM en clase económica a 150 RM en clase premium." },
+  ],
+  "Philippines": [
+    { en: "The Philippines has a 'TRABAHO' law that reduced the top corporate income tax from 30% (highest in ASEAN) to 20-25%. For workers, the threshold where income tax starts is PHP 250,000 — below that, zero tax is owed.", fr: "Les Philippines ont une loi 'TRABAHO' qui a réduit le taux maximum d'imposition des sociétés de 30 % à 20-25 %. Pour les travailleurs, le seuil de l'impôt sur le revenu est de 250 000 PHP — en dessous, zéro impôt.", es: "Filipinas tiene una ley 'TRABAHO' que redujo el impuesto corporativo máximo del 30% al 20-25%. Para los trabajadores, el umbral donde comienza el impuesto sobre la renta es PHP 250,000: por debajo de eso, no se debe ningún impuesto." },
+  ],
+  "Indonesia": [
+    { en: "Indonesia has a 'tax holiday' program for investors in strategic industries — up to 20 years of zero corporate tax. For individuals, the tax authority estimated that only 1 in 10 people who should file actually do.", fr: "L'Indonésie a un programme de 'vacances fiscales' pour les investisseurs dans les industries stratégiques — jusqu'à 20 ans sans impôt sur les sociétés. Pour les particuliers, l'autorité fiscale estime que seulement 1 personne sur 10 déclare ses impôts.", es: "Indonesia tiene un programa de 'vacaciones fiscales' para inversores en industrias estratégicas: hasta 20 años sin impuesto corporativo. Para las personas, la autoridad fiscal estima que solo 1 de cada 10 personas que deberían declarar realmente lo hacen." },
+  ],
+  "Vietnam": [
+    { en: "Vietnam taxes resident individuals on worldwide income, but the system is still developing. A notable quirk: income from freelancing or selling online often goes completely unreported and untaxed due to a lack of enforcement infrastructure.", fr: "Le Vietnam impose les particuliers résidents sur leurs revenus mondiaux, mais le système est encore en développement. Un fait notable : les revenus du travail indépendant en ligne sont souvent complètement non déclarés faute d'infrastructure de contrôle.", es: "Vietnam grava a los residentes sobre sus ingresos mundiales, pero el sistema aún se está desarrollando. Un dato curioso: los ingresos del trabajo independiente online a menudo no se declaran ni se gravan por falta de infraestructura de control." },
+  ],
+  "Egypt": [
+    { en: "Egypt reformed its income tax system in 2023, raising the top rate to 27.5%. But with a large informal economy — estimated at 40% of GDP — a huge portion of income completely escapes taxation.", fr: "L'Égypte a réformé son système fiscal en 2023, portant le taux maximum à 27,5 %. Mais avec une économie informelle estimée à 40 % du PIB, une énorme portion des revenus échappe complètement à l'impôt.", es: "Egipto reformó su sistema de impuesto sobre la renta en 2023, elevando la tasa máxima al 27,5%. Pero con una economía informal estimada en el 40% del PIB, una enorme porción de los ingresos escapa completamente a la tributación." },
+  ],
+  "Nigeria": [
+    { en: "Nigeria's federal government relies almost entirely on oil revenues — personal income tax goes to STATE governments, not the federal government. This creates massive variation in services between oil-rich and poor states.", fr: "Le gouvernement fédéral nigérian s'appuie presque entièrement sur les revenus pétroliers — l'impôt sur le revenu des personnes physiques va aux GOUVERNEMENTS des États. Cela crée d'énormes variations de services entre les États.", es: "El gobierno federal de Nigeria depende casi por completo de los ingresos petroleros: el impuesto sobre la renta de las personas físicas va a los GOBIERNOS estatales. Esto crea enormes variaciones en los servicios entre estados ricos en petróleo y estados pobres." },
+  ],
+  "Kenya": [
+    { en: "Kenya introduced a controversial 'Digital Service Tax' of 1.5% on revenue from digital marketplaces in 2021 — taxing platforms like Uber, Airbnb and Netflix on earnings generated in Kenya.", fr: "Le Kenya a introduit une controversée 'taxe sur les services numériques' de 1,5 % sur les revenus des marchés numériques en 2021 — taxant des plateformes comme Uber, Airbnb et Netflix sur leurs revenus générés au Kenya.", es: "Kenia introdujo un controvertido 'Impuesto al Servicio Digital' del 1,5% sobre los ingresos de los mercados digitales en 2021, gravando plataformas como Uber, Airbnb y Netflix sobre los ingresos generados en Kenia." },
+  ],
+  "Argentina": [
+    { en: "Argentina has a 'Bienes Personales' (Personal Assets Tax) — an annual wealth tax of 0.5-1.75% on net worth above ARS 11M. In 2023, with inflation over 200%, millions of middle-class Argentines suddenly became 'wealthy' on paper.", fr: "L'Argentine a une taxe 'Bienes Personales' — un impôt annuel sur la fortune de 0,5-1,75 % sur la valeur nette. En 2023, avec une inflation de plus de 200 %, des millions d'Argentins de classe moyenne sont soudainement devenus 'riches' sur le papier.", es: "Argentina tiene el 'Impuesto sobre Bienes Personales', un impuesto anual sobre el patrimonio del 0,5-1,75% sobre el patrimonio neto. En 2023, con una inflación superior al 200%, millones de argentinos de clase media se convirtieron repentinamente en 'ricos' sobre el papel." },
+  ],
+};
+
+
+// ── Big Mac Index Data (The Economist, Jan 2024) ─────────────────────────
+// Price in local currency → converted to USD
+const BIGMAC_USD = {
+  "United States":        5.69,
+  "Canada":               6.39,
+  "England & Wales":      5.08,
+  "Scotland":             5.08,
+  "France":               5.52,
+  "Germany":              5.52,
+  "Switzerland":          8.17,
+  "Sweden":               6.20,
+  "Norway":               6.30,
+  "Denmark":              6.80,
+  "Netherlands":          5.52,
+  "Spain":                5.15,
+  "Italy":                5.15,
+  "Portugal":             4.70,
+  "Ireland":              5.88,
+  "Belgium":              5.52,
+  "Austria":              5.52,
+  "Finland":              6.10,
+  "Greece":               4.50,
+  "Poland":               3.10,
+  "Czech Republic":       4.20,
+  "Hungary":              3.60,
+  "Romania":              3.40,
+  "Russia":               2.39,
+  "Turkey":               3.10,
+  "Israel":               5.84,
+  "Egypt":                2.10,
+  "South Africa":         2.63,
+  "Nigeria":              2.55,
+  "Kenya":                2.30,
+  "Australia":            5.95,
+  "New Zealand":          5.12,
+  "Japan":                3.10,
+  "South Korea":          4.46,
+  "China":                3.43,
+  "India":                2.54,
+  "Hong Kong":            3.18,
+  "Singapore":            5.05,
+  "Malaysia":             2.60,
+  "Thailand":             2.89,
+  "Indonesia":            2.62,
+  "Vietnam":              2.90,
+  "Philippines":          3.10,
+  "UAE":                  4.73,
+  "Saudi Arabia":         4.07,
+  "Mexico":               4.00,
+  "Brazil":               4.11,
+  "Argentina":            4.50,
+  "Chile":                3.80,
+  "Colombia":             3.50,
+  // Canadian provinces - same as Canada
+  "Ontario":              6.39,
+  "Quebec":               6.39,
+  "Québec":               6.39,
+  "Alberta":              6.39,
+  "Colombie-Britannique": 6.39,
+  "Saskatchewan":         6.39,
+  "Manitoba":             6.39,
+  "Nouvelle-Écosse":      6.39,
+  "Nouveau-Brunswick":    6.39,
+  "Île-du-Prince-Édouard":6.39,
+  "Terre-Neuve-et-Labrador":6.39,
+  "Territoires du Nord-Ouest":6.39,
+  "Yukon":                6.39,
+  "Nunavut":              6.39,
+};
+
+// US average - same for all states
+const US_STATE_BIGMAC = 5.69;
+
+function getBigMacPrice(countryKey) {
+  return BIGMAC_USD[countryKey] || US_STATE_BIGMAC;
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 function applyBrackets(income, brackets) {
@@ -438,8 +804,228 @@ function LangSwitcher({ lang, setLang }) {
   );
 }
 
+
+// ── Fun Fact Modal ────────────────────────────────────────────────────────
+function FunFactModal({ countryKey, lang, t, onClose }) {
+  const facts = FUN_FACTS[countryKey] || [];
+  const [idx, setIdx] = React.useState(0);
+  const fact = facts[idx];
+  const text = fact ? (fact[lang] || fact["en"]) : null;
+
+  return (
+    <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
+      onClick={onClose}>
+      <div onClick={e => e.stopPropagation()}
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(480px,92vw)", padding:"28px 28px 24px", boxShadow:"0 0 60px rgba(79,255,176,0.12)", animation:"fi 0.25s ease" }}>
+        
+        {/* Header */}
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
+          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+            <span style={{ fontSize:28 }}>🎲</span>
+            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.funFactTitle}</span>
+          </div>
+          <button onClick={onClose}
+            style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>
+            {t.funFactClose}
+          </button>
+        </div>
+
+        {/* Country label */}
+        <div style={{ fontSize:11, fontFamily:"'DM Mono',monospace", color:"#4fffb0", letterSpacing:"0.1em", marginBottom:14, opacity:0.7 }}>
+          {countryKey.toUpperCase()}
+        </div>
+
+        {/* Fact text */}
+        <div style={{ background:"rgba(79,255,176,0.04)", border:"1px solid rgba(79,255,176,0.15)", borderRadius:10, padding:"18px 20px", marginBottom:18, minHeight:80 }}>
+          {text
+            ? <p style={{ fontSize:14, color:"#c8dff0", lineHeight:1.85, fontFamily:"'DM Sans',sans-serif" }}>{text}</p>
+            : <p style={{ fontSize:13, color:"#5a7a98", fontStyle:"italic" }}>{t.funFactNone}</p>
+          }
+        </div>
+
+        {/* Navigation */}
+        {facts.length > 1 && (
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+            <div style={{ display:"flex", gap:6 }}>
+              {facts.map((_, i) => (
+                <div key={i} onClick={() => setIdx(i)}
+                  style={{ width:8, height:8, borderRadius:"50%", background: i===idx ? "#4fffb0" : "#1e3050", cursor:"pointer", transition:"background 0.2s" }} />
+              ))}
+            </div>
+            <button onClick={() => setIdx((idx + 1) % facts.length)}
+              style={{ background:"rgba(79,255,176,0.08)", border:"1px solid #4fffb0", borderRadius:7, color:"#4fffb0", padding:"7px 14px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", fontWeight:600, transition:"all 0.2s" }}>
+              {t.funFactNext}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+// ── BigMac Index Section ──────────────────────────────────────────────────
+function BigMacSection({ countryKey, isUSState, salaryUSD, calc, t }) {
+  const [tooltip, setTooltip] = React.useState(null); // "bm" | "nbm" | null
+
+  const bmPrice = isUSState ? US_STATE_BIGMAC : getBigMacPrice(countryKey);
+  const bmAvailable = bmPrice > 0;
+
+  // NetBigMac: how many Big Macs with $100 gross after tax
+  const netPer100 = salaryUSD > 0 && bmAvailable
+    ? Math.round((100 * (1 - calc.effectiveRate / 100)) / bmPrice)
+    : null;
+
+  // Big Mac price in input currency shown via USD
+  const bmPriceDisplay = bmPrice.toFixed(2);
+
+  return (
+    <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+
+        {/* Big Mac Index */}
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.bigMacLabel}</span>
+            <span onClick={() => setTooltip(tooltip==="bm" ? null : "bm")}
+              style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
+          </div>
+          <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#ffe066" }}>
+            ${bmPriceDisplay}
+            <span style={{ fontSize:9, color:"#5a7a98", marginLeft:4 }}>USD</span>
+          </div>
+          <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPrice}</div>
+
+          {tooltip === "bm" && (
+            <div onClick={() => setTooltip(null)}
+              style={{ position:"fixed", inset:0, zIndex:3000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.80)", backdropFilter:"blur(4px)" }}>
+              <div onClick={e => e.stopPropagation()}
+                style={{ background:"#0d1e34", border:"1px solid #ffe066", borderRadius:12, padding:"22px 24px", width:"min(380px,88vw)", boxShadow:"0 0 40px rgba(255,224,102,0.1)" }}>
+                <div style={{ fontSize:16, fontWeight:700, color:"#ffe066", marginBottom:10, fontFamily:"'Bebas Neue'", letterSpacing:"0.06em" }}>{t.bigMacExplainTitle}</div>
+                <p style={{ fontSize:13, color:"#b0c8e0", lineHeight:1.8 }}>{t.bigMacExplain}</p>
+                <button onClick={() => setTooltip(null)}
+                  style={{ marginTop:16, background:"rgba(255,224,102,0.08)", border:"1px solid #ffe066", borderRadius:7, color:"#ffe066", padding:"7px 16px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", width:"100%" }}>
+                  OK
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* NetBigMac Index */}
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.netBigMacLabel}</span>
+            <span onClick={() => setTooltip(tooltip==="nbm" ? null : "nbm")}
+              style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
+          </div>
+          {netPer100 !== null ? (
+            <>
+              <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#4fffb0" }}>
+                {netPer100}
+                <span style={{ fontSize:11, marginLeft:4 }}>🍔</span>
+              </div>
+              <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPer100}</div>
+            </>
+          ) : (
+            <div style={{ fontSize:12, color:"#3a5060", fontFamily:"'DM Mono',monospace" }}>—</div>
+          )}
+
+          {tooltip === "nbm" && (
+            <div onClick={() => setTooltip(null)}
+              style={{ position:"fixed", inset:0, zIndex:3000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.80)", backdropFilter:"blur(4px)" }}>
+              <div onClick={e => e.stopPropagation()}
+                style={{ background:"#0d1e34", border:"1px solid #4fffb0", borderRadius:12, padding:"22px 24px", width:"min(380px,88vw)", boxShadow:"0 0 40px rgba(79,255,176,0.1)" }}>
+                <div style={{ fontSize:16, fontWeight:700, color:"#4fffb0", marginBottom:10, fontFamily:"'Bebas Neue'", letterSpacing:"0.06em" }}>{t.netBigMacExplainTitle}</div>
+                <p style={{ fontSize:13, color:"#b0c8e0", lineHeight:1.8 }}>{t.netBigMacExplain}</p>
+                <div style={{ marginTop:14, padding:"10px 14px", background:"rgba(79,255,176,0.06)", border:"1px solid rgba(79,255,176,0.2)", borderRadius:8 }}>
+                  <div style={{ fontSize:10, color:"#4fffb0", fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em" }}>FORMULE / FORMULA</div>
+                  <div style={{ fontSize:11, color:"#88b8d0", fontFamily:"'DM Mono',monospace", marginTop:4 }}>($100 x (1 - taux effectif)) / prix Big Mac</div>
+                </div>
+                <button onClick={() => setTooltip(null)}
+                  style={{ marginTop:14, background:"rgba(79,255,176,0.08)", border:"1px solid #4fffb0", borderRadius:7, color:"#4fffb0", padding:"7px 16px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", width:"100%" }}>
+                  OK
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ── Share Buttons ─────────────────────────────────────────────────────────
+function ShareButtons({ msg, t, compact = false }) {
+  const encoded = encodeURIComponent(msg);
+  const url = encodeURIComponent("https://netpay.tax");
+
+  const btns = [
+    {
+      label:"X",
+      icon:"𝕏",
+      color:"#1a1a2e",
+      border:"#444",
+      hover:"#222",
+      href:`https://twitter.com/intent/tweet?text=${encoded}`,
+    },
+    {
+      label:"LinkedIn",
+      icon:"in",
+      color:"#0a1a30",
+      border:"#0077b5",
+      hover:"#0077b5",
+      href:`https://www.linkedin.com/sharing/share-offsite/?url=https://netpay.tax&summary=${encoded}`,
+    },
+    {
+      label:"Facebook",
+      icon:"f",
+      color:"#0a1428",
+      border:"#1877f2",
+      hover:"#1877f2",
+      href:`https://www.facebook.com/sharer/sharer.php?u=https://netpay.tax&quote=${encoded}`,
+    },
+    {
+      label:"Reddit",
+      icon:"r/",
+      color:"#1a0e0a",
+      border:"#ff4500",
+      hover:"#ff4500",
+      href:`https://www.reddit.com/submit?url=https://netpay.tax&title=${encoded}`,
+    },
+    {
+      label:"WhatsApp",
+      icon:"W",
+      color:"#0a1a12",
+      border:"#25d366",
+      hover:"#25d366",
+      href:`https://wa.me/?text=${encoded}`,
+    },
+  ];
+
+  return (
+    <div style={{ display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
+      {!compact && (
+        <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em", marginRight:2 }}>
+          {t.shareLabel}
+        </span>
+      )}
+      {btns.map(b => (
+        <a key={b.label} href={b.href} target="_blank" rel="noopener noreferrer"
+          title={b.label}
+          style={{ background:b.color, border:`1px solid ${b.border}`, borderRadius:7, padding: compact ? "5px 9px" : "6px 11px", cursor:"pointer", textDecoration:"none", display:"flex", alignItems:"center", justifyContent:"center", fontSize: compact ? 11 : 12, fontWeight:700, color:b.border, fontFamily:"'DM Mono',monospace", transition:"all 0.18s", minWidth: compact ? 28 : 32 }}>
+          {b.icon}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 // ── Detail Panel ──────────────────────────────────────────────────────────
-function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t }) {
+function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t, countryKey, lang, salaryUSD, isUSState }) {
+  const [showFact, setShowFact] = React.useState(false);
+  const hasFacts = !!(FUN_FACTS[countryKey] && FUN_FACTS[countryKey].length > 0);
   return (
     <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16, flexWrap:"wrap", gap:8 }}>
@@ -491,6 +1077,29 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           </div>
         )}
       </div>
+
+      <BigMacSection countryKey={countryKey} isUSState={isUSState} salaryUSD={salaryUSD} calc={calc} t={t} />
+
+      {/* Share + Fun Fact */}
+      <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", gap:10 }}>
+        {/* Share buttons */}
+        <ShareButtons
+          msg={t.shareMsg(
+            label,
+            fmt(calc.netUSD),
+            currCode,
+            salaryUSD > 0 ? Math.round((100 * (1 - calc.effectiveRate / 100)) / getBigMacPrice(countryKey)) : "?"
+          )}
+          t={t}
+        />
+        <button onClick={() => setShowFact(true)}
+          disabled={!hasFacts}
+          style={{ background: hasFacts ? "rgba(79,255,176,0.08)" : "transparent", border:`1px solid ${hasFacts ? "#4fffb0" : "#1a2e40"}`, borderRadius:8, color: hasFacts ? "#4fffb0" : "#3a5060", padding:"9px 18px", cursor: hasFacts ? "pointer" : "default", fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
+          {t.funFactBtn}
+        </button>
+      </div>
+
+      {showFact && <FunFactModal countryKey={countryKey} lang={lang} t={t} onClose={() => setShowFact(false)} />}
     </div>
   );
 }
@@ -581,7 +1190,7 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
 // ── Section: About + How It Works ────────────────────────────────────────
 function AboutSection({ t }) {
   return (
-    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div id="about-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
       {/* About */}
       <div style={{ marginBottom:36 }}>
         <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutTitle}</h2>
@@ -651,7 +1260,7 @@ function TipsSection({ t }) {
 // ── Section: Privacy & About ─────────────────────────────────────────────
 function PrivacySection({ t }) {
   return (
-    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div id="privacy-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:20 }}>
         <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
           <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.privacyTitle}</h2>
@@ -661,6 +1270,70 @@ function PrivacySection({ t }) {
           <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutPageTitle}</h2>
           <p style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.8 }}>{t.aboutPageText}</p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ── Section: Contact Form (Formspree) ────────────────────────────────────
+function ContactSection({ t }) {
+  const [name, setName]       = React.useState("");
+  const [email, setEmail]     = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [status, setStatus]   = React.useState("idle"); // idle | sending | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/xkgjznqw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setName(""); setEmail(""); setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+      <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"24px 28px", maxWidth:560 }}>
+        <h2 id="contact-section" style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:8 }}>{t.contactTitle}</h2>
+        <p style={{ fontSize:13, color:"#7a9ab8", marginBottom:20, lineHeight:1.6 }}>{t.contactText}</p>
+
+        {status === "success" ? (
+          <div style={{ padding:"16px", background:"rgba(79,255,176,0.08)", border:"1px solid #4fffb0", borderRadius:8, color:"#4fffb0", fontSize:14 }}>
+            {t.contactSuccess}
+          </div>
+        ) : (
+          <div>
+            <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+                <input value={name} onChange={e => setName(e.target.value)} placeholder={t.contactName}
+                  style={{ padding:"11px 14px", background:"#060e1a", border:"1px solid #1e3050", borderRadius:8, color:"#c0d0e8", fontSize:13, fontFamily:"'DM Sans',sans-serif", outline:"none" }} />
+                <input value={email} onChange={e => setEmail(e.target.value)} placeholder={t.contactEmail} type="email"
+                  style={{ padding:"11px 14px", background:"#060e1a", border:"1px solid #1e3050", borderRadius:8, color:"#c0d0e8", fontSize:13, fontFamily:"'DM Sans',sans-serif", outline:"none" }} />
+              </div>
+              <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder={t.contactMessage} rows={4}
+                style={{ padding:"11px 14px", background:"#060e1a", border:"1px solid #1e3050", borderRadius:8, color:"#c0d0e8", fontSize:13, fontFamily:"'DM Sans',sans-serif", outline:"none", resize:"vertical" }} />
+              {status === "error" && (
+                <div style={{ color:"#ff6b6b", fontSize:12 }}>{t.contactError}</div>
+              )}
+              <button onClick={handleSubmit} disabled={status==="sending" || !name || !email || !message}
+                style={{ padding:"12px 24px", background: (!name||!email||!message) ? "#0d1a2e" : "rgba(79,255,176,0.12)", border:"1px solid #4fffb0", borderRadius:8, color: (!name||!email||!message) ? "#3a5570" : "#4fffb0", fontSize:13, fontWeight:600, fontFamily:"'DM Mono',monospace", cursor: (!name||!email||!message) ? "default" : "pointer", transition:"all 0.2s", alignSelf:"flex-start" }}>
+                {status === "sending" ? t.contactSending : t.contactSend}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -678,14 +1351,21 @@ function Footer({ t }) {
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
           {t.footerLinks.map((link, i) => (
             <span key={i} style={{ fontSize:12, color:"#6a9ab8", cursor:"pointer", textDecoration:"underline" }}
-              onClick={() => alert(i===0 ? t.privacyText : i===1 ? t.aboutPageText : t.contactText)}>
+              onClick={() => {
+                if (i===2) document.getElementById("contact-section")?.scrollIntoView({behavior:"smooth"});
+                else if (i===0) document.getElementById("privacy-section")?.scrollIntoView({behavior:"smooth"});
+                else document.getElementById("about-section")?.scrollIntoView({behavior:"smooth"});
+              }}>
               {link}
             </span>
           ))}
         </div>
       </div>
-      <div style={{ marginTop:16, fontSize:10, color:"#3a5570", textAlign:"center" }}>
-        © {new Date().getFullYear()} NetPay.tax — {t.footerDisclaimer}
+      <div style={{ marginTop:20, paddingTop:16, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+        <ShareButtons msg={t.shareMsgSite} t={t} compact={true} />
+        <div style={{ fontSize:10, color:"#3a5570", textAlign:"center" }}>
+          © {new Date().getFullYear()} NetPay.tax — {t.footerDisclaimer}
+        </div>
       </div>
     </footer>
   );
@@ -751,9 +1431,9 @@ export default function App() {
     const prov    = PROVINCES_CA.find(p => p.name === selected);
     const state   = STATES_US.find(s => s.name === selected);
     const country = OTHER_COUNTRIES.find(c => c.name === selected);
-    if (prov)     detail = { label:prov.name,    flagEl:<FlagImg src={prov.flagImg}   abbr={prov.abbr}   size={24}/>, subtitle:t.caDetail, calc:provCalcs[prov.name],       hasProv:true  };
-    else if (state)   detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],     hasProv:true  };
-    else if (country) detail = { label:country.name, flagEl:<span style={{fontSize:26}}>{country.flag}</span>,           subtitle:null,        calc:countryCalcs[country.name], hasProv:false };
+    if (prov)     detail = { label:prov.name,    flagEl:<FlagImg src={prov.flagImg}   abbr={prov.abbr}   size={24}/>, subtitle:t.caDetail, calc:provCalcs[prov.name],       hasProv:true,  countryKey:prov.name,    isUSState:false };
+    else if (state)   detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],     hasProv:true,  countryKey:state.name,   isUSState:true  };
+    else if (country) detail = { label:country.name, flagEl:<span style={{fontSize:26}}>{country.flag}</span>,           subtitle:null,        calc:countryCalcs[country.name], hasProv:false, countryKey:country.name, isUSState:false };
   }
 
   const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
@@ -827,7 +1507,7 @@ export default function App() {
             {/* Detail panel */}
             {detail && (
               <div style={{ position:"sticky", top:8, zIndex:100, marginBottom:18 }}>
-                <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} />
+                <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} lang={lang} salaryUSD={salaryUSD} />
               </div>
             )}
 
@@ -907,6 +1587,7 @@ export default function App() {
       <FAQSection t={t} />
       <TipsSection t={t} />
       <PrivacySection t={t} />
+      <ContactSection t={t} />
       <Footer t={t} />
     </div>
   );
