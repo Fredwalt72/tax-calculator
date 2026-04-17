@@ -1046,13 +1046,13 @@ function FunFactModal({ countryKey, lang, t, onClose }) {
     <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
       onClick={onClose}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(480px,92vw)", padding:"28px 28px 24px", boxShadow:"0 0 60px rgba(79,255,176,0.12)", animation:"fi 0.25s ease" }}>
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4a80d4", borderRadius:16, width:"min(480px,92vw)", padding:"28px 28px 24px", boxShadow:"0 0 60px rgba(79,255,176,0.12)", animation:"fi 0.25s ease" }}>
         
         {/* Header */}
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
             <span style={{ fontSize:28 }}>🎲</span>
-            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.funFactTitle}</span>
+            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4a80d4" }}>{t.funFactTitle}</span>
           </div>
           <button onClick={onClose}
             style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>
@@ -1068,7 +1068,7 @@ function FunFactModal({ countryKey, lang, t, onClose }) {
         {/* Fact text */}
         <div style={{ background:"rgba(79,255,176,0.04)", border:"1px solid rgba(79,255,176,0.15)", borderRadius:10, padding:"18px 20px", marginBottom:18, minHeight:80 }}>
           {text
-            ? <p style={{ fontSize:14, color:"#c8dff0", lineHeight:1.85, fontFamily:"'DM Sans',sans-serif" }}>{text}</p>
+            ? <p style={{ fontSize:14, color:"#d4e8ff", lineHeight:1.85, fontFamily:"'DM Sans',sans-serif" }}>{text}</p>
             : <p style={{ fontSize:13, color:"#5a7a98", fontStyle:"italic" }}>{t.funFactNone}</p>
           }
         </div>
@@ -1330,13 +1330,13 @@ function IndicesModal({ countryKey, isUSState, salaryUSD, calc, t, onClose }) {
     <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
       onClick={onClose}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(440px,92vw)", maxHeight:"85vh", overflowY:"auto", padding:"24px 24px 20px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4a80d4", borderRadius:16, width:"min(360px,90vw)", maxHeight:"85vh", overflowY:"auto", padding:"18px 16px 16px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
 
         {/* Header */}
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:18 }}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
             <span style={{ fontSize:24 }}>📊</span>
-            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.indicesTitle}</span>
+            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4a80d4" }}>{t.indicesTitle}</span>
           </div>
           <button onClick={onClose}
             style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>
@@ -1349,40 +1349,42 @@ function IndicesModal({ countryKey, isUSState, salaryUSD, calc, t, onClose }) {
           {countryKey.toUpperCase()}
         </div>
 
-        {/* Indices list */}
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+        {/* Indices list — 2 columns, vertical cards */}
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
           {indices.map(idx => (
             <div key={idx.id}
-              style={{ background:"rgba(79,255,176,0.03)", border:`1px solid ${idx.color}33`, borderRadius:10, padding:"14px 16px", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
-              <div style={{ flex:1 }}>
-                <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
-                  <span style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{idx.label}</span>
-                  <span onClick={() => setTooltip(tooltip === idx.id ? null : idx.id)}
-                    style={{ width:15, height:15, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
-                </div>
-                <div style={{ fontSize:11, color:"#5a7a98", fontFamily:"'DM Mono',monospace" }}>{idx.sub}</div>
+              style={{ background:"rgba(10,20,40,0.8)", border:`1px solid ${idx.color}44`, borderRadius:10, padding:"10px 11px", display:"flex", flexDirection:"column", gap:4, position:"relative" }}>
+
+              {/* Label row */}
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.05em", lineHeight:1.3 }}>{idx.label}</span>
+                <span onClick={() => setTooltip(tooltip === idx.id ? null : idx.id)}
+                  style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
               </div>
-              <div style={{ textAlign:"right" }}>
-                <div style={{ fontSize:22, fontFamily:"'DM Mono',monospace", fontWeight:700, color:idx.color }}>{idx.value}</div>
-                {idx.unit && <div style={{ fontSize:9, color:"#5a7a98", fontFamily:"'DM Mono',monospace" }}>{idx.unit}</div>}
-              </div>
+
+              {/* Big value */}
+              <div style={{ fontSize:20, fontFamily:"'DM Mono',monospace", fontWeight:700, color:idx.color, lineHeight:1 }}>{idx.value}</div>
+
+              {/* Unit + sub */}
+              {idx.unit && <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace" }}>{idx.unit}</div>}
+              {idx.sub && <div style={{ fontSize:8, color:"#6a8aaa", fontFamily:"'DM Mono',monospace", lineHeight:1.3 }}>{idx.sub}</div>}
 
               {/* Tooltip overlay */}
               {tooltip === idx.id && (
                 <div onClick={() => setTooltip(null)}
                   style={{ position:"fixed", inset:0, zIndex:3000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.80)", backdropFilter:"blur(4px)" }}>
                   <div onClick={e => e.stopPropagation()}
-                    style={{ background:"#0d1e34", border:`1px solid ${idx.explain.color}`, borderRadius:12, padding:"22px 24px", width:"min(380px,88vw)", boxShadow:`0 0 40px ${idx.explain.color}22` }}>
+                    style={{ background:"#0d1e34", border:`1px solid ${idx.explain.color}`, borderRadius:12, padding:"20px 22px", width:"min(360px,86vw)", boxShadow:`0 0 40px ${idx.explain.color}22` }}>
                     <div style={{ fontSize:16, fontWeight:700, color:idx.explain.color, marginBottom:10, fontFamily:"'Bebas Neue'", letterSpacing:"0.06em" }}>{idx.explain.title}</div>
-                    <p style={{ fontSize:13, color:"#b0c8e0", lineHeight:1.8 }}>{idx.explain.text}</p>
+                    <p style={{ fontSize:12, color:"#b0c8e0", lineHeight:1.8 }}>{idx.explain.text}</p>
                     {idx.id === "nbm" && (
-                      <div style={{ marginTop:12, padding:"10px 14px", background:`rgba(79,255,176,0.06)`, border:"1px solid rgba(79,255,176,0.2)", borderRadius:8 }}>
+                      <div style={{ marginTop:12, padding:"10px 14px", background:"rgba(79,255,176,0.06)", border:"1px solid rgba(79,255,176,0.2)", borderRadius:8 }}>
                         <div style={{ fontSize:9, color:"#4fffb0", fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em", marginBottom:4 }}>FORMULE</div>
-                        <div style={{ fontSize:11, color:"#88b8d0", fontFamily:"'DM Mono',monospace" }}>($100 x (1 - taux effectif)) / prix Big Mac</div>
+                        <div style={{ fontSize:11, color:"#88b8d0", fontFamily:"'DM Mono',monospace" }}>($100 × (1 - taux effectif)) ÷ prix Big Mac</div>
                       </div>
                     )}
                     <button onClick={() => setTooltip(null)}
-                      style={{ marginTop:14, background:`rgba(79,255,176,0.08)`, border:`1px solid ${idx.explain.color}`, borderRadius:7, color:idx.explain.color, padding:"7px 16px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", width:"100%" }}>
+                      style={{ marginTop:14, background:"rgba(79,255,176,0.08)", border:`1px solid ${idx.explain.color}`, borderRadius:7, color:idx.explain.color, padding:"7px 16px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", width:"100%" }}>
                       OK
                     </button>
                   </div>
@@ -1403,7 +1405,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
   const [showIndices, setShowIndices] = React.useState(false);
   const hasFacts = !!(FUN_FACTS[countryKey] && FUN_FACTS[countryKey].length > 0);
   return (
-    <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
+    <div style={{ background:"linear-gradient(135deg,#080f1e,#0a1628)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16, flexWrap:"wrap", gap:8 }}>
         <div style={{ display:"flex", alignItems:"center", gap:10 }}>
           {flagEl}
@@ -1572,12 +1574,12 @@ function AboutSection({ t }) {
     <div id="about-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
       {/* About */}
       <div style={{ marginBottom:36 }}>
-        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutTitle}</h2>
+        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:10 }}>{t.aboutTitle}</h2>
         <p style={{ fontSize:14, color:"#9ab8d0", lineHeight:1.8, maxWidth:760 }}>{t.aboutText}</p>
       </div>
       {/* How it works */}
       <div style={{ marginBottom:36 }}>
-        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.howTitle}</h2>
+        <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:16 }}>{t.howTitle}</h2>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:14 }}>
           {t.howSteps.map((step,i) => (
             <div key={i} style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"16px 18px" }}>
@@ -1597,7 +1599,7 @@ function FAQSection({ t }) {
   const [open, setOpen] = React.useState(null);
   return (
     <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
-      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.faqTitle}</h2>
+      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:16 }}>{t.faqTitle}</h2>
       <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
         {t.faqs.map((faq, i) => (
           <div key={i} style={{ background:"#0d1a2e", border:`1px solid ${open===i?"#4fffb0":"#1e3050"}`, borderRadius:10, overflow:"hidden", transition:"border 0.2s" }}>
@@ -1622,7 +1624,7 @@ function FAQSection({ t }) {
 function TipsSection({ t }) {
   return (
     <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
-      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:16 }}>{t.tipsTitle}</h2>
+      <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:16 }}>{t.tipsTitle}</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:14 }}>
         {t.tips.map((tip, i) => (
           <div key={i} style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"18px" }}>
@@ -1642,11 +1644,11 @@ function PrivacySection({ t }) {
     <div id="privacy-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:20 }}>
         <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
-          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.privacyTitle}</h2>
+          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:10 }}>{t.privacyTitle}</h2>
           <p style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.8 }}>{t.privacyText}</p>
         </div>
         <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
-          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:10 }}>{t.aboutPageTitle}</h2>
+          <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:10 }}>{t.aboutPageTitle}</h2>
           <p style={{ fontSize:12, color:"#7a9ab8", lineHeight:1.8 }}>{t.aboutPageText}</p>
         </div>
       </div>
@@ -1685,7 +1687,7 @@ function ContactSection({ t }) {
   return (
     <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
       <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"24px 28px", maxWidth:560 }}>
-        <h2 id="contact-section" style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#c8dff0", marginBottom:8 }}>{t.contactTitle}</h2>
+        <h2 id="contact-section" style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:8 }}>{t.contactTitle}</h2>
         <p style={{ fontSize:13, color:"#7a9ab8", marginBottom:20, lineHeight:1.6 }}>{t.contactText}</p>
 
         {status === "success" ? (
@@ -1724,7 +1726,11 @@ function Footer({ t }) {
     <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
         <div>
-          <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>NetPay.tax</div>
+          <img
+              src="https://raw.githubusercontent.com/Fredwalt72/tax-calculator/main/public/Logo_netpaytax.png"
+              alt="NetPay.tax"
+              style={{ height:28, mixBlendMode:"screen", filter:"brightness(1.6) saturate(0.9)", marginBottom:4 }}
+            />
           <p style={{ fontSize:11, color:"#5a7a98", maxWidth:500 }}>{t.footerDisclaimer}</p>
         </div>
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
@@ -1831,12 +1837,14 @@ export default function App() {
         .row:hover{background:#0e1520 !important}
         .grow:hover{background:#0c1d2c !important}
         @keyframes fi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+        :root{--blue:#4a80d4;--green:#4fffb0;--green-logo:#4a9e50;}
+        .logo-blue{color:var(--blue)!important;}
         select{appearance:none;-webkit-appearance:none}
         select option{background:#0d1520}
       `}</style>
 
       {/* ── Header ── */}
-      <div style={{ background:"linear-gradient(180deg,#0d1520,#080b12)", borderBottom:"1px solid #131d2c", padding:"18px 22px 16px" }}>
+      <div style={{ background:"linear-gradient(135deg,#0a1428 0%,#0d1a2e 50%,#080b12 100%)", borderBottom:"1px solid #1e3a60", padding:"18px 22px 16px" }}>
         <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:5 }}>
