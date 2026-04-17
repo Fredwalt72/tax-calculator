@@ -1727,7 +1727,7 @@ function Footer({ t }) {
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
         <div>
           <img
-              src="https://raw.githubusercontent.com/Fredwalt72/tax-calculator/main/public/Logo_netpaytax.png"
+              src="https://raw.githubusercontent.com/Fredwalt72/tax-calculator/main/Logo_netpaytax.png"
               alt="NetPay.tax"
               style={{ height:28, mixBlendMode:"screen", filter:"brightness(1.6) saturate(0.9)", marginBottom:4 }}
             />
