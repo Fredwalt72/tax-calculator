@@ -916,21 +916,21 @@ function BigMacSection({ countryKey, isUSState, salaryUSD, calc, t }) {
   const bmPriceDisplay = bmPrice.toFixed(2);
 
   return (
-    <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40" }}>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+    <div style={{ marginTop:8, paddingTop:8, borderTop:"1px solid #1a2e40" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
 
         {/* Big Mac Index */}
-        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
-            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.bigMacLabel}</span>
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:8, padding:"8px 10px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:5 }}>
+            <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.06em" }}>{t.bigMacLabel}</span>
             <span onClick={() => setTooltip(tooltip==="bm" ? null : "bm")}
               style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
           </div>
-          <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#ffe066" }}>
+          <div style={{ fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#ffe066" }}>
             ${bmPriceDisplay}
             <span style={{ fontSize:9, color:"#5a7a98", marginLeft:4 }}>USD</span>
           </div>
-          <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPrice}</div>
+          <div style={{ fontSize:7, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:1 }}>{t.bigMacPrice}</div>
 
           {tooltip === "bm" && (
             <div onClick={() => setTooltip(null)}
@@ -949,19 +949,19 @@ function BigMacSection({ countryKey, isUSState, salaryUSD, calc, t }) {
         </div>
 
         {/* NetBigMac Index */}
-        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
-            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.netBigMacLabel}</span>
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:8, padding:"8px 10px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:5 }}>
+            <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.06em" }}>{t.netBigMacLabel}</span>
             <span onClick={() => setTooltip(tooltip==="nbm" ? null : "nbm")}
               style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
           </div>
           {netPer100 !== null ? (
             <>
-              <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#4fffb0" }}>
+              <div style={{ fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#4fffb0" }}>
                 {netPer100}
                 <span style={{ fontSize:11, marginLeft:4 }}>🍔</span>
               </div>
-              <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPer100}</div>
+              <div style={{ fontSize:7, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:1 }}>{t.bigMacPer100}</div>
             </>
           ) : (
             <div style={{ fontSize:12, color:"#3a5060", fontFamily:"'DM Mono',monospace" }}>—</div>
@@ -1063,22 +1063,25 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
   const [showFact, setShowFact] = React.useState(false);
   const hasFacts = !!(FUN_FACTS[countryKey] && FUN_FACTS[countryKey].length > 0);
   return (
-    <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
-      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16, flexWrap:"wrap", gap:8 }}>
-        <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+    <div style={{ background:"linear-gradient(135deg,#08131e,#0c1b2a)", border:"1px solid #4fffb0", borderRadius:"16px 16px 0 0", padding:"14px 16px 10px", animation:"fi 0.25s ease", boxShadow:"0 -4px 30px rgba(0,0,0,0.5)" }}>
+      {/* Drag handle */}
+      <div style={{ width:36, height:4, borderRadius:2, background:"#2a4060", margin:"0 auto 12px" }} />
+
+      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:10 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
           {flagEl}
           <div>
-            <div style={{ fontSize:15, fontWeight:600, color:"#fff" }}>{label}</div>
-            {subtitle && <div style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#4fffb0" }}>{subtitle}</div>}
+            <div style={{ fontSize:14, fontWeight:600, color:"#fff" }}>{label}</div>
+            {subtitle && <div style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#4fffb0" }}>{subtitle}</div>}
           </div>
         </div>
-        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0d1e32", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"3px 7px", letterSpacing:"0.1em" }}>{currCode}</span>
-          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#7898b8", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
+        <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0d1e32", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"2px 6px" }}>{currCode}</span>
+          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#7898b8", padding:"3px 9px", cursor:"pointer", fontSize:10 }}>✕</button>
         </div>
       </div>
 
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(95px,1fr))", gap:8, marginBottom:16 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(80px,1fr))", gap:6, marginBottom:10 }}>
         {[
           { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#7799cc" },
           ...(hasProv ? [
@@ -1090,26 +1093,26 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           ]),
           { label:t.net,       value:fmt(calc.netUSD),        color:"#4fffb0" },
         ].map(({ label:lbl, value, color }) => (
-          <div key={lbl} style={{ background:"#040709", borderRadius:7, padding:"11px 12px" }}>
-            <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em", marginBottom:4 }}>{lbl}</div>
-            <div style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:500, color }}>{value}</div>
+          <div key={lbl} style={{ background:"#040709", borderRadius:6, padding:"7px 9px" }}>
+            <div style={{ fontSize:7, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em", marginBottom:3 }}>{lbl}</div>
+            <div style={{ fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, color }}>{value}</div>
           </div>
         ))}
       </div>
 
-      <div>
-        <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
-          <span style={{ fontSize:11, fontFamily:"'DM Mono',monospace", color:"#ff9955" }}>{calc.effectiveRate.toFixed(1)}%</span>
+      <div style={{ marginBottom:8 }}>
+        <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
+          <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.effectiveRate}</span>
+          <span style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#ff9955", fontWeight:600 }}>{calc.effectiveRate.toFixed(1)}%</span>
         </div>
-        <div style={{ background:"#040709", borderRadius:3, height:6, overflow:"hidden" }}>
+        <div style={{ background:"#040709", borderRadius:3, height:5, overflow:"hidden" }}>
           <div style={{ height:"100%", borderRadius:3, width:`${Math.min(calc.effectiveRate,65)/65*100}%`, background:"linear-gradient(90deg,#4fffb0,#ff9955)", transition:"width 0.6s" }} />
         </div>
         {hasProv && (
-          <div style={{ display:"flex", gap:14, marginTop:7, flexWrap:"wrap" }}>
-            <span style={{ fontSize:10, color:"#7a4422", fontFamily:"'DM Mono',monospace" }}>{t.fedLabel} : {calc.fedRate.toFixed(1)}%</span>
-            <span style={{ fontSize:10, color:"#886622", fontFamily:"'DM Mono',monospace" }}>{t.provLabel} : {calc.provRate.toFixed(1)}%</span>
-            <span style={{ fontSize:10, color:"#994433", fontFamily:"'DM Mono',monospace", fontWeight:600 }}>{t.totalLabel} : {calc.effectiveRate.toFixed(1)}%</span>
+          <div style={{ display:"flex", gap:10, marginTop:5, flexWrap:"wrap" }}>
+            <span style={{ fontSize:9, color:"#7a4422", fontFamily:"'DM Mono',monospace" }}>{t.fedLabel} {calc.fedRate.toFixed(1)}%</span>
+            <span style={{ fontSize:9, color:"#886622", fontFamily:"'DM Mono',monospace" }}>{t.provLabel} {calc.provRate.toFixed(1)}%</span>
+            <span style={{ fontSize:9, color:"#994433", fontFamily:"'DM Mono',monospace", fontWeight:600 }}>{t.totalLabel} {calc.effectiveRate.toFixed(1)}%</span>
           </div>
         )}
       </div>
@@ -1117,7 +1120,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
       <BigMacSection countryKey={countryKey} isUSState={isUSState} salaryUSD={salaryUSD} calc={calc} t={t} />
 
       {/* Share + Fun Fact */}
-      <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", gap:10 }}>
+      <div style={{ marginTop:8, paddingTop:8, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", gap:8 }}>
         {/* Share buttons */}
         <ShareButtons
           msg={t.shareMsg(
@@ -1130,7 +1133,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
         />
         <button onClick={() => setShowFact(true)}
           disabled={!hasFacts}
-          style={{ background: hasFacts ? "rgba(79,255,176,0.08)" : "transparent", border:`1px solid ${hasFacts ? "#4fffb0" : "#1a2e40"}`, borderRadius:8, color: hasFacts ? "#4fffb0" : "#3a5060", padding:"9px 18px", cursor: hasFacts ? "pointer" : "default", fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
+          style={{ background: hasFacts ? "rgba(79,255,176,0.08)" : "transparent", border:`1px solid ${hasFacts ? "#4fffb0" : "#1a2e40"}`, borderRadius:8, color: hasFacts ? "#4fffb0" : "#3a5060", padding:"8px 14px", cursor: hasFacts ? "pointer" : "default", fontSize:11, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
           {t.funFactBtn}
         </button>
       </div>
@@ -1542,8 +1545,12 @@ export default function App() {
 
             {/* Detail panel */}
             {detail && (
-              <div style={{ position:"sticky", top:8, zIndex:100, marginBottom:18 }}>
-                <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} lang={lang} salaryUSD={salaryUSD} />
+              <div style={{ position:"fixed", inset:0, zIndex:500, display:"flex", alignItems:"flex-end", justifyContent:"center", background:"rgba(0,0,0,0.7)", backdropFilter:"blur(3px)" }}
+                onClick={() => setSelected(null)}>
+                <div onClick={e => e.stopPropagation()}
+                  style={{ width:"100%", maxWidth:680, maxHeight:"88vh", overflowY:"auto", borderRadius:"16px 16px 0 0" }}>
+                  <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} lang={lang} salaryUSD={salaryUSD} />
+                </div>
               </div>
             )}
 
