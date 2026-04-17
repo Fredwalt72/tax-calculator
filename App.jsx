@@ -47,6 +47,26 @@ const T = {
     shareLabel: "Share",
     shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
     shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Starbucks Index",
+    starbucksExplainTitle: "What is the Starbucks Index?",
+    starbucksExplain: "The price of a Starbucks Tall Latte in USD, used to compare the cost of everyday goods across countries. Like the Big Mac Index, it reveals differences in purchasing power and local price levels.",
+    rentLabel: "🏠 Rent Index",
+    rentExplainTitle: "What is the Rent Index?",
+    rentExplain: "The estimated monthly cost of a 1-bedroom apartment in the city center, in USD. Compared to your net monthly salary, it shows what percentage of your income goes to housing — a key indicator of quality of life.",
+    rentOfNet: (pct) => `${pct}% of net monthly salary`,
+    groceryLabel: "🛒 Grocery Index",
+    groceryExplainTitle: "What is the Grocery Index?",
+    groceryExplain: "The estimated monthly cost of a standard grocery basket for one person (including food staples, fresh produce, and basic household items), in USD. Based on Numbeo cost-of-living data.",
+    groceryOfNet: (pct) => `${pct}% of net monthly salary`,
+    perMonth: "/ month",
+    workHoursLabel: "⏰ Work Hours Index",
+    workHoursExplainTitle: "What is the Work Hours Index?",
+    workHoursExplain: "The average number of hours worked per week in this country, based on OECD and ILO data. Combined with your net salary, it reveals your effective hourly pay — a better measure of work-life balance than salary alone.",
+    workHoursPerWeek: "hrs / week avg",
+    workHoursPerHour: (val) => `≈ $${val} net / hour`,
+    indicesBtn: "📊 Indices — incl. NetBigMac",
+    indicesTitle: "Indices",
+    indicesClose: "✕ Close",
     funFactBtn: "🎲 Amusing Facts",
     funFactTitle: "Amusing Facts",
     funFactClose: "✕ Close",
@@ -94,6 +114,26 @@ const T = {
     shareLabel: "Share",
     shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
     shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Starbucks Index",
+    starbucksExplainTitle: "What is the Starbucks Index?",
+    starbucksExplain: "The price of a Starbucks Tall Latte in USD, used to compare the cost of everyday goods across countries. Like the Big Mac Index, it reveals differences in purchasing power and local price levels.",
+    rentLabel: "🏠 Rent Index",
+    rentExplainTitle: "What is the Rent Index?",
+    rentExplain: "The estimated monthly cost of a 1-bedroom apartment in the city center, in USD. Compared to your net monthly salary, it shows what percentage of your income goes to housing — a key indicator of quality of life.",
+    rentOfNet: (pct) => `${pct}% of net monthly salary`,
+    groceryLabel: "🛒 Grocery Index",
+    groceryExplainTitle: "What is the Grocery Index?",
+    groceryExplain: "The estimated monthly cost of a standard grocery basket for one person (including food staples, fresh produce, and basic household items), in USD. Based on Numbeo cost-of-living data.",
+    groceryOfNet: (pct) => `${pct}% of net monthly salary`,
+    perMonth: "/ month",
+    workHoursLabel: "⏰ Work Hours Index",
+    workHoursExplainTitle: "What is the Work Hours Index?",
+    workHoursExplain: "The average number of hours worked per week in this country, based on OECD and ILO data. Combined with your net salary, it reveals your effective hourly pay — a better measure of work-life balance than salary alone.",
+    workHoursPerWeek: "hrs / week avg",
+    workHoursPerHour: (val) => `≈ $${val} net / hour`,
+    indicesBtn: "📊 Indices — incl. NetBigMac",
+    indicesTitle: "Indices",
+    indicesClose: "✕ Close",
     funFactBtn: "🎲 Amusing Facts",
     funFactTitle: "Amusing Facts",
     funFactClose: "✕ Close",
@@ -162,6 +202,26 @@ const T = {
     shareLabel: "Partager",
     shareMsg: (country, net, curr, score) => `Au/En ${country}, je garde ${net} ${curr} apres impot — Score NetBigMac : ${score} 🍔\nCalcule le tien : https://netpay.tax`,
     shareMsgSite: "Calculateur d'impot gratuit — comparez votre salaire net dans 47+ pays, toutes les provinces canadiennes et etats americains 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Indice Starbucks",
+    starbucksExplainTitle: "Qu'est-ce que l'Indice Starbucks ?",
+    starbucksExplain: "Le prix d'un Starbucks Tall Latte en USD, utilisé pour comparer le coût des biens courants entre pays. Comme l'Indice Big Mac, il révèle les différences de pouvoir d'achat et de niveaux de prix locaux.",
+    rentLabel: "🏠 Indice Loyer",
+    rentExplainTitle: "Qu'est-ce que l'Indice Loyer ?",
+    rentExplain: "Le coût mensuel estimé d'un appartement d'une chambre en centre-ville, en USD. Comparé à votre salaire net mensuel, il montre quel pourcentage de vos revenus va au logement — un indicateur clé de qualité de vie.",
+    rentOfNet: (pct) => `${pct}% du salaire net mensuel`,
+    groceryLabel: "🛒 Indice Épicerie",
+    groceryExplainTitle: "Qu'est-ce que l'Indice Épicerie ?",
+    groceryExplain: "Le coût mensuel estimé d'un panier d'épicerie standard pour une personne (incluant les aliments de base, les produits frais et les articles ménagers de base), en USD. Basé sur les données de coût de la vie de Numbeo.",
+    groceryOfNet: (pct) => `${pct}% du salaire net mensuel`,
+    perMonth: "/ mois",
+    workHoursLabel: "⏰ Indice Heures de Travail",
+    workHoursExplainTitle: "Qu'est-ce que l'Indice Heures de Travail ?",
+    workHoursExplain: "Le nombre moyen d'heures travaillées par semaine dans ce pays, selon les données de l'OCDE et de l'OIT. Combiné à votre salaire net, il révèle votre salaire horaire effectif — une meilleure mesure de l'équilibre travail-vie que le salaire seul.",
+    workHoursPerWeek: "h / semaine moy.",
+    workHoursPerHour: (val) => `≈ ${val} $ net / heure`,
+    indicesBtn: "📊 Indices — dont le NetBigMac",
+    indicesTitle: "Indices",
+    indicesClose: "✕ Fermer",
     funFactBtn: "🎲 Faits amusants",
     funFactTitle: "Faits amusants",
     funFactClose: "✕ Fermer",
@@ -209,6 +269,26 @@ const T = {
     shareLabel: "Partager",
     shareMsg: (country, net, curr, score) => `Au/En ${country}, je garde ${net} ${curr} apres impot — Score NetBigMac : ${score} 🍔\nCalcule le tien : https://netpay.tax`,
     shareMsgSite: "Calculateur d'impot gratuit — comparez votre salaire net dans 47+ pays, toutes les provinces canadiennes et etats americains 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Indice Starbucks",
+    starbucksExplainTitle: "Qu'est-ce que l'Indice Starbucks ?",
+    starbucksExplain: "Le prix d'un Starbucks Tall Latte en USD, utilisé pour comparer le coût des biens courants entre pays. Comme l'Indice Big Mac, il révèle les différences de pouvoir d'achat et de niveaux de prix locaux.",
+    rentLabel: "🏠 Indice Loyer",
+    rentExplainTitle: "Qu'est-ce que l'Indice Loyer ?",
+    rentExplain: "Le coût mensuel estimé d'un appartement d'une chambre en centre-ville, en USD. Comparé à votre salaire net mensuel, il montre quel pourcentage de vos revenus va au logement — un indicateur clé de qualité de vie.",
+    rentOfNet: (pct) => `${pct}% du salaire net mensuel`,
+    groceryLabel: "🛒 Indice Épicerie",
+    groceryExplainTitle: "Qu'est-ce que l'Indice Épicerie ?",
+    groceryExplain: "Le coût mensuel estimé d'un panier d'épicerie standard pour une personne (incluant les aliments de base, les produits frais et les articles ménagers de base), en USD. Basé sur les données de coût de la vie de Numbeo.",
+    groceryOfNet: (pct) => `${pct}% du salaire net mensuel`,
+    perMonth: "/ mois",
+    workHoursLabel: "⏰ Indice Heures de Travail",
+    workHoursExplainTitle: "Qu'est-ce que l'Indice Heures de Travail ?",
+    workHoursExplain: "Le nombre moyen d'heures travaillées par semaine dans ce pays, selon les données de l'OCDE et de l'OIT. Combiné à votre salaire net, il révèle votre salaire horaire effectif — une meilleure mesure de l'équilibre travail-vie que le salaire seul.",
+    workHoursPerWeek: "h / semaine moy.",
+    workHoursPerHour: (val) => `≈ ${val} $ net / heure`,
+    indicesBtn: "📊 Indices — dont le NetBigMac",
+    indicesTitle: "Indices",
+    indicesClose: "✕ Fermer",
     funFactBtn: "🎲 Faits amusants",
     funFactTitle: "Faits amusants",
     funFactClose: "✕ Fermer",
@@ -277,6 +357,26 @@ const T = {
     shareLabel: "Compartir",
     shareMsg: (country, net, curr, score) => `En ${country}, conservo ${net} ${curr} despues de impuestos — Puntuacion NetBigMac: ${score} 🍔\nCalcula el tuyo: https://netpay.tax`,
     shareMsgSite: "Calculadora de impuestos gratuita — compara tu salario neto en 47+ paises, todas las provincias canadienses y estados de EE.UU. 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Índice Starbucks",
+    starbucksExplainTitle: "¿Qué es el Índice Starbucks?",
+    starbucksExplain: "El precio de un Starbucks Tall Latte en USD, usado para comparar el coste de los bienes cotidianos entre países. Como el Índice Big Mac, revela diferencias en el poder adquisitivo y los niveles de precios locales.",
+    rentLabel: "🏠 Índice Alquiler",
+    rentExplainTitle: "¿Qué es el Índice Alquiler?",
+    rentExplain: "El coste mensual estimado de un apartamento de 1 habitación en el centro de la ciudad, en USD. Comparado con tu salario neto mensual, muestra qué porcentaje de tus ingresos va a vivienda.",
+    rentOfNet: (pct) => `${pct}% del salario neto mensual`,
+    groceryLabel: "🛒 Índice Cesta Básica",
+    groceryExplainTitle: "¿Qué es el Índice Cesta Básica?",
+    groceryExplain: "El coste mensual estimado de una cesta de la compra estándar para una persona (alimentos básicos, productos frescos y artículos del hogar), en USD. Basado en datos de coste de vida de Numbeo.",
+    groceryOfNet: (pct) => `${pct}% del salario neto mensual`,
+    perMonth: "/ mes",
+    workHoursLabel: "⏰ Índice Horas de Trabajo",
+    workHoursExplainTitle: "¿Qué es el Índice de Horas de Trabajo?",
+    workHoursExplain: "El número medio de horas trabajadas por semana en este país, según datos de la OCDE y la OIT. Combinado con tu salario neto, revela tu pago efectivo por hora, una mejor medida del equilibrio trabajo-vida que el salario solo.",
+    workHoursPerWeek: "h / semana prom.",
+    workHoursPerHour: (val) => `≈ $${val} neto / hora`,
+    indicesBtn: "📊 Índices — incl. NetBigMac",
+    indicesTitle: "Índices",
+    indicesClose: "✕ Cerrar",
     funFactBtn: "🎲 Datos curiosos",
     funFactTitle: "Datos curiosos",
     funFactClose: "✕ Cerrar",
@@ -324,6 +424,26 @@ const T = {
     shareLabel: "Compartir",
     shareMsg: (country, net, curr, score) => `En ${country}, conservo ${net} ${curr} despues de impuestos — Puntuacion NetBigMac: ${score} 🍔\nCalcula el tuyo: https://netpay.tax`,
     shareMsgSite: "Calculadora de impuestos gratuita — compara tu salario neto en 47+ paises, todas las provincias canadienses y estados de EE.UU. 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Índice Starbucks",
+    starbucksExplainTitle: "¿Qué es el Índice Starbucks?",
+    starbucksExplain: "El precio de un Starbucks Tall Latte en USD, usado para comparar el coste de los bienes cotidianos entre países. Como el Índice Big Mac, revela diferencias en el poder adquisitivo y los niveles de precios locales.",
+    rentLabel: "🏠 Índice Alquiler",
+    rentExplainTitle: "¿Qué es el Índice Alquiler?",
+    rentExplain: "El coste mensual estimado de un apartamento de 1 habitación en el centro de la ciudad, en USD. Comparado con tu salario neto mensual, muestra qué porcentaje de tus ingresos va a vivienda.",
+    rentOfNet: (pct) => `${pct}% del salario neto mensual`,
+    groceryLabel: "🛒 Índice Cesta Básica",
+    groceryExplainTitle: "¿Qué es el Índice Cesta Básica?",
+    groceryExplain: "El coste mensual estimado de una cesta de la compra estándar para una persona (alimentos básicos, productos frescos y artículos del hogar), en USD. Basado en datos de coste de vida de Numbeo.",
+    groceryOfNet: (pct) => `${pct}% del salario neto mensual`,
+    perMonth: "/ mes",
+    workHoursLabel: "⏰ Índice Horas de Trabajo",
+    workHoursExplainTitle: "¿Qué es el Índice de Horas de Trabajo?",
+    workHoursExplain: "El número medio de horas trabajadas por semana en este país, según datos de la OCDE y la OIT. Combinado con tu salario neto, revela tu pago efectivo por hora, una mejor medida del equilibrio trabajo-vida que el salario solo.",
+    workHoursPerWeek: "h / semana prom.",
+    workHoursPerHour: (val) => `≈ $${val} neto / hora`,
+    indicesBtn: "📊 Índices — incl. NetBigMac",
+    indicesTitle: "Índices",
+    indicesClose: "✕ Cerrar",
     funFactBtn: "🎲 Datos curiosos",
     funFactTitle: "Datos curiosos",
     funFactClose: "✕ Cerrar",
@@ -758,6 +878,80 @@ function getBigMacPrice(countryKey) {
   return BIGMAC_USD[countryKey] || US_STATE_BIGMAC;
 }
 
+const STARBUCKS_USD = {
+  "United States":4.65,"Canada":5.20,"England & Wales":5.10,"Scotland":5.10,
+  "France":5.60,"Germany":5.45,"Switzerland":7.80,"Sweden":5.90,"Norway":6.80,
+  "Denmark":6.50,"Netherlands":5.50,"Spain":4.40,"Italy":4.20,"Portugal":4.00,
+  "Ireland":5.30,"Belgium":5.40,"Austria":5.50,"Finland":5.80,"Greece":4.50,
+  "Poland":3.80,"Czech Republic":3.90,"Hungary":3.50,"Romania":3.20,
+  "Australia":4.80,"New Zealand":4.60,"Japan":4.50,"South Korea":5.20,
+  "China":4.30,"India":3.20,"Hong Kong":5.60,"Singapore":5.50,
+  "Malaysia":3.40,"Thailand":3.60,"Indonesia":3.10,"Vietnam":3.00,
+  "Philippines":3.20,"UAE":6.00,"Saudi Arabia":5.80,"Qatar":5.90,
+  "Israel":5.40,"Turkey":3.50,"Egypt":2.80,"Nigeria":3.00,"Kenya":2.90,
+  "South Africa":3.20,"Russia":3.50,"Brazil":3.80,"Mexico":4.20,
+  "Argentina":3.00,"Chile":3.90,"Colombia":3.20,"Morocco":3.50,
+  "Monaco":8.00,"Luxembourg":5.60,"Iceland":7.20,"Andorra":4.50,
+  "Panama":4.50,"Costa Rica":4.00,"Estonia":4.20,
+};
+function getStarbucksPrice(key) { return STARBUCKS_USD[key] || 4.65; }
+
+const RENT_USD = {
+  "United States":1800,"Canada":1650,"England & Wales":2200,"Scotland":1400,
+  "France":1100,"Germany":1200,"Switzerland":2400,"Sweden":1300,"Norway":1600,
+  "Denmark":1500,"Netherlands":1600,"Spain":950,"Italy":900,"Portugal":850,
+  "Ireland":1900,"Belgium":1000,"Austria":1100,"Finland":1050,"Greece":700,
+  "Poland":700,"Czech Republic":750,"Hungary":650,"Romania":500,
+  "Australia":1550,"New Zealand":1400,"Japan":900,"South Korea":700,
+  "China":600,"India":350,"Hong Kong":2200,"Singapore":2100,
+  "Malaysia":450,"Thailand":500,"Indonesia":350,"Vietnam":400,
+  "Philippines":380,"UAE":1800,"Saudi Arabia":1400,"Qatar":1600,
+  "Israel":1600,"Turkey":400,"Egypt":200,"Nigeria":250,"Kenya":280,
+  "South Africa":450,"Russia":450,"Brazil":500,"Mexico":500,
+  "Argentina":300,"Chile":600,"Colombia":400,"Morocco":350,
+  "Monaco":5000,"Luxembourg":1800,"Iceland":1400,"Andorra":900,
+  "Panama":700,"Costa Rica":600,"Estonia":700,
+};
+function getRent(key) { return RENT_USD[key] || 800; }
+
+const GROCERY_USD = {
+  "United States":400,"Canada":420,"England & Wales":380,"Scotland":360,
+  "France":350,"Germany":330,"Switzerland":550,"Sweden":380,"Norway":420,
+  "Denmark":400,"Netherlands":360,"Spain":280,"Italy":270,"Portugal":250,
+  "Ireland":360,"Belgium":330,"Austria":340,"Finland":370,"Greece":260,
+  "Poland":220,"Czech Republic":230,"Hungary":210,"Romania":180,
+  "Australia":380,"New Zealand":360,"Japan":320,"South Korea":300,
+  "China":200,"India":120,"Hong Kong":380,"Singapore":360,
+  "Malaysia":180,"Thailand":160,"Indonesia":140,"Vietnam":130,
+  "Philippines":150,"UAE":350,"Saudi Arabia":320,"Qatar":340,
+  "Israel":400,"Turkey":160,"Egypt":100,"Nigeria":120,"Kenya":110,
+  "South Africa":170,"Russia":180,"Brazil":200,"Mexico":180,
+  "Argentina":150,"Chile":200,"Colombia":160,"Morocco":140,
+  "Monaco":700,"Luxembourg":380,"Iceland":420,"Andorra":300,
+  "Panama":250,"Costa Rica":220,"Estonia":270,
+};
+function getGrocery(key) { return GROCERY_USD[key] || 300; }
+
+// ── Average weekly work hours ─────────────────────────────────────────────
+const WORKHOURS = {
+  "United States":38.7,"Canada":36.6,"England & Wales":36.4,"Scotland":36.4,
+  "France":35.6,"Germany":34.2,"Switzerland":35.9,"Sweden":30.5,"Norway":27.3,
+  "Denmark":32.4,"Netherlands":30.3,"Spain":37.7,"Italy":36.0,"Portugal":39.2,
+  "Ireland":35.5,"Belgium":36.2,"Austria":37.0,"Finland":37.4,"Greece":41.5,
+  "Poland":40.4,"Czech Republic":40.0,"Hungary":39.9,"Romania":40.1,
+  "Australia":32.4,"New Zealand":34.0,"Japan":33.5,"South Korea":38.3,
+  "China":46.1,"India":47.6,"Hong Kong":44.4,"Singapore":45.6,
+  "Malaysia":46.0,"Thailand":46.8,"Indonesia":40.0,"Vietnam":45.5,
+  "Philippines":42.8,"UAE":43.2,"Saudi Arabia":40.6,"Qatar":44.0,
+  "Israel":36.6,"Turkey":45.5,"Egypt":43.0,"Nigeria":40.0,"Kenya":46.0,
+  "South Africa":42.6,"Russia":37.5,"Brazil":39.7,"Mexico":45.1,
+  "Argentina":38.4,"Chile":38.0,"Colombia":48.0,"Morocco":44.0,
+  "Monaco":35.0,"Luxembourg":37.0,"Iceland":40.4,"Andorra":38.0,
+  "Panama":42.0,"Costa Rica":44.0,"Estonia":39.6,
+};
+function getWorkHours(key) { return WORKHOURS[key] || 40; }
+
+
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 function applyBrackets(income, brackets) {
@@ -916,21 +1110,21 @@ function BigMacSection({ countryKey, isUSState, salaryUSD, calc, t }) {
   const bmPriceDisplay = bmPrice.toFixed(2);
 
   return (
-    <div style={{ marginTop:8, paddingTop:8, borderTop:"1px solid #1a2e40" }}>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
+    <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
 
         {/* Big Mac Index */}
-        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:8, padding:"8px 10px", position:"relative" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:5 }}>
-            <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.06em" }}>{t.bigMacLabel}</span>
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.bigMacLabel}</span>
             <span onClick={() => setTooltip(tooltip==="bm" ? null : "bm")}
               style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
           </div>
-          <div style={{ fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#ffe066" }}>
+          <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#ffe066" }}>
             ${bmPriceDisplay}
             <span style={{ fontSize:9, color:"#5a7a98", marginLeft:4 }}>USD</span>
           </div>
-          <div style={{ fontSize:7, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:1 }}>{t.bigMacPrice}</div>
+          <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPrice}</div>
 
           {tooltip === "bm" && (
             <div onClick={() => setTooltip(null)}
@@ -949,19 +1143,19 @@ function BigMacSection({ countryKey, isUSState, salaryUSD, calc, t }) {
         </div>
 
         {/* NetBigMac Index */}
-        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:8, padding:"8px 10px", position:"relative" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:5 }}>
-            <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.06em" }}>{t.netBigMacLabel}</span>
+        <div style={{ background:"#040e18", border:"1px solid #1a2e40", borderRadius:9, padding:"12px 14px", position:"relative" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:5, marginBottom:8 }}>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.netBigMacLabel}</span>
             <span onClick={() => setTooltip(tooltip==="nbm" ? null : "nbm")}
               style={{ width:14, height:14, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
           </div>
           {netPer100 !== null ? (
             <>
-              <div style={{ fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#4fffb0" }}>
+              <div style={{ fontSize:18, fontFamily:"'DM Mono',monospace", fontWeight:600, color:"#4fffb0" }}>
                 {netPer100}
                 <span style={{ fontSize:11, marginLeft:4 }}>🍔</span>
               </div>
-              <div style={{ fontSize:7, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:1 }}>{t.bigMacPer100}</div>
+              <div style={{ fontSize:8, color:"#5a7a98", fontFamily:"'DM Mono',monospace", marginTop:2 }}>{t.bigMacPer100}</div>
             </>
           ) : (
             <div style={{ fontSize:12, color:"#3a5060", fontFamily:"'DM Mono',monospace" }}>—</div>
@@ -1058,30 +1252,173 @@ function ShareButtons({ msg, t, compact = false }) {
   );
 }
 
+
+// ── Indices Modal ─────────────────────────────────────────────────────────
+function IndicesModal({ countryKey, isUSState, salaryUSD, calc, t, onClose }) {
+  const [tooltip, setTooltip] = React.useState(null);
+
+  const bmPrice   = isUSState ? US_STATE_BIGMAC : getBigMacPrice(countryKey);
+  const netPer100 = salaryUSD > 0 && bmPrice > 0
+    ? Math.round((100 * (1 - calc.effectiveRate / 100)) / bmPrice)
+    : null;
+
+  const sbPrice   = getStarbucksPrice(countryKey);
+  const rent      = getRent(countryKey);
+  const grocery   = getGrocery(countryKey);
+  const netMonthly = salaryUSD > 0 ? (salaryUSD * (1 - calc.effectiveRate / 100)) / 12 : 0;
+  const rentPct   = netMonthly > 0 ? Math.round((rent / netMonthly) * 100) : null;
+  const grocPct   = netMonthly > 0 ? Math.round((grocery / netMonthly) * 100) : null;
+
+  const indices = [
+    {
+      id: "bm",
+      label: t.bigMacLabel,
+      value: `$${bmPrice.toFixed(2)}`,
+      unit: "USD",
+      sub: t.bigMacPrice,
+      color: "#ffe066",
+      explain: { title: t.bigMacExplainTitle, text: t.bigMacExplain, color: "#ffe066" },
+    },
+    {
+      id: "nbm",
+      label: t.netBigMacLabel,
+      value: netPer100 !== null ? `${netPer100} 🍔` : "—",
+      unit: "",
+      sub: t.bigMacPer100,
+      color: "#4fffb0",
+      explain: { title: t.netBigMacExplainTitle, text: t.netBigMacExplain, color: "#4fffb0" },
+    },
+    {
+      id: "sb",
+      label: t.starbucksLabel,
+      value: `$${sbPrice.toFixed(2)}`,
+      unit: "USD",
+      sub: t.perMonth,
+      color: "#00b386",
+      explain: { title: t.starbucksExplainTitle, text: t.starbucksExplain, color: "#00b386" },
+    },
+    {
+      id: "rent",
+      label: t.rentLabel,
+      value: `$${rent.toLocaleString()}`,
+      unit: "USD",
+      sub: rentPct !== null ? t.rentOfNet(rentPct) : "",
+      color: "#ff9955",
+      explain: { title: t.rentExplainTitle, text: t.rentExplain, color: "#ff9955" },
+    },
+    {
+      id: "grocery",
+      label: t.groceryLabel,
+      value: `$${grocery.toLocaleString()}`,
+      unit: "USD",
+      sub: grocPct !== null ? t.groceryOfNet(grocPct) : "",
+      color: "#88ccff",
+      explain: { title: t.groceryExplainTitle, text: t.groceryExplain, color: "#88ccff" },
+    },
+    {
+      id: "wh",
+      label: t.workHoursLabel,
+      value: `${getWorkHours(countryKey)}`,
+      unit: t.workHoursPerWeek,
+      sub: netMonthly > 0 ? t.workHoursPerHour(((netMonthly * 12) / (getWorkHours(countryKey) * 52)).toFixed(1)) : "",
+      color: "#cc88ff",
+      explain: { title: t.workHoursExplainTitle, text: t.workHoursExplain, color: "#cc88ff" },
+    },
+  ];
+
+  return (
+    <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
+      onClick={onClose}>
+      <div onClick={e => e.stopPropagation()}
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(440px,92vw)", maxHeight:"85vh", overflowY:"auto", padding:"24px 24px 20px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
+
+        {/* Header */}
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:18 }}>
+          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+            <span style={{ fontSize:24 }}>📊</span>
+            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.indicesTitle}</span>
+          </div>
+          <button onClick={onClose}
+            style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>
+            {t.indicesClose}
+          </button>
+        </div>
+
+        {/* Country label */}
+        <div style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#4fffb0", letterSpacing:"0.1em", marginBottom:14, opacity:0.7 }}>
+          {countryKey.toUpperCase()}
+        </div>
+
+        {/* Indices list */}
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+          {indices.map(idx => (
+            <div key={idx.id}
+              style={{ background:"rgba(79,255,176,0.03)", border:`1px solid ${idx.color}33`, borderRadius:10, padding:"14px 16px", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
+              <div style={{ flex:1 }}>
+                <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
+                  <span style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{idx.label}</span>
+                  <span onClick={() => setTooltip(tooltip === idx.id ? null : idx.id)}
+                    style={{ width:15, height:15, borderRadius:"50%", background:"#1a3050", border:"1px solid #2a4060", display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, color:"#6a9ab8", cursor:"pointer", fontWeight:700, flexShrink:0 }}>?</span>
+                </div>
+                <div style={{ fontSize:11, color:"#5a7a98", fontFamily:"'DM Mono',monospace" }}>{idx.sub}</div>
+              </div>
+              <div style={{ textAlign:"right" }}>
+                <div style={{ fontSize:22, fontFamily:"'DM Mono',monospace", fontWeight:700, color:idx.color }}>{idx.value}</div>
+                {idx.unit && <div style={{ fontSize:9, color:"#5a7a98", fontFamily:"'DM Mono',monospace" }}>{idx.unit}</div>}
+              </div>
+
+              {/* Tooltip overlay */}
+              {tooltip === idx.id && (
+                <div onClick={() => setTooltip(null)}
+                  style={{ position:"fixed", inset:0, zIndex:3000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.80)", backdropFilter:"blur(4px)" }}>
+                  <div onClick={e => e.stopPropagation()}
+                    style={{ background:"#0d1e34", border:`1px solid ${idx.explain.color}`, borderRadius:12, padding:"22px 24px", width:"min(380px,88vw)", boxShadow:`0 0 40px ${idx.explain.color}22` }}>
+                    <div style={{ fontSize:16, fontWeight:700, color:idx.explain.color, marginBottom:10, fontFamily:"'Bebas Neue'", letterSpacing:"0.06em" }}>{idx.explain.title}</div>
+                    <p style={{ fontSize:13, color:"#b0c8e0", lineHeight:1.8 }}>{idx.explain.text}</p>
+                    {idx.id === "nbm" && (
+                      <div style={{ marginTop:12, padding:"10px 14px", background:`rgba(79,255,176,0.06)`, border:"1px solid rgba(79,255,176,0.2)", borderRadius:8 }}>
+                        <div style={{ fontSize:9, color:"#4fffb0", fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em", marginBottom:4 }}>FORMULE</div>
+                        <div style={{ fontSize:11, color:"#88b8d0", fontFamily:"'DM Mono',monospace" }}>($100 x (1 - taux effectif)) / prix Big Mac</div>
+                      </div>
+                    )}
+                    <button onClick={() => setTooltip(null)}
+                      style={{ marginTop:14, background:`rgba(79,255,176,0.08)`, border:`1px solid ${idx.explain.color}`, borderRadius:7, color:idx.explain.color, padding:"7px 16px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace", width:"100%" }}>
+                      OK
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 // ── Detail Panel ──────────────────────────────────────────────────────────
 function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t, countryKey, lang, salaryUSD, isUSState }) {
-  const [showFact, setShowFact] = React.useState(false);
+  const [showFact, setShowFact]       = React.useState(false);
+  const [showIndices, setShowIndices] = React.useState(false);
   const hasFacts = !!(FUN_FACTS[countryKey] && FUN_FACTS[countryKey].length > 0);
   return (
-    <div style={{ background:"linear-gradient(135deg,#08131e,#0c1b2a)", border:"1px solid #4fffb0", borderRadius:"16px 16px 0 0", padding:"14px 16px 10px", animation:"fi 0.25s ease", boxShadow:"0 -4px 30px rgba(0,0,0,0.5)" }}>
-      {/* Drag handle */}
-      <div style={{ width:36, height:4, borderRadius:2, background:"#2a4060", margin:"0 auto 12px" }} />
-
-      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:10 }}>
-        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+    <div style={{ background:"linear-gradient(135deg,#08131e,#0b1a28)", border:"1px solid #4fffb0", borderRadius:13, padding:"20px 22px", marginBottom:0, animation:"fi 0.3s ease", boxShadow:"0 0 30px rgba(79,255,176,0.04)" }}>
+      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16, flexWrap:"wrap", gap:8 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:10 }}>
           {flagEl}
           <div>
-            <div style={{ fontSize:14, fontWeight:600, color:"#fff" }}>{label}</div>
-            {subtitle && <div style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#4fffb0" }}>{subtitle}</div>}
+            <div style={{ fontSize:15, fontWeight:600, color:"#fff" }}>{label}</div>
+            {subtitle && <div style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#4fffb0" }}>{subtitle}</div>}
           </div>
         </div>
-        <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0d1e32", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"2px 6px" }}>{currCode}</span>
-          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#7898b8", padding:"3px 9px", cursor:"pointer", fontSize:10 }}>✕</button>
+        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", background:"#0d1e32", color:"#4fffb0", border:"1px solid #1a3040", borderRadius:4, padding:"3px 7px", letterSpacing:"0.1em" }}>{currCode}</span>
+          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:6, color:"#7898b8", padding:"4px 10px", cursor:"pointer", fontSize:10 }}>✕</button>
         </div>
       </div>
 
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(80px,1fr))", gap:6, marginBottom:10 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(95px,1fr))", gap:8, marginBottom:16 }}>
         {[
           { label:t.gross,     value:fmt(calc.netUSD + calc.totalTaxUSD), color:"#7799cc" },
           ...(hasProv ? [
@@ -1093,35 +1430,33 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           ]),
           { label:t.net,       value:fmt(calc.netUSD),        color:"#4fffb0" },
         ].map(({ label:lbl, value, color }) => (
-          <div key={lbl} style={{ background:"#040709", borderRadius:6, padding:"7px 9px" }}>
-            <div style={{ fontSize:7, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em", marginBottom:3 }}>{lbl}</div>
-            <div style={{ fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, color }}>{value}</div>
+          <div key={lbl} style={{ background:"#040709", borderRadius:7, padding:"11px 12px" }}>
+            <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em", marginBottom:4 }}>{lbl}</div>
+            <div style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:500, color }}>{value}</div>
           </div>
         ))}
       </div>
 
-      <div style={{ marginBottom:8 }}>
-        <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
-          <span style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.08em" }}>{t.effectiveRate}</span>
-          <span style={{ fontSize:10, fontFamily:"'DM Mono',monospace", color:"#ff9955", fontWeight:600 }}>{calc.effectiveRate.toFixed(1)}%</span>
+      <div>
+        <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5 }}>
+          <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>{t.effectiveRate}</span>
+          <span style={{ fontSize:11, fontFamily:"'DM Mono',monospace", color:"#ff9955" }}>{calc.effectiveRate.toFixed(1)}%</span>
         </div>
-        <div style={{ background:"#040709", borderRadius:3, height:5, overflow:"hidden" }}>
+        <div style={{ background:"#040709", borderRadius:3, height:6, overflow:"hidden" }}>
           <div style={{ height:"100%", borderRadius:3, width:`${Math.min(calc.effectiveRate,65)/65*100}%`, background:"linear-gradient(90deg,#4fffb0,#ff9955)", transition:"width 0.6s" }} />
         </div>
         {hasProv && (
-          <div style={{ display:"flex", gap:10, marginTop:5, flexWrap:"wrap" }}>
-            <span style={{ fontSize:9, color:"#7a4422", fontFamily:"'DM Mono',monospace" }}>{t.fedLabel} {calc.fedRate.toFixed(1)}%</span>
-            <span style={{ fontSize:9, color:"#886622", fontFamily:"'DM Mono',monospace" }}>{t.provLabel} {calc.provRate.toFixed(1)}%</span>
-            <span style={{ fontSize:9, color:"#994433", fontFamily:"'DM Mono',monospace", fontWeight:600 }}>{t.totalLabel} {calc.effectiveRate.toFixed(1)}%</span>
+          <div style={{ display:"flex", gap:14, marginTop:7, flexWrap:"wrap" }}>
+            <span style={{ fontSize:10, color:"#7a4422", fontFamily:"'DM Mono',monospace" }}>{t.fedLabel} : {calc.fedRate.toFixed(1)}%</span>
+            <span style={{ fontSize:10, color:"#886622", fontFamily:"'DM Mono',monospace" }}>{t.provLabel} : {calc.provRate.toFixed(1)}%</span>
+            <span style={{ fontSize:10, color:"#994433", fontFamily:"'DM Mono',monospace", fontWeight:600 }}>{t.totalLabel} : {calc.effectiveRate.toFixed(1)}%</span>
           </div>
         )}
       </div>
 
-      <BigMacSection countryKey={countryKey} isUSState={isUSState} salaryUSD={salaryUSD} calc={calc} t={t} />
 
-      {/* Share + Fun Fact */}
-      <div style={{ marginTop:8, paddingTop:8, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", gap:8 }}>
-        {/* Share buttons */}
+      {/* Share + Buttons */}
+      <div style={{ marginTop:14, paddingTop:14, borderTop:"1px solid #1a2e40", display:"flex", flexDirection:"column", gap:8 }}>
         <ShareButtons
           msg={t.shareMsg(
             label,
@@ -1131,13 +1466,18 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
           )}
           t={t}
         />
+        <button onClick={() => setShowIndices(true)}
+          style={{ background:"rgba(255,224,102,0.07)", border:"1px solid #ffe066", borderRadius:8, color:"#ffe066", padding:"9px 18px", cursor:"pointer", fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
+          {t.indicesBtn}
+        </button>
         <button onClick={() => setShowFact(true)}
           disabled={!hasFacts}
-          style={{ background: hasFacts ? "rgba(79,255,176,0.08)" : "transparent", border:`1px solid ${hasFacts ? "#4fffb0" : "#1a2e40"}`, borderRadius:8, color: hasFacts ? "#4fffb0" : "#3a5060", padding:"8px 14px", cursor: hasFacts ? "pointer" : "default", fontSize:11, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
+          style={{ background: hasFacts ? "rgba(79,255,176,0.08)" : "transparent", border:`1px solid ${hasFacts ? "#4fffb0" : "#1a2e40"}`, borderRadius:8, color: hasFacts ? "#4fffb0" : "#3a5060", padding:"9px 18px", cursor: hasFacts ? "pointer" : "default", fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:600, letterSpacing:"0.06em", transition:"all 0.2s", width:"100%" }}>
           {t.funFactBtn}
         </button>
       </div>
 
+      {showIndices && <IndicesModal countryKey={countryKey} isUSState={isUSState} salaryUSD={salaryUSD} calc={calc} t={t} onClose={() => setShowIndices(false)} />}
       {showFact && <FunFactModal countryKey={countryKey} lang={lang} t={t} onClose={() => setShowFact(false)} />}
     </div>
   );
@@ -1486,6 +1826,8 @@ export default function App() {
         ::-webkit-scrollbar-track{background:#0d1117}
         ::-webkit-scrollbar-thumb{background:#2a3045;border-radius:2px}
         .inp:focus{outline:none;border-color:#4fffb0 !important;box-shadow:0 0 0 3px rgba(79,255,176,0.07)}
+        .salary-inp{border-color:#4fffb0 !important;transition:all 0.25s ease !important;}
+        .salary-inp:focus{box-shadow:0 0 0 4px rgba(79,255,176,0.15) !important;transform:scaleX(1.03);transform-origin:left;}
         .row:hover{background:#0e1520 !important}
         .grow:hover{background:#0c1d2c !important}
         @keyframes fi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
@@ -1519,7 +1861,7 @@ export default function App() {
           <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
             <div style={{ position:"relative", flex:"1 1 180px", maxWidth:340 }}>
               <span style={{ position:"absolute", left:13, top:"50%", transform:"translateY(-50%)", color:"#4fffb0", fontSize:15, fontFamily:"'DM Mono',monospace" }}>{currInfo.symbol}</span>
-              <input className="inp" type="text" value={salary}
+              <input className="inp salary-inp" type="text" value={salary}
                 onChange={e => { const r=e.target.value.replace(/[^0-9]/g,""); setSalary(r?Number(r).toLocaleString("fr-CA"):""); }}
                 placeholder={t.salaryPlaceholder}
                 style={{ width:"100%", padding:"12px 12px 12px 30px", background:"#0d1a28", border:"1.5px solid #192838", borderRadius:9, color:"#fff", fontSize:15, fontFamily:"'DM Mono',monospace", fontWeight:500, transition:"all 0.2s" }}
@@ -1545,12 +1887,8 @@ export default function App() {
 
             {/* Detail panel */}
             {detail && (
-              <div style={{ position:"fixed", inset:0, zIndex:500, display:"flex", alignItems:"flex-end", justifyContent:"center", background:"rgba(0,0,0,0.7)", backdropFilter:"blur(3px)" }}
-                onClick={() => setSelected(null)}>
-                <div onClick={e => e.stopPropagation()}
-                  style={{ width:"100%", maxWidth:680, maxHeight:"88vh", overflowY:"auto", borderRadius:"16px 16px 0 0" }}>
-                  <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} lang={lang} salaryUSD={salaryUSD} />
-                </div>
+              <div style={{ position:"sticky", top:8, zIndex:100, marginBottom:18 }}>
+                <DetailPanel {...detail} fmt={fmt} currCode={inputCurrency} onClose={() => setSelected(null)} t={t} lang={lang} salaryUSD={salaryUSD} />
               </div>
             )}
 
