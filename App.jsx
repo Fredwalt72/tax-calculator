@@ -46,7 +46,7 @@ const T = {
     bigMacPrice: "Local price",
     shareLabel: "Share",
     shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
-    shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    shareMsgSite: "Free income tax calculator — compare your net salary in 96+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
     starbucksLabel: "☕ Starbucks Index",
     starbucksExplainTitle: "What is the Starbucks Index?",
     starbucksExplain: "The price of a Starbucks Tall Latte in USD, used to compare the cost of everyday goods across countries. Like the Big Mac Index, it reveals differences in purchasing power and local price levels.",
@@ -74,7 +74,7 @@ const T = {
     funFactNone: "No fun fact available yet for this region.",
     // Editorial content
     aboutTitle: "About This Calculator",
-    aboutText: "Our free income tax calculator lets you instantly compare your net salary across 47+ countries, 13 Canadian provinces, and 51 US states. Whether you are planning an international move, negotiating a job offer abroad, or simply curious about how your country stacks up, this tool gives you a clear picture of how much you actually keep after federal and regional income taxes.",
+    aboutText: "Our free income tax calculator lets you instantly compare your net salary across 96+ countries, 13 Canadian provinces, and 51 US states. Whether you are planning an international move, negotiating a job offer abroad, or simply curious about how your country stacks up, this tool gives you a clear picture of how much you actually keep after federal and regional income taxes.",
     howTitle: "How It Works",
     howSteps: [
       { icon:"1️⃣", title:"Enter your salary", text:"Type your annual or monthly gross salary in the currency of your choice: USD, CAD, EUR, GBP or AUD." },
@@ -113,7 +113,7 @@ const T = {
     bigMacPrice: "Local price",
     shareLabel: "Share",
     shareMsg: (country, net, curr, score) => `In ${country}, I keep ${net} ${curr} after tax — NetBigMac score: ${score} 🍔\nCalculate yours: https://netpay.tax`,
-    shareMsgSite: "Free income tax calculator — compare your net salary in 47+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
+    shareMsgSite: "Free income tax calculator — compare your net salary in 96+ countries, all Canadian provinces and US states 🌍\nhttps://netpay.tax",
     starbucksLabel: "☕ Starbucks Index",
     starbucksExplainTitle: "What is the Starbucks Index?",
     starbucksExplain: "The price of a Starbucks Tall Latte in USD, used to compare the cost of everyday goods across countries. Like the Big Mac Index, it reveals differences in purchasing power and local price levels.",
@@ -229,7 +229,7 @@ const T = {
     funFactNone: "Aucun fait disponible pour cette région pour l'instant.",
     // Editorial content
     aboutTitle: "À propos de ce calculateur",
-    aboutText: "Notre calculateur d'impôt gratuit vous permet de comparer instantanément votre salaire net dans plus de 47 pays, 13 provinces canadiennes et 51 États américains. Que vous planifiez un déménagement à l'international, négociiez une offre d'emploi à l'étranger ou soyez simplement curieux de savoir comment votre pays se compare, cet outil vous donne une image claire de ce que vous conservez réellement après les impôts fédéraux et régionaux.",
+    aboutText: "Notre calculateur d'impôt gratuit vous permet de comparer instantanément votre salaire net dans plus de 96 pays, 13 provinces canadiennes et 51 États américains. Que vous planifiez un déménagement à l'international, négociiez une offre d'emploi à l'étranger ou soyez simplement curieux de savoir comment votre pays se compare, cet outil vous donne une image claire de ce que vous conservez réellement après les impôts fédéraux et régionaux.",
     howTitle: "Comment ça fonctionne",
     howSteps: [
       { icon:"1️⃣", title:"Entrez votre salaire", text:"Saisissez votre salaire brut annuel ou mensuel dans la devise de votre choix : USD, CAD, EUR, GBP ou AUD." },
@@ -384,7 +384,7 @@ const T = {
     funFactNone: "No hay datos disponibles para esta región por el momento.",
     // Editorial content
     aboutTitle: "Acerca de esta calculadora",
-    aboutText: "Nuestra calculadora de impuestos gratuita te permite comparar instantáneamente tu salario neto en más de 47 países, 13 provincias canadienses y 51 estados de EE.UU. Ya sea que estés planeando una mudanza internacional, negociando una oferta de trabajo en el extranjero o simplemente tengas curiosidad sobre cómo se compara tu país, esta herramienta te da una imagen clara de cuánto conservas realmente después de los impuestos federales y regionales.",
+    aboutText: "Nuestra calculadora de impuestos gratuita te permite comparar instantáneamente tu salario neto en más de 96 países, 13 provincias canadienses y 51 estados de EE.UU. Ya sea que estés planeando una mudanza internacional, negociando una oferta de trabajo en el extranjero o simplemente tengas curiosidad sobre cómo se compara tu país, esta herramienta te da una imagen clara de cuánto conservas realmente después de los impuestos federales y regionales.",
     howTitle: "Cómo funciona",
     howSteps: [
       { icon:"1️⃣", title:"Introduce tu salario", text:"Escribe tu salario bruto anual o mensual en la moneda de tu elección: USD, CAD, EUR, GBP o AUD." },
@@ -475,75 +475,75 @@ const CA_USD = 1.36;
 const CA_FEDERAL = [[0,57375,.15],[57375,114750,.205],[114750,158519,.26],[158519,220000,.29],[220000,Infinity,.33]];
 
 const PROVINCES_CA = [
-  { name:"Ontario",                   abbr:"ON", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Ontario.svg/320px-Flag_of_Ontario.svg.png",           brackets:[[0,51446,.0505],[51446,102894,.0915],[102894,150000,.1116],[150000,220000,.1216],[220000,Infinity,.1316]] },
-  { name:"Québec",                    abbr:"QC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/320px-Flag_of_Quebec.svg.png",            brackets:[[0,51780,.14],[51780,103545,.19],[103545,126000,.24],[126000,Infinity,.2575]] },
-  { name:"Colombie-Britannique",      abbr:"BC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Flag_of_British_Columbia.svg/320px-Flag_of_British_Columbia.svg.png", brackets:[[0,45654,.0506],[45654,91310,.077],[91310,104835,.105],[104835,127299,.1229],[127299,172602,.147],[172602,240716,.168],[240716,Infinity,.205]] },
-  { name:"Alberta",                   abbr:"AB", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Alberta.svg/320px-Flag_of_Alberta.svg.png",          brackets:[[0,148269,.10],[148269,177922,.12],[177922,237230,.13],[237230,355845,.14],[355845,Infinity,.15]] },
-  { name:"Saskatchewan",              abbr:"SK", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Flag_of_Saskatchewan.svg/320px-Flag_of_Saskatchewan.svg.png", brackets:[[0,49720,.105],[49720,142058,.125],[142058,Infinity,.145]] },
-  { name:"Manitoba",                  abbr:"MB", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Flag_of_Manitoba.svg/320px-Flag_of_Manitoba.svg.png",         brackets:[[0,36842,.108],[36842,79625,.1275],[79625,Infinity,.174]] },
-  { name:"Nouvelle-Écosse",           abbr:"NS", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Nova_Scotia.svg/320px-Flag_of_Nova_Scotia.svg.png",   brackets:[[0,29590,.0879],[29590,59180,.1495],[59180,93000,.1667],[93000,150000,.175],[150000,Infinity,.21]] },
-  { name:"Nouveau-Brunswick",         abbr:"NB", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Flag_of_New_Brunswick.svg/320px-Flag_of_New_Brunswick.svg.png",brackets:[[0,47715,.094],[47715,95431,.1482],[95431,176756,.1652],[176756,Infinity,.195]] },
-  { name:"Île-du-Prince-Édouard",     abbr:"PE", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Flag_of_Prince_Edward_Island.svg/320px-Flag_of_Prince_Edward_Island.svg.png", brackets:[[0,32656,.0965],[32656,64313,.1363],[64313,105000,.1665],[105000,140000,.18],[140000,Infinity,.1875]] },
-  { name:"Terre-Neuve-et-Labrador",   abbr:"NL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Newfoundland_and_Labrador.svg/320px-Flag_of_Newfoundland_and_Labrador.svg.png", brackets:[[0,43198,.087],[43198,86395,.145],[86395,154244,.158],[154244,215943,.178],[215943,275870,.198],[275870,551739,.208],[551739,Infinity,.213]] },
-  { name:"Territoires du Nord-Ouest", abbr:"NT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_the_Northwest_Territories.svg/320px-Flag_of_the_Northwest_Territories.svg.png", brackets:[[0,50597,.059],[50597,101198,.086],[101198,164525,.122],[164525,Infinity,.1405]] },
-  { name:"Yukon",                     abbr:"YT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_Yukon.svg/320px-Flag_of_Yukon.svg.png",              brackets:[[0,57375,.064],[57375,114750,.09],[114750,158519,.109],[158519,500000,.128],[500000,Infinity,.15]] },
-  { name:"Nunavut",                   abbr:"NU", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Flag_of_Nunavut.svg/320px-Flag_of_Nunavut.svg.png",           brackets:[[0,53268,.04],[53268,106537,.07],[106537,173205,.09],[173205,Infinity,.115]] },
+  { name:"Ontario",                   abbr:"ON", flagImg:"https://flagcdn.com/w40/ca-on.png",           brackets:[[0,51446,.0505],[51446,102894,.0915],[102894,150000,.1116],[150000,220000,.1216],[220000,Infinity,.1316]] },
+  { name:"Québec",                    abbr:"QC", flagImg:"https://flagcdn.com/w40/ca-qc.png",            brackets:[[0,51780,.14],[51780,103545,.19],[103545,126000,.24],[126000,Infinity,.2575]] },
+  { name:"Colombie-Britannique",      abbr:"BC", flagImg:"https://flagcdn.com/w40/ca-bc.png", brackets:[[0,45654,.0506],[45654,91310,.077],[91310,104835,.105],[104835,127299,.1229],[127299,172602,.147],[172602,240716,.168],[240716,Infinity,.205]] },
+  { name:"Alberta",                   abbr:"AB", flagImg:"https://flagcdn.com/w40/ca-ab.png",          brackets:[[0,148269,.10],[148269,177922,.12],[177922,237230,.13],[237230,355845,.14],[355845,Infinity,.15]] },
+  { name:"Saskatchewan",              abbr:"SK", flagImg:"https://flagcdn.com/w40/ca-sk.png", brackets:[[0,49720,.105],[49720,142058,.125],[142058,Infinity,.145]] },
+  { name:"Manitoba",                  abbr:"MB", flagImg:"https://flagcdn.com/w40/ca-mb.png",         brackets:[[0,36842,.108],[36842,79625,.1275],[79625,Infinity,.174]] },
+  { name:"Nouvelle-Écosse",           abbr:"NS", flagImg:"https://flagcdn.com/w40/ca-ns.png",   brackets:[[0,29590,.0879],[29590,59180,.1495],[59180,93000,.1667],[93000,150000,.175],[150000,Infinity,.21]] },
+  { name:"Nouveau-Brunswick",         abbr:"NB", flagImg:"https://flagcdn.com/w40/ca-nb.png",brackets:[[0,47715,.094],[47715,95431,.1482],[95431,176756,.1652],[176756,Infinity,.195]] },
+  { name:"Île-du-Prince-Édouard",     abbr:"PE", flagImg:"https://flagcdn.com/w40/ca-pe.png", brackets:[[0,32656,.0965],[32656,64313,.1363],[64313,105000,.1665],[105000,140000,.18],[140000,Infinity,.1875]] },
+  { name:"Terre-Neuve-et-Labrador",   abbr:"NL", flagImg:"https://flagcdn.com/w40/ca-nl.png", brackets:[[0,43198,.087],[43198,86395,.145],[86395,154244,.158],[154244,215943,.178],[215943,275870,.198],[275870,551739,.208],[551739,Infinity,.213]] },
+  { name:"Territoires du Nord-Ouest", abbr:"NT", flagImg:"https://flagcdn.com/w40/ca-nt.png", brackets:[[0,50597,.059],[50597,101198,.086],[101198,164525,.122],[164525,Infinity,.1405]] },
+  { name:"Yukon",                     abbr:"YT", flagImg:"https://flagcdn.com/w40/ca-yt.png",              brackets:[[0,57375,.064],[57375,114750,.09],[114750,158519,.109],[158519,500000,.128],[500000,Infinity,.15]] },
+  { name:"Nunavut",                   abbr:"NU", flagImg:"https://flagcdn.com/w40/ca-nu.png",           brackets:[[0,53268,.04],[53268,106537,.07],[106537,173205,.09],[173205,Infinity,.115]] },
 ];
 
 const US_FEDERAL = [[0,11600,.10],[11600,47150,.12],[47150,100525,.22],[100525,191950,.24],[191950,243725,.32],[243725,609350,.35],[609350,Infinity,.37]];
 
 const STATES_US = [
-  { name:"Alabama",        abbr:"AL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Alabama.svg/320px-Flag_of_Alabama.svg.png",        brackets:[[0,500,.02],[500,3000,.04],[3000,Infinity,.05]] },
-  { name:"Alaska",         abbr:"AK", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flag_of_Alaska.svg/320px-Flag_of_Alaska.svg.png",         brackets:[[0,Infinity,0]] },
-  { name:"Arizona",        abbr:"AZ", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arizona.svg/320px-Flag_of_Arizona.svg.png",        brackets:[[0,Infinity,.025]] },
-  { name:"Arkansas",       abbr:"AR", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Arkansas.svg/320px-Flag_of_Arkansas.svg.png",       brackets:[[0,4300,.02],[4300,8500,.04],[8500,Infinity,.044]] },
-  { name:"California",     abbr:"CA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/320px-Flag_of_California.svg.png",     brackets:[[0,10099,.01],[10099,23942,.02],[23942,37788,.04],[37788,52455,.06],[52455,66295,.08],[66295,338639,.093],[338639,406364,.103],[406364,677275,.113],[677275,Infinity,.123]] },
-  { name:"Colorado",       abbr:"CO", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Flag_of_Colorado.svg/320px-Flag_of_Colorado.svg.png",       brackets:[[0,Infinity,.044]] },
-  { name:"Connecticut",    abbr:"CT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Flag_of_Connecticut.svg/320px-Flag_of_Connecticut.svg.png",    brackets:[[0,10000,.03],[10000,50000,.05],[50000,100000,.055],[100000,200000,.06],[200000,250000,.065],[250000,500000,.069],[500000,Infinity,.0699]] },
-  { name:"Delaware",       abbr:"DE", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Flag_of_Delaware.svg/320px-Flag_of_Delaware.svg.png",       brackets:[[0,2000,0],[2000,5000,.022],[5000,10000,.039],[10000,20000,.048],[20000,25000,.052],[25000,60000,.0555],[60000,Infinity,.066]] },
-  { name:"Florida",        abbr:"FL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Florida.svg/320px-Flag_of_Florida.svg.png",        brackets:[[0,Infinity,0]] },
-  { name:"Georgia",        abbr:"GA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_the_State_of_Georgia.svg/320px-Flag_of_the_State_of_Georgia.svg.png", brackets:[[0,Infinity,.0549]] },
-  { name:"Hawaii",         abbr:"HI", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Flag_of_Hawaii.svg/320px-Flag_of_Hawaii.svg.png",         brackets:[[0,2400,.014],[2400,4800,.032],[4800,9600,.055],[9600,14400,.064],[14400,19200,.068],[19200,24000,.072],[24000,36000,.076],[36000,48000,.079],[48000,Infinity,.0825]] },
-  { name:"Idaho",          abbr:"ID", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Idaho.svg/320px-Flag_of_Idaho.svg.png",          brackets:[[0,Infinity,.058]] },
-  { name:"Illinois",       abbr:"IL", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_Illinois.svg/320px-Flag_of_Illinois.svg.png",       brackets:[[0,Infinity,.0495]] },
-  { name:"Indiana",        abbr:"IN", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Flag_of_Indiana.svg/320px-Flag_of_Indiana.svg.png",        brackets:[[0,Infinity,.0305]] },
-  { name:"Iowa",           abbr:"IA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Flag_of_Iowa.svg/320px-Flag_of_Iowa.svg.png",           brackets:[[0,6000,.044],[6000,30000,.0482],[30000,Infinity,.057]] },
-  { name:"Kansas",         abbr:"KS", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_Kansas.svg/320px-Flag_of_Kansas.svg.png",         brackets:[[0,15000,.031],[15000,30000,.0525],[30000,Infinity,.057]] },
-  { name:"Kentucky",       abbr:"KY", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Flag_of_Kentucky.svg/320px-Flag_of_Kentucky.svg.png",       brackets:[[0,Infinity,.04]] },
-  { name:"Louisiana",      abbr:"LA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flag_of_Louisiana.svg/320px-Flag_of_Louisiana.svg.png",      brackets:[[0,12500,.0185],[12500,50000,.035],[50000,Infinity,.0425]] },
-  { name:"Maine",          abbr:"ME", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Flag_of_Maine.svg/320px-Flag_of_Maine.svg.png",          brackets:[[0,24500,.058],[24500,58050,.0675],[58050,Infinity,.0715]] },
-  { name:"Maryland",       abbr:"MD", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_Maryland.svg/320px-Flag_of_Maryland.svg.png",       brackets:[[0,1000,.02],[1000,2000,.03],[2000,3000,.04],[3000,100000,.0475],[100000,125000,.05],[125000,150000,.0525],[150000,250000,.055],[250000,Infinity,.0575]] },
-  { name:"Massachusetts",  abbr:"MA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Flag_of_Massachusetts.svg/320px-Flag_of_Massachusetts.svg.png",  brackets:[[0,Infinity,.05]] },
-  { name:"Michigan",       abbr:"MI", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Flag_of_Michigan.svg/320px-Flag_of_Michigan.svg.png",       brackets:[[0,Infinity,.0405]] },
-  { name:"Minnesota",      abbr:"MN", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Minnesota.svg/320px-Flag_of_Minnesota.svg.png",      brackets:[[0,30070,.0535],[30070,98760,.068],[98760,183340,.0785],[183340,Infinity,.0985]] },
-  { name:"Mississippi",    abbr:"MS", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_Mississippi.svg/320px-Flag_of_Mississippi.svg.png",    brackets:[[0,10000,0],[10000,Infinity,.047]] },
-  { name:"Missouri",       abbr:"MO", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Missouri.svg/320px-Flag_of_Missouri.svg.png",       brackets:[[0,1207,0],[1207,Infinity,.048]] },
-  { name:"Montana",        abbr:"MT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_Montana.svg/320px-Flag_of_Montana.svg.png",        brackets:[[0,20500,.047],[20500,Infinity,.059]] },
-  { name:"Nebraska",       abbr:"NE", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Flag_of_Nebraska.svg/320px-Flag_of_Nebraska.svg.png",       brackets:[[0,3700,.0246],[3700,22170,.0351],[22170,35730,.0501],[35730,Infinity,.0584]] },
-  { name:"Nevada",         abbr:"NV", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Flag_of_Nevada.svg/320px-Flag_of_Nevada.svg.png",         brackets:[[0,Infinity,0]] },
-  { name:"New Hampshire",  abbr:"NH", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_New_Hampshire.svg/320px-Flag_of_New_Hampshire.svg.png",  brackets:[[0,Infinity,0]] },
-  { name:"New Jersey",     abbr:"NJ", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Flag_of_New_Jersey.svg/320px-Flag_of_New_Jersey.svg.png",     brackets:[[0,20000,.014],[20000,35000,.0175],[35000,40000,.035],[40000,75000,.05525],[75000,500000,.0637],[500000,1000000,.0897],[1000000,Infinity,.1075]] },
-  { name:"New Mexico",     abbr:"NM", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_New_Mexico.svg/320px-Flag_of_New_Mexico.svg.png",     brackets:[[0,5500,.017],[5500,11000,.032],[11000,16000,.047],[16000,210000,.049],[210000,Infinity,.059]] },
-  { name:"New York",       abbr:"NY", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/320px-Flag_of_New_York.svg.png",       brackets:[[0,8500,.04],[8500,11700,.045],[11700,13900,.0525],[13900,21400,.0585],[21400,80650,.0625],[80650,215400,.0685],[215400,1077550,.0965],[1077550,5000000,.103],[5000000,Infinity,.109]] },
-  { name:"North Carolina", abbr:"NC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Flag_of_North_Carolina.svg/320px-Flag_of_North_Carolina.svg.png", brackets:[[0,Infinity,.045]] },
-  { name:"North Dakota",   abbr:"ND", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Flag_of_North_Dakota.svg/320px-Flag_of_North_Dakota.svg.png",   brackets:[[0,44725,.011],[44725,Infinity,.0204]] },
-  { name:"Ohio",           abbr:"OH", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Ohio.svg/320px-Flag_of_Ohio.svg.png",           brackets:[[0,26050,0],[26050,46100,.02765],[46100,92150,.03226],[92150,115300,.03688],[115300,Infinity,.0399]] },
-  { name:"Oklahoma",       abbr:"OK", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Flag_of_Oklahoma.svg/320px-Flag_of_Oklahoma.svg.png",       brackets:[[0,1000,.0025],[1000,2500,.0075],[2500,3750,.0175],[3750,4900,.0275],[4900,7200,.0375],[7200,Infinity,.0475]] },
-  { name:"Oregon",         abbr:"OR", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Oregon.svg/320px-Flag_of_Oregon.svg.png",         brackets:[[0,18400,.0475],[18400,46200,.0675],[46200,250000,.0875],[250000,Infinity,.099]] },
-  { name:"Pennsylvania",   abbr:"PA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Pennsylvania.svg/320px-Flag_of_Pennsylvania.svg.png",   brackets:[[0,Infinity,.0307]] },
-  { name:"Rhode Island",   abbr:"RI", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Rhode_Island.svg/320px-Flag_of_Rhode_Island.svg.png",   brackets:[[0,77450,.0375],[77450,176050,.0475],[176050,Infinity,.0599]] },
-  { name:"South Carolina", abbr:"SC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_South_Carolina.svg/320px-Flag_of_South_Carolina.svg.png", brackets:[[0,3460,0],[3460,17330,.03],[17330,Infinity,.064]] },
-  { name:"South Dakota",   abbr:"SD", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_South_Dakota.svg/320px-Flag_of_South_Dakota.svg.png",   brackets:[[0,Infinity,0]] },
-  { name:"Tennessee",      abbr:"TN", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Tennessee.svg/320px-Flag_of_Tennessee.svg.png",      brackets:[[0,Infinity,0]] },
-  { name:"Texas",          abbr:"TX", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Texas.svg/320px-Flag_of_Texas.svg.png",          brackets:[[0,Infinity,0]] },
-  { name:"Utah",           abbr:"UT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Flag_of_Utah.svg/320px-Flag_of_Utah.svg.png",           brackets:[[0,Infinity,.0455]] },
-  { name:"Vermont",        abbr:"VT", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Vermont.svg/320px-Flag_of_Vermont.svg.png",        brackets:[[0,45400,.0335],[45400,110050,.066],[110050,229550,.076],[229550,Infinity,.0875]] },
-  { name:"Virginia",       abbr:"VA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Flag_of_Virginia.svg/320px-Flag_of_Virginia.svg.png",       brackets:[[0,3000,.02],[3000,5000,.03],[5000,17000,.05],[17000,Infinity,.0575]] },
-  { name:"Washington",     abbr:"WA", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Washington.svg/320px-Flag_of_Washington.svg.png",     brackets:[[0,Infinity,0]] },
-  { name:"West Virginia",  abbr:"WV", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_West_Virginia.svg/320px-Flag_of_West_Virginia.svg.png",  brackets:[[0,10000,.03],[10000,25000,.04],[25000,40000,.045],[40000,60000,.06],[60000,Infinity,.065]] },
-  { name:"Wisconsin",      abbr:"WI", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_Wisconsin.svg/320px-Flag_of_Wisconsin.svg.png",      brackets:[[0,13810,.0354],[13810,27630,.0465],[27630,304170,.053],[304170,Infinity,.0765]] },
-  { name:"Wyoming",        abbr:"WY", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/320px-Flag_of_Wyoming.svg.png",        brackets:[[0,Infinity,0]] },
-  { name:"Washington D.C.",abbr:"DC", flagImg:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_the_District_of_Columbia.svg/320px-Flag_of_the_District_of_Columbia.svg.png", brackets:[[0,10000,.04],[10000,40000,.06],[40000,60000,.065],[60000,250000,.085],[250000,500000,.0925],[500000,Infinity,.0975]] },
+  { name:"Alabama",        abbr:"AL", flagImg:"https://flagcdn.com/w40/us-al.png",        brackets:[[0,500,.02],[500,3000,.04],[3000,Infinity,.05]] },
+  { name:"Alaska",         abbr:"AK", flagImg:"https://flagcdn.com/w40/us-ak.png",         brackets:[[0,Infinity,0]] },
+  { name:"Arizona",        abbr:"AZ", flagImg:"https://flagcdn.com/w40/us-az.png",        brackets:[[0,Infinity,.025]] },
+  { name:"Arkansas",       abbr:"AR", flagImg:"https://flagcdn.com/w40/us-ar.png",       brackets:[[0,4300,.02],[4300,8500,.04],[8500,Infinity,.044]] },
+  { name:"California",     abbr:"CA", flagImg:"https://flagcdn.com/w40/us-ca.png",     brackets:[[0,10099,.01],[10099,23942,.02],[23942,37788,.04],[37788,52455,.06],[52455,66295,.08],[66295,338639,.093],[338639,406364,.103],[406364,677275,.113],[677275,Infinity,.123]] },
+  { name:"Colorado",       abbr:"CO", flagImg:"https://flagcdn.com/w40/us-co.png",       brackets:[[0,Infinity,.044]] },
+  { name:"Connecticut",    abbr:"CT", flagImg:"https://flagcdn.com/w40/us-ct.png",    brackets:[[0,10000,.03],[10000,50000,.05],[50000,100000,.055],[100000,200000,.06],[200000,250000,.065],[250000,500000,.069],[500000,Infinity,.0699]] },
+  { name:"Delaware",       abbr:"DE", flagImg:"https://flagcdn.com/w40/us-de.png",       brackets:[[0,2000,0],[2000,5000,.022],[5000,10000,.039],[10000,20000,.048],[20000,25000,.052],[25000,60000,.0555],[60000,Infinity,.066]] },
+  { name:"Florida",        abbr:"FL", flagImg:"https://flagcdn.com/w40/us-fl.png",        brackets:[[0,Infinity,0]] },
+  { name:"Georgia",        abbr:"GA", flagImg:"https://flagcdn.com/w40/us-ga.png", brackets:[[0,Infinity,.0549]] },
+  { name:"Hawaii",         abbr:"HI", flagImg:"https://flagcdn.com/w40/us-hi.png",         brackets:[[0,2400,.014],[2400,4800,.032],[4800,9600,.055],[9600,14400,.064],[14400,19200,.068],[19200,24000,.072],[24000,36000,.076],[36000,48000,.079],[48000,Infinity,.0825]] },
+  { name:"Idaho",          abbr:"ID", flagImg:"https://flagcdn.com/w40/us-id.png",          brackets:[[0,Infinity,.058]] },
+  { name:"Illinois",       abbr:"IL", flagImg:"https://flagcdn.com/w40/us-il.png",       brackets:[[0,Infinity,.0495]] },
+  { name:"Indiana",        abbr:"IN", flagImg:"https://flagcdn.com/w40/us-in.png",        brackets:[[0,Infinity,.0305]] },
+  { name:"Iowa",           abbr:"IA", flagImg:"https://flagcdn.com/w40/us-ia.png",           brackets:[[0,6000,.044],[6000,30000,.0482],[30000,Infinity,.057]] },
+  { name:"Kansas",         abbr:"KS", flagImg:"https://flagcdn.com/w40/us-ks.png",         brackets:[[0,15000,.031],[15000,30000,.0525],[30000,Infinity,.057]] },
+  { name:"Kentucky",       abbr:"KY", flagImg:"https://flagcdn.com/w40/us-ky.png",       brackets:[[0,Infinity,.04]] },
+  { name:"Louisiana",      abbr:"LA", flagImg:"https://flagcdn.com/w40/us-la.png",      brackets:[[0,12500,.0185],[12500,50000,.035],[50000,Infinity,.0425]] },
+  { name:"Maine",          abbr:"ME", flagImg:"https://flagcdn.com/w40/us-me.png",          brackets:[[0,24500,.058],[24500,58050,.0675],[58050,Infinity,.0715]] },
+  { name:"Maryland",       abbr:"MD", flagImg:"https://flagcdn.com/w40/us-md.png",       brackets:[[0,1000,.02],[1000,2000,.03],[2000,3000,.04],[3000,100000,.0475],[100000,125000,.05],[125000,150000,.0525],[150000,250000,.055],[250000,Infinity,.0575]] },
+  { name:"Massachusetts",  abbr:"MA", flagImg:"https://flagcdn.com/w40/us-ma.png",  brackets:[[0,Infinity,.05]] },
+  { name:"Michigan",       abbr:"MI", flagImg:"https://flagcdn.com/w40/us-mi.png",       brackets:[[0,Infinity,.0405]] },
+  { name:"Minnesota",      abbr:"MN", flagImg:"https://flagcdn.com/w40/us-mn.png",      brackets:[[0,30070,.0535],[30070,98760,.068],[98760,183340,.0785],[183340,Infinity,.0985]] },
+  { name:"Mississippi",    abbr:"MS", flagImg:"https://flagcdn.com/w40/us-ms.png",    brackets:[[0,10000,0],[10000,Infinity,.047]] },
+  { name:"Missouri",       abbr:"MO", flagImg:"https://flagcdn.com/w40/us-mo.png",       brackets:[[0,1207,0],[1207,Infinity,.048]] },
+  { name:"Montana",        abbr:"MT", flagImg:"https://flagcdn.com/w40/us-mt.png",        brackets:[[0,20500,.047],[20500,Infinity,.059]] },
+  { name:"Nebraska",       abbr:"NE", flagImg:"https://flagcdn.com/w40/us-ne.png",       brackets:[[0,3700,.0246],[3700,22170,.0351],[22170,35730,.0501],[35730,Infinity,.0584]] },
+  { name:"Nevada",         abbr:"NV", flagImg:"https://flagcdn.com/w40/us-nv.png",         brackets:[[0,Infinity,0]] },
+  { name:"New Hampshire",  abbr:"NH", flagImg:"https://flagcdn.com/w40/us-nh.png",  brackets:[[0,Infinity,0]] },
+  { name:"New Jersey",     abbr:"NJ", flagImg:"https://flagcdn.com/w40/us-nj.png",     brackets:[[0,20000,.014],[20000,35000,.0175],[35000,40000,.035],[40000,75000,.05525],[75000,500000,.0637],[500000,1000000,.0897],[1000000,Infinity,.1075]] },
+  { name:"New Mexico",     abbr:"NM", flagImg:"https://flagcdn.com/w40/us-nm.png",     brackets:[[0,5500,.017],[5500,11000,.032],[11000,16000,.047],[16000,210000,.049],[210000,Infinity,.059]] },
+  { name:"New York",       abbr:"NY", flagImg:"https://flagcdn.com/w40/us-ny.png",       brackets:[[0,8500,.04],[8500,11700,.045],[11700,13900,.0525],[13900,21400,.0585],[21400,80650,.0625],[80650,215400,.0685],[215400,1077550,.0965],[1077550,5000000,.103],[5000000,Infinity,.109]] },
+  { name:"North Carolina", abbr:"NC", flagImg:"https://flagcdn.com/w40/us-nc.png", brackets:[[0,Infinity,.045]] },
+  { name:"North Dakota",   abbr:"ND", flagImg:"https://flagcdn.com/w40/us-nd.png",   brackets:[[0,44725,.011],[44725,Infinity,.0204]] },
+  { name:"Ohio",           abbr:"OH", flagImg:"https://flagcdn.com/w40/us-oh.png",           brackets:[[0,26050,0],[26050,46100,.02765],[46100,92150,.03226],[92150,115300,.03688],[115300,Infinity,.0399]] },
+  { name:"Oklahoma",       abbr:"OK", flagImg:"https://flagcdn.com/w40/us-ok.png",       brackets:[[0,1000,.0025],[1000,2500,.0075],[2500,3750,.0175],[3750,4900,.0275],[4900,7200,.0375],[7200,Infinity,.0475]] },
+  { name:"Oregon",         abbr:"OR", flagImg:"https://flagcdn.com/w40/us-or.png",         brackets:[[0,18400,.0475],[18400,46200,.0675],[46200,250000,.0875],[250000,Infinity,.099]] },
+  { name:"Pennsylvania",   abbr:"PA", flagImg:"https://flagcdn.com/w40/us-pa.png",   brackets:[[0,Infinity,.0307]] },
+  { name:"Rhode Island",   abbr:"RI", flagImg:"https://flagcdn.com/w40/us-ri.png",   brackets:[[0,77450,.0375],[77450,176050,.0475],[176050,Infinity,.0599]] },
+  { name:"South Carolina", abbr:"SC", flagImg:"https://flagcdn.com/w40/us-sc.png", brackets:[[0,3460,0],[3460,17330,.03],[17330,Infinity,.064]] },
+  { name:"South Dakota",   abbr:"SD", flagImg:"https://flagcdn.com/w40/us-sd.png",   brackets:[[0,Infinity,0]] },
+  { name:"Tennessee",      abbr:"TN", flagImg:"https://flagcdn.com/w40/us-tn.png",      brackets:[[0,Infinity,0]] },
+  { name:"Texas",          abbr:"TX", flagImg:"https://flagcdn.com/w40/us-tx.png",          brackets:[[0,Infinity,0]] },
+  { name:"Utah",           abbr:"UT", flagImg:"https://flagcdn.com/w40/us-ut.png",           brackets:[[0,Infinity,.0455]] },
+  { name:"Vermont",        abbr:"VT", flagImg:"https://flagcdn.com/w40/us-vt.png",        brackets:[[0,45400,.0335],[45400,110050,.066],[110050,229550,.076],[229550,Infinity,.0875]] },
+  { name:"Virginia",       abbr:"VA", flagImg:"https://flagcdn.com/w40/us-va.png",       brackets:[[0,3000,.02],[3000,5000,.03],[5000,17000,.05],[17000,Infinity,.0575]] },
+  { name:"Washington",     abbr:"WA", flagImg:"https://flagcdn.com/w40/us-wa.png",     brackets:[[0,Infinity,0]] },
+  { name:"West Virginia",  abbr:"WV", flagImg:"https://flagcdn.com/w40/us-wv.png",  brackets:[[0,10000,.03],[10000,25000,.04],[25000,40000,.045],[40000,60000,.06],[60000,Infinity,.065]] },
+  { name:"Wisconsin",      abbr:"WI", flagImg:"https://flagcdn.com/w40/us-wi.png",      brackets:[[0,13810,.0354],[13810,27630,.0465],[27630,304170,.053],[304170,Infinity,.0765]] },
+  { name:"Wyoming",        abbr:"WY", flagImg:"https://flagcdn.com/w40/us-wy.png",        brackets:[[0,Infinity,0]] },
+  { name:"Washington D.C.",abbr:"DC", flagImg:"https://flagcdn.com/w40/us-dc.png", brackets:[[0,10000,.04],[10000,40000,.06],[40000,60000,.065],[60000,250000,.085],[250000,500000,.0925],[500000,Infinity,.0975]] },
 ];
 
 const OTHER_COUNTRIES = [
@@ -595,6 +595,55 @@ const OTHER_COUNTRIES = [
   { name:"Egypt",           flag:"🇪🇬", localPerUSD:48.5,  brackets:[[0,30000,0],[30000,45000,.10],[45000,60000,.15],[60000,200000,.20],[200000,400000,.225],[400000,Infinity,.25]] },
   { name:"Nigeria",         flag:"🇳🇬", localPerUSD:1580,  brackets:[[0,300000,.07],[300000,600000,.11],[600000,1100000,.15],[1100000,1600000,.19],[1600000,3200000,.21],[3200000,Infinity,.24]] },
   { name:"Kenya",           flag:"🇰🇪", localPerUSD:130,   brackets:[[0,288000,.10],[288000,388000,.25],[388000,6000000,.30],[6000000,Infinity,.35]] },
+  // ── New countries ──────────────────────────────────────────────────────
+  { name:"Luxembourg",      flag:"🇱🇺", localPerUSD:0.92,  brackets:[[0,11265,0],[11265,13173,.08],[13173,15681,.09],[15681,18189,.10],[18189,23208,.11],[23208,27687,.12],[27687,32166,.14],[32166,36645,.16],[36645,41124,.18],[41124,45603,.20],[45603,50073,.22],[50073,54543,.24],[54543,59013,.26],[59013,63483,.28],[63483,67962,.30],[67962,114360,.32],[114360,166920,.34],[166920,Infinity,.42]] },
+  { name:"Iceland",         flag:"🇮🇸", localPerUSD:138,   brackets:[[0,Infinity,.3732]] },
+  { name:"Croatia",         flag:"🇭🇷", localPerUSD:7.53,  brackets:[[0,360000,.20],[360000,Infinity,.30]] },
+  { name:"Slovenia",        flag:"🇸🇮", localPerUSD:0.92,  brackets:[[0,8755,.16],[8755,25922,.26],[25922,51842,.33],[51842,74188,.39],[74188,Infinity,.45]] },
+  { name:"Slovakia",        flag:"🇸🇰", localPerUSD:0.92,  brackets:[[0,38553,.19],[38553,Infinity,.25]] },
+  { name:"Estonia",         flag:"🇪🇪", localPerUSD:0.92,  brackets:[[0,Infinity,.20]] },
+  { name:"Latvia",          flag:"🇱🇻", localPerUSD:0.92,  brackets:[[0,20004,.20],[20004,78100,.23],[78100,Infinity,.31]] },
+  { name:"Lithuania",       flag:"🇱🇹", localPerUSD:0.92,  brackets:[[0,101094,.20],[101094,Infinity,.32]] },
+  { name:"Bulgaria",        flag:"🇧🇬", localPerUSD:1.95,  brackets:[[0,Infinity,.10]] },
+  { name:"Serbia",          flag:"🇷🇸", localPerUSD:108,   brackets:[[0,Infinity,.10]] },
+  { name:"Ukraine",         flag:"🇺🇦", localPerUSD:37.5,  brackets:[[0,Infinity,.18]] },
+  { name:"Morocco",         flag:"🇲🇦", localPerUSD:10.1,  brackets:[[0,30000,0],[30000,50000,.10],[50000,60000,.20],[60000,80000,.30],[80000,180000,.34],[180000,Infinity,.38]] },
+  { name:"Qatar",           flag:"🇶🇦", localPerUSD:3.64,  brackets:[[0,Infinity,0]] },
+  { name:"Kuwait",          flag:"🇰🇼", localPerUSD:0.307, brackets:[[0,Infinity,0]] },
+  { name:"Bahrain",         flag:"🇧🇭", localPerUSD:0.376, brackets:[[0,Infinity,0]] },
+  { name:"Jordan",          flag:"🇯🇴", localPerUSD:0.709, brackets:[[0,5000,0],[5000,10000,.05],[10000,15000,.10],[15000,20000,.15],[20000,Infinity,.20]] },
+  { name:"Pakistan",        flag:"🇵🇰", localPerUSD:279,   brackets:[[0,600000,0],[600000,1200000,.05],[1200000,2400000,.15],[2400000,3600000,.25],[3600000,6000000,.30],[6000000,Infinity,.35]] },
+  { name:"Bangladesh",      flag:"🇧🇩", localPerUSD:110,   brackets:[[0,300000,0],[300000,400000,.05],[400000,700000,.10],[700000,1100000,.15],[1100000,1600000,.20],[1600000,Infinity,.25]] },
+  { name:"Sri Lanka",       flag:"🇱🇰", localPerUSD:300,   brackets:[[0,1200000,0],[1200000,2700000,.06],[2700000,4200000,.12],[4200000,5700000,.18],[5700000,7200000,.24],[7200000,Infinity,.36]] },
+  { name:"Taiwan",          flag:"🇹🇼", localPerUSD:32.3,  brackets:[[0,540000,.05],[540000,1210000,.12],[1210000,2420000,.20],[2420000,4530000,.30],[4530000,10310000,.40],[10310000,Infinity,.45]] },
+  { name:"Peru",            flag:"🇵🇪", localPerUSD:3.73,  brackets:[[0,25750,.08],[25750,120050,.14],[120050,Infinity,.30]] },
+  { name:"Ecuador",         flag:"🇪🇨", localPerUSD:1,     brackets:[[0,11902,0],[11902,15159,.05],[15159,19682,.10],[19682,26031,.12],[26031,34255,.15],[34255,45407,.20],[45407,60450,.25],[60450,80600,.30],[80600,Infinity,.35]] },
+  { name:"Uruguay",         flag:"🇺🇾", localPerUSD:39.5,  brackets:[[0,43117,0],[43117,61595,.10],[61595,92393,.15],[92393,184787,.24],[184787,277181,.25],[277181,369574,.27],[369574,Infinity,.31]] },
+  { name:"Panama",          flag:"🇵🇦", localPerUSD:1,     brackets:[[0,11000,0],[11000,50000,.15],[50000,Infinity,.25]] },
+  { name:"Costa Rica",      flag:"🇨🇷", localPerUSD:520,   brackets:[[0,929000,0],[929000,1362000,.10],[1362000,2271000,.15],[2271000,4543000,.20],[4543000,Infinity,.25]] },
+  { name:"Ghana",           flag:"🇬🇭", localPerUSD:14.7,  brackets:[[0,402,0],[402,510,.05],[510,660,.10],[660,3240,.175],[3240,19980,.25],[19980,Infinity,.30]] },
+  { name:"Tanzania",        flag:"🇹🇿", localPerUSD:2560,  brackets:[[0,270000,0],[270000,520000,.08],[520000,760000,.20],[760000,1000000,.25],[1000000,Infinity,.30]] },
+  { name:"Ethiopia",        flag:"🇪🇹", localPerUSD:55.5,  brackets:[[0,600,0],[600,1650,.10],[1650,3200,.15],[3200,5250,.20],[5250,7800,.25],[7800,10900,.30],[10900,Infinity,.35]] },
+  { name:"Mongolia",        flag:"🇲🇳", localPerUSD:3400,  brackets:[[0,Infinity,.10]] },
+  { name:"Cambodia",        flag:"🇰🇭", localPerUSD:4080,  brackets:[[0,1300000,0],[1300000,2000000,.05],[2000000,8500000,.10],[8500000,12500000,.15],[12500000,Infinity,.20]] },
+  { name:"Myanmar",         flag:"🇲🇲", localPerUSD:2100,  brackets:[[0,4800000,0],[4800000,10000000,.05],[10000000,20000000,.10],[20000000,30000000,.15],[30000000,Infinity,.25]] },
+  { name:"Andorra",         flag:"🇦🇩", localPerUSD:0.92,  brackets:[[0,24000,0],[24000,40000,.05],[40000,Infinity,.10]] },
+  { name:"Monaco",          flag:"🇲🇨", localPerUSD:0.92,  brackets:[[0,Infinity,0]] },
+  { name:"Malta",           flag:"🇲🇹", localPerUSD:0.92,  brackets:[[0,9100,0],[9100,14500,.15],[14500,19500,.25],[19500,60000,.25],[60000,Infinity,.35]] },
+  { name:"Cyprus",          flag:"🇨🇾", localPerUSD:0.92,  brackets:[[0,19500,0],[19500,28000,.20],[28000,36300,.25],[36300,60000,.30],[60000,Infinity,.35]] },
+  { name:"Albania",         flag:"🇦🇱", localPerUSD:107,   brackets:[[0,30000,0],[30000,150000,.13],[150000,Infinity,.23]] },
+  { name:"North Macedonia", flag:"🇲🇰", localPerUSD:61.5,  brackets:[[0,Infinity,.10]] },
+  { name:"Bosnia",          flag:"🇧🇦", localPerUSD:1.95,  brackets:[[0,Infinity,.10]] },
+  { name:"Armenia",         flag:"🇦🇲", localPerUSD:400,   brackets:[[0,Infinity,.20]] },
+  { name:"Georgia",         flag:"🇬🇪", localPerUSD:2.65,  brackets:[[0,Infinity,.20]] },
+  { name:"Kazakhstan",      flag:"🇰🇿", localPerUSD:450,   brackets:[[0,Infinity,.10]] },
+  { name:"Azerbaijan",      flag:"🇦🇿", localPerUSD:1.70,  brackets:[[0,2500,.14],[2500,Infinity,.25]] },
+  { name:"Uzbekistan",      flag:"🇺🇿", localPerUSD:12700, brackets:[[0,Infinity,.12]] },
+  { name:"Tunisia",         flag:"🇹🇳", localPerUSD:3.14,  brackets:[[0,5000,0],[5000,20000,.26],[20000,30000,.28],[30000,50000,.32],[50000,Infinity,.35]] },
+  { name:"Algeria",         flag:"🇩🇿", localPerUSD:135,   brackets:[[0,240000,0],[240000,480000,.23],[480000,960000,.27],[960000,1920000,.30],[1920000,3840000,.33],[3840000,Infinity,.35]] },
+  { name:"Ivory Coast",     flag:"🇨🇮", localPerUSD:595,   brackets:[[0,Infinity,.20]] },
+  { name:"Senegal",         flag:"🇸🇳", localPerUSD:590,   brackets:[[0,630000,0],[630000,1500000,.20],[1500000,4000000,.30],[4000000,8000000,.35],[8000000,13500000,.37],[13500000,Infinity,.40]] },
+  { name:"Cameroon",        flag:"🇨🇲", localPerUSD:595,   brackets:[[0,2000000,0],[2000000,3000000,.115],[3000000,5000000,.165],[5000000,10000000,.275],[10000000,Infinity,.385]] },
 ];
 
 
@@ -1002,7 +1051,7 @@ function FlagImg({ src, abbr, size = 22 }) {
     );
   }
   return (
-    <img src={src} alt={abbr} onError={() => setErr(true)}
+    <img src={src} alt={abbr} onError={() => setErr(true)} referrerPolicy="no-referrer" crossOrigin="anonymous"
       style={{ width:size+8, height:size*0.65, objectFit:"cover", borderRadius:2, flexShrink:0, display:"block" }} />
   );
 }
@@ -1726,11 +1775,7 @@ function Footer({ t }) {
     <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
         <div>
-          <img
-              src="https://raw.githubusercontent.com/Fredwalt72/tax-calculator/main/Logo_netpaytax.png"
-              alt="NetPay.tax"
-              style={{ height:28, mixBlendMode:"screen", filter:"brightness(1.6) saturate(0.9)", marginBottom:4 }}
-            />
+          <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>NetPay.tax</div>
           <p style={{ fontSize:11, color:"#5a7a98", maxWidth:500 }}>{t.footerDisclaimer}</p>
         </div>
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
@@ -1845,13 +1890,13 @@ export default function App() {
 
       {/* ── Header ── */}
       <div style={{ background:"linear-gradient(135deg,#0a1428 0%,#0d1a2e 50%,#080b12 100%)", borderBottom:"1px solid #1e3a60", padding:"18px 22px 16px" }}>
-        <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
+        <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:5 }}>
               <div style={{ width:5, height:28, background:"#4fffb0", borderRadius:3 }} />
-              <h1 style={{ fontFamily:"'Bebas Neue'", fontSize:28, letterSpacing:"0.08em", color:"#fff", lineHeight:1 }}>{t.title}</h1>
+              <h1 style={{ fontFamily:"'Bebas Neue'", fontSize:28, letterSpacing:"0.08em", color:"#fff", lineHeight:1 }}>NetPay.tax</h1>
             </div>
-            <p style={{ color:"#8aaac8", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
+            <p style={{ color:"#4a6a8a", fontSize:10, marginLeft:15, fontFamily:"'DM Mono',monospace" }}>
               {t.subtitle(OTHER_COUNTRIES.length, PROVINCES_CA.length, STATES_US.length)}
             </p>
           </div>
