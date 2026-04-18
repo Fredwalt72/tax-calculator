@@ -565,6 +565,271 @@ const T = {
       { code:"AUD", label:"AUD — Dólar australiano",    symbol:"$", perUSD:1.55 },
     ],
   },
+  de: {
+    title: "EINKOMMENSTEUERRECHNER",
+    subtitle: (c, p, s) => `${c} Länder · ${p} kanadische Provinzen · ${s} US-Bundesstaaten`,
+    salaryLabel: "JAHRESBRUTTOLOHN",
+    salaryPlaceholder: "Einkommen eingeben...",
+    rankingLabel: "NACH NETTOGEHALT SORTIERT",
+    searchPlaceholder: "Suchen...",
+    canada: "Kanada",
+    usa: "Vereinigte Staaten",
+    caSubtitle: "13 Provinzen",
+    usSubtitle: "51 Bundesstaaten",
+    fedProv: "Bundes- + Provinzsteuer",
+    fedState: "Bundes- + Staatssteuer",
+    netYear: "NETTO / J",
+    seeProvinces: "▼ Anzeigen",
+    collapse: "▲ Einklappen",
+    gross: "BRUTTO",
+    federal: "BUNDESSTEUER",
+    provincial: "PROVINZSTEUER",
+    totalTax: "STEUERN GESAMT",
+    tax: "STEUER",
+    net: "NETTO",
+    effectiveRate: "EFFEKTIVER GESAMTSTEUERSATZ",
+    fedLabel: "Bundessteuer",
+    provLabel: "Provinz/Staat",
+    totalLabel: "Gesamt",
+    caDetail: "Kanada · Bundes- + Provinzsteuer",
+    usDetail: "USA · Bundes- + Staatssteuer",
+    disclaimer: "⚠ Nur Bundes- und Provinz-/Staatseinkommensteuer. Sozialabgaben, Freibeträge und Abzüge nicht enthalten. Wechselkurse sind Näherungswerte. Bitte einen Steuerberater konsultieren.",
+    emptyTitle: "EINKOMMEN EINGEBEN, UM ZU BEGINNEN",
+    emptySubtitle: (c, p, s) => `${c} Länder · ${p} Provinzen · ${s} Bundesstaaten`,
+    periodAnnual: "/ Jahr",
+    periodMonthly: "/ Monat",
+    bigMacLabel: "🍔 Big-Mac-Index",
+    bigMacExplainTitle: "Was ist der Big-Mac-Index?",
+    bigMacExplain: "Der 1986 vom Economist entwickelte Big-Mac-Index nutzt den Preis eines McDonald's Big Mac, um die Kaufkraft von Währungen weltweit zu vergleichen.",
+    netBigMacLabel: "🍔 NetBigMac-Index",
+    netBigMacExplainTitle: "Was ist der NetBigMac-Index?",
+    netBigMacExplain: "Der NetBigMac-Index ist ein originaler NetPay.tax-Indikator. Er misst, wie viele Big Macs man mit 100 $ Bruttogehalt nach Abzug der Einkommensteuer kaufen kann.",
+    bigMacCount: (n) => `${n} Big Macs`,
+    bigMacPer100: "pro 100 $ brutto",
+    bigMacPrice: "Lokaler Preis",
+    shareLabel: "Teilen",
+    shareMsg: (country, net, curr, score) => `In ${country} bleiben mir ${net} ${curr} nach Steuern — NetBigMac-Score: ${score} 🍔\nBerechne deins: https://netpay.tax`,
+    shareMsgSite: "Kostenloser Einkommensteuerrechner — Nettogehalt in 96+ Ländern vergleichen 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ Starbucks-Index",
+    starbucksExplainTitle: "Was ist der Starbucks-Index?",
+    starbucksExplain: "Der Preis eines Starbucks Tall Latte in USD, um die Kosten alltäglicher Güter zu vergleichen.",
+    rentLabel: "🏠 Mietindex",
+    rentExplainTitle: "Was ist der Mietindex?",
+    rentExplain: "Die geschätzten monatlichen Kosten für eine 1-Zimmer-Wohnung im Stadtzentrum in USD.",
+    rentOfNet: (pct) => `${pct}% des monatlichen Nettogehalts`,
+    groceryLabel: "🛒 Lebensmittelindex",
+    groceryExplainTitle: "Was ist der Lebensmittelindex?",
+    groceryExplain: "Die geschätzten monatlichen Kosten für einen Standard-Lebensmittelkorb für eine Person in USD.",
+    groceryOfNet: (pct) => `${pct}% des monatlichen Nettogehalts`,
+    perMonth: "/ Monat",
+    workHoursLabel: "⏰ Arbeitszeitindex",
+    workHoursExplainTitle: "Was ist der Arbeitszeitindex?",
+    workHoursExplain: "Die durchschnittliche Wochenarbeitszeit im jeweiligen Land laut OECD- und ILO-Daten.",
+    workHoursPerWeek: "Std. / Woche",
+    workHoursPerHour: (val) => `≈ $${val} netto / Stunde`,
+    indicesBtn: "📊 Indizes — inkl. NetBigMac",
+    indicesTitle: "Indizes",
+    indicesClose: "✕ Schließen",
+    recentLabel: "Zuletzt angesehen",
+    compareBtn: (n) => `Vergleichen (${n}/3)`,
+    compareTitle: "Vergleich",
+    compareClose: "✕ Schließen",
+    compareReset: "🔄 Andere Länder vergleichen",
+    compareNewTitle: "Länder mit + hinzufügen",
+    compareMinMsg: "⚠️ Bitte mindestens 2 Länder zum Vergleichen auswählen.",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Klicke + bei einem Land, um es hinzuzufügen",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: Netto ${i.net} (${i.rate}% Steuer)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "BRUTTOGEHALT",
+    compareTaxLabel: "STEUER",
+    compareNetLabel: "NETTO",
+    compareRateLabel: "SATZ",
+    funFactBtn: "🎲 Interessante Fakten",
+    funFactTitle: "Interessante Fakten",
+    funFactClose: "✕ Schließen",
+    funFactNext: "Nächster Fakt →",
+    funFactNone: "Noch kein interessanter Fakt für diese Region verfügbar.",
+    contactSend: "Nachricht senden",
+    contactName: "Ihr Name",
+    contactEmail: "Ihre E-Mail",
+    contactMessage: "Ihre Nachricht",
+    contactSuccess: "✅ Nachricht gesendet! Wir melden uns bald.",
+    contactError: "❌ Fehler beim Senden. Bitte erneut versuchen.",
+    contactSending: "Wird gesendet...",
+    footerLinks: ["Datenschutz", "Über uns", "Kontakt"],
+    contactTitle: "Kontakt",
+    contactText: "Für Korrekturen, Vorschläge oder Partnerschaftsanfragen kontaktieren Sie uns bitte über das Formular unten.",
+    aboutTitle: "Über diesen Rechner",
+    aboutText: "Unser kostenloser Einkommensteuerrechner ermöglicht den sofortigen Vergleich des Nettogehalts in 96+ Ländern, 13 kanadischen Provinzen und 51 US-Bundesstaaten.",
+    howTitle: "So funktioniert es",
+    howSteps: [
+      { icon:"1️⃣", title:"Gehalt eingeben", text:"Jahres- oder Monatsbruttolohn in der Währung Ihrer Wahl: USD, CAD, EUR, GBP oder AUD." },
+      { icon:"2️⃣", title:"Rangliste ansehen", text:"Das Tool sortiert sofort alle Länder vom höchsten zum niedrigsten Nettogehalt." },
+      { icon:"3️⃣", title:"Details anklicken", text:"Klicken Sie auf ein Land für eine Aufschlüsselung: Brutto, Bundessteuer, Regionalsteuer, Gesamtsteuer, Netto und effektiver Steuersatz." },
+    ],
+    faqTitle: "Häufig gestellte Fragen",
+    faqs: [
+      { q:"Welche Steuern sind in der Berechnung enthalten?", a:"Nur Bundes- und Provinz-/Staatseinkommensteuer. Sozialabgaben, Krankenversicherungsbeiträge, Rentenabzüge oder Mehrwertsteuer sind nicht enthalten." },
+      { q:"Warum werden die Ergebnisse in USD angezeigt?", a:"Alle Ergebnisse werden in USD normalisiert für einfachen internationalen Vergleich. Sie können Ihr Gehalt in CAD, EUR, GBP oder AUD eingeben." },
+      { q:"Wie genau sind diese Steuersätze?", a:"Die Steuersätze basieren auf den aktuell öffentlich verfügbaren Steuersätzen. Steuergesetze ändern sich häufig — bitte konsultieren Sie immer einen Steuerberater." },
+      { q:"Berücksichtigt der Rechner Steuerabzüge und Freibeträge?", a:"Nein. Der Rechner wendet die Standard-Steuersätze ohne Abzüge oder Freibeträge an." },
+      { q:"Was ist der effektive Steuersatz?", a:"Der effektive Steuersatz ist der Prozentsatz Ihres Bruttoeinkommens, der als Einkommensteuer abgeführt wird — unterschiedlich vom Grenzsteuersatz." },
+      { q:"Warum hat Alberta einen niedrigeren Steuersatz als Québec?", a:"Alberta profitiert von einem einheitlichen Provinzsteuersatz von 10% und Öl- und Gaseinnahmen. Québec finanziert ein umfangreiches Netz öffentlicher Dienste mit Provinzsteuersätzen bis zu 25,75%." },
+    ],
+    tipsTitle: "Tipps zur internationalen Steuerplanung",
+    tips: [
+      { icon:"🌍", title:"Gesamtvergütung, nicht nur Gehalt", text:"100.000 $ in New York und Texas sind sehr unterschiedlich nach Steuern. New York erhebt bis zu 10,9% Staatssteuer, Texas keine." },
+      { icon:"🏠", title:"Homeoffice und Steuersitz", text:"Fernarbeit für ein ausländisches Unternehmen bedeutet nicht automatisch, dass Sie dort Steuern zahlen, wo Ihr Arbeitgeber sitzt." },
+      { icon:"📋", title:"Doppelbesteuerungsabkommen", text:"Die meisten Länder haben Abkommen zur Vermeidung der Doppelbesteuerung. Diese können Ihre Gesamtsteuerlast erheblich reduzieren." },
+      { icon:"💡", title:"Registrierte Konten nutzen", text:"RRSP und TFSA in Kanada sowie 401(k) und IRA in den USA können Ihren effektiven Steuersatz deutlich senken." },
+    ],
+    privacyTitle: "Datenschutzrichtlinie",
+    privacyText: "Diese Website erfasst keine personenbezogenen Daten. Die eingegebenen Gehaltszahlen werden ausschließlich in Ihrem Browser verarbeitet und nie an unsere Server gesendet.",
+    aboutPageTitle: "Über uns",
+    aboutPageText: "NetPay.tax ist ein unabhängiges Tool zum Vergleich von Einkommenssteuersätzen weltweit. Wir sind mit keiner Regierung, Steuerbehörde oder Finanzinstitution verbunden.",
+    footerDisclaimer: "Nur zur Information. Keine Finanz- oder Steuerberatung. Bitte einen qualifizierten Fachmann konsultieren.",
+    currencies: [
+      { code:"USD", label:"USD — US-Dollar",            symbol:"$", perUSD:1 },
+      { code:"CAD", label:"CAD — Kanadischer Dollar",   symbol:"$", perUSD:1.36 },
+      { code:"EUR", label:"EUR — Euro",                 symbol:"€", perUSD:0.92 },
+      { code:"GBP", label:"GBP — Britisches Pfund",     symbol:"£", perUSD:0.79 },
+      { code:"AUD", label:"AUD — Australischer Dollar", symbol:"$", perUSD:1.55 },
+    ],
+  },
+  ar: {
+    rtl: true,
+    title: "حاسبة ضريبة الدخل",
+    subtitle: (c, p, s) => `${c} دولة · ${p} مقاطعة كندية · ${s} ولاية أمريكية`,
+    salaryLabel: "الراتب السنوي الإجمالي",
+    salaryPlaceholder: "أدخل دخلك هنا...",
+    rankingLabel: "مرتبة حسب صافي الراتب",
+    searchPlaceholder: "بحث...",
+    canada: "كندا",
+    usa: "الولايات المتحدة",
+    caSubtitle: "١٣ مقاطعة",
+    usSubtitle: "٥١ ولاية",
+    fedProv: "فيدرالي + إقليمي",
+    fedState: "فيدرالي + ولاية",
+    netYear: "صافي / سنة",
+    seeProvinces: "▼ عرض",
+    collapse: "▲ طي",
+    gross: "إجمالي",
+    federal: "فيدرالي",
+    provincial: "إقليمي",
+    totalTax: "إجمالي الضريبة",
+    tax: "الضريبة",
+    net: "صافي",
+    effectiveRate: "معدل الضريبة الفعلي",
+    fedLabel: "فيدرالي",
+    provLabel: "مقاطعة/ولاية",
+    totalLabel: "الإجمالي",
+    caDetail: "كندا · فيدرالي + إقليمي",
+    usDetail: "الولايات المتحدة · فيدرالي + ولاية",
+    disclaimer: "⚠ ضريبة الدخل الفيدرالية والإقليمية فقط. لا تشمل الاشتراكات الاجتماعية أو الإعفاءات. أسعار الصرف تقريبية. استشر متخصصًا ضريبيًا.",
+    emptyTitle: "أدخل دخلك للبدء",
+    emptySubtitle: (c, p, s) => `${c} دولة · ${p} مقاطعة · ${s} ولاية`,
+    periodAnnual: "/ سنة",
+    periodMonthly: "/ شهر",
+    bigMacLabel: "🍔 مؤشر البيغ ماك",
+    bigMacExplainTitle: "ما هو مؤشر البيغ ماك؟",
+    bigMacExplain: "أنشأه مجلة إيكونوميست عام ١٩٨٦، يستخدم سعر ساندويش البيغ ماك لمقارنة القوة الشرائية للعملات حول العالم.",
+    netBigMacLabel: "🍔 مؤشر NetBigMac",
+    netBigMacExplainTitle: "ما هو مؤشر NetBigMac؟",
+    netBigMacExplain: "مؤشر NetBigMac هو مؤشر حصري من NetPay.tax. يقيس عدد ساندويشات البيغ ماك التي يمكن شراؤها بـ١٠٠ دولار من الراتب الإجمالي بعد خصم الضريبة.",
+    bigMacCount: (n) => `${n} بيغ ماك`,
+    bigMacPer100: "لكل ١٠٠$ إجمالي",
+    bigMacPrice: "السعر المحلي",
+    shareLabel: "مشاركة",
+    shareMsg: (country, net, curr, score) => `في ${country}، يبقى لي ${net} ${curr} بعد الضرائب — نتيجة NetBigMac: ${score} 🍔\nاحسب راتبك: https://netpay.tax`,
+    shareMsgSite: "حاسبة ضريبة الدخل المجانية — قارن صافي راتبك في ٩٦+ دولة 🌍\nhttps://netpay.tax",
+    starbucksLabel: "☕ مؤشر ستاربكس",
+    starbucksExplainTitle: "ما هو مؤشر ستاربكس؟",
+    starbucksExplain: "سعر قهوة ستاربكس Tall Latte بالدولار لمقارنة تكاليف السلع اليومية بين الدول.",
+    rentLabel: "🏠 مؤشر الإيجار",
+    rentExplainTitle: "ما هو مؤشر الإيجار؟",
+    rentExplain: "التكلفة الشهرية المقدرة لشقة غرفة نوم واحدة في وسط المدينة بالدولار.",
+    rentOfNet: (pct) => `${pct}% من صافي الراتب الشهري`,
+    groceryLabel: "🛒 مؤشر المواد الغذائية",
+    groceryExplainTitle: "ما هو مؤشر المواد الغذائية؟",
+    groceryExplain: "التكلفة الشهرية المقدرة لسلة غذائية معيارية لشخص واحد بالدولار.",
+    groceryOfNet: (pct) => `${pct}% من صافي الراتب الشهري`,
+    perMonth: "/ شهر",
+    workHoursLabel: "⏰ مؤشر ساعات العمل",
+    workHoursExplainTitle: "ما هو مؤشر ساعات العمل؟",
+    workHoursExplain: "متوسط ساعات العمل الأسبوعية في هذا البلد وفق بيانات OECD و ILO.",
+    workHoursPerWeek: "ساعة / أسبوع",
+    workHoursPerHour: (val) => `≈ $${val} صافي / ساعة`,
+    indicesBtn: "📊 المؤشرات — شاملة NetBigMac",
+    indicesTitle: "المؤشرات",
+    indicesClose: "✕ إغلاق",
+    recentLabel: "تمت مشاهدته مؤخرًا",
+    compareBtn: (n) => `مقارنة (${n}/3)`,
+    compareTitle: "المقارنة",
+    compareClose: "✕ إغلاق",
+    compareReset: "🔄 مقارنة دول أخرى",
+    compareNewTitle: "أضف دولاً بالنقر على +",
+    compareMinMsg: "⚠️ الرجاء اختيار دولتين على الأقل للمقارنة.",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "انقر + على دولة لإضافتها",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: صافي ${i.net} (${i.rate}% ضريبة)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "الراتب الإجمالي",
+    compareTaxLabel: "الضريبة",
+    compareNetLabel: "الصافي",
+    compareRateLabel: "المعدل",
+    funFactBtn: "🎲 حقائق مثيرة",
+    funFactTitle: "حقائق مثيرة",
+    funFactClose: "✕ إغلاق",
+    funFactNext: "الحقيقة التالية →",
+    funFactNone: "لا توجد حقائق متاحة لهذه المنطقة بعد.",
+    contactSend: "إرسال الرسالة",
+    contactName: "اسمك",
+    contactEmail: "بريدك الإلكتروني",
+    contactMessage: "رسالتك",
+    contactSuccess: "✅ تم إرسال الرسالة! سنعود إليك قريبًا.",
+    contactError: "❌ خطأ في الإرسال. يرجى المحاولة مجددًا.",
+    contactSending: "جارٍ الإرسال...",
+    footerLinks: ["سياسة الخصوصية", "عن الموقع", "تواصل معنا"],
+    contactTitle: "تواصل معنا",
+    contactText: "للتصحيحات أو الاقتراحات أو طلبات الشراكة، تواصل معنا عبر النموذج أدناه.",
+    aboutTitle: "عن هذه الحاسبة",
+    aboutText: "حاسبة ضريبة الدخل المجانية تتيح مقارنة صافي الراتب فورًا في ٩٦+ دولة و١٣ مقاطعة كندية و٥١ ولاية أمريكية.",
+    howTitle: "كيف تعمل",
+    howSteps: [
+      { icon:"1️⃣", title:"أدخل راتبك", text:"اكتب راتبك السنوي أو الشهري الإجمالي بعملتك المفضلة: USD أو CAD أو EUR أو GBP أو AUD." },
+      { icon:"2️⃣", title:"شاهد الترتيب", text:"يرتب الأداة كل دولة ومنطقة من أعلى إلى أدنى صافي راتب فوريًا." },
+      { icon:"3️⃣", title:"انقر للتفاصيل", text:"انقر على أي دولة لرؤية التفاصيل الكاملة: الإجمالي والضريبة والصافي والمعدل الفعلي." },
+    ],
+    faqTitle: "الأسئلة الشائعة",
+    faqs: [
+      { q:"ما الضرائب المشمولة في الحساب؟", a:"ضريبة الدخل الفيدرالية والإقليمية فقط. لا تشمل الاشتراكات الاجتماعية أو ضريبة المبيعات أو أي خصومات أخرى." },
+      { q:"لماذا تُعرض النتائج بالدولار الأمريكي؟", a:"يتم تحويل جميع النتائج إلى USD لسهولة المقارنة الدولية. يمكنك إدخال راتبك بـ CAD أو EUR أو GBP أو AUD." },
+      { q:"ما مدى دقة معدلات الضريبة؟", a:"تستند المعدلات إلى أحدث البيانات المتاحة للعموم. تتغير القوانين الضريبية باستمرار — استشر دائمًا متخصصًا ضريبيًا." },
+      { q:"هل تأخذ الحاسبة الإعفاءات الضريبية بالاعتبار؟", a:"لا. تطبق الحاسبة شرائح الضريبة الاعتيادية دون خصومات أو إعفاءات." },
+      { q:"ما هو معدل الضريبة الفعلي؟", a:"هو نسبة إجمالي الدخل التي تذهب كضريبة، وهو مختلف عن معدل الضريبة الهامشي." },
+      { q:"لماذا ألبرتا أقل ضريبةً من كيبيك؟", a:"تستفيد ألبرتا من ضريبة إقليمية ثابتة بنسبة ١٠% وعائدات النفط والغاز. أما كيبيك فتموّل خدمات عامة واسعة تصل نسبتها إلى ٢٥.٧٥%." },
+    ],
+    tipsTitle: "نصائح التخطيط الضريبي الدولي",
+    tips: [
+      { icon:"🌍", title:"الراتب الكلي لا الإجمالي فقط", text:"١٠٠,٠٠٠$ في نيويورك وتكساس مختلفان جدًا بعد الضرائب. نيويورك تفرض حتى ١٠.٩% ضريبة ولاية، بينما تكساس لا تفرض شيئًا." },
+      { icon:"🏠", title:"العمل عن بُعد والإقامة الضريبية", text:"العمل عن بُعد لشركة أجنبية لا يعني بالضرورة دفع الضرائب حيث مقر صاحب العمل." },
+      { icon:"📋", title:"اتفاقيات تجنب الازدواج الضريبي", text:"معظم الدول لديها اتفاقيات لمنع فرض الضريبة على نفس الدخل مرتين." },
+      { icon:"💡", title:"استخدام الحسابات المسجلة", text:"RRSP وTFSA في كندا و401(k) وIRA في الولايات المتحدة تساعد في تخفيض معدل الضريبة الفعلي." },
+    ],
+    privacyTitle: "سياسة الخصوصية",
+    privacyText: "لا يجمع هذا الموقع أي بيانات شخصية. تتم معالجة أرقام الراتب التي تدخلها في متصفحك فقط ولا ترسل إلى خوادمنا.",
+    aboutPageTitle: "عن الموقع",
+    aboutPageText: "NetPay.tax أداة مستقلة لمساعدة الأفراد على فهم معدلات ضريبة الدخل حول العالم. نحن غير مرتبطين بأي حكومة أو سلطة ضريبية.",
+    footerDisclaimer: "للأغراض المعلوماتية فقط. ليس استشارة مالية أو ضريبية. استشر متخصصًا مؤهلاً.",
+    currencies: [
+      { code:"USD", label:"USD — دولار أمريكي",      symbol:"$", perUSD:1 },
+      { code:"CAD", label:"CAD — دولار كندي",         symbol:"$", perUSD:1.36 },
+      { code:"EUR", label:"EUR — يورو",               symbol:"€", perUSD:0.92 },
+      { code:"GBP", label:"GBP — جنيه إسترليني",     symbol:"£", perUSD:0.79 },
+      { code:"AUD", label:"AUD — دولار أسترالي",      symbol:"$", perUSD:1.55 },
+    ],
+  },
 };
 
 // ── Tax Data ──────────────────────────────────────────────────────────────
@@ -1159,11 +1424,13 @@ const LANGS = [
   { code:"en", label:"EN", tooltip:"English"  },
   { code:"fr", label:"FR", tooltip:"Français" },
   { code:"es", label:"ES", tooltip:"Español"  },
+  { code:"de", label:"DE", tooltip:"Deutsch"  },
+  { code:"ar", label:"عر", tooltip:"العربية"  },
 ];
 
 function LangSwitcher({ lang, setLang }) {
   return (
-    <div style={{ display:"flex", gap:6, alignItems:"center" }}>
+    <div style={{ display:"flex", gap:5, alignItems:"center", flexWrap:"wrap", justifyContent:"flex-end" }}>
       {LANGS.map(l => (
         <div key={l.code} onClick={() => setLang(l.code)} title={l.tooltip}
           style={{
@@ -1772,7 +2039,7 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
         <div style={{ fontSize:15, fontWeight:600, color:isSelected?"#4fffb0":"#d0d8e8", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{name}</div>
       </div>
       <div style={{ textAlign:"right", flexShrink:0 }}>
-        <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:600, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
+        <div dir="ltr" style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:600, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
         <div style={{ fontSize:7, color:"#8aaac8", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 5px", borderRadius:4, fontSize:8, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, flexShrink:0, textAlign:"center", minWidth:34 }}>
@@ -1812,7 +2079,7 @@ function GroupHeader({ rank, flag, name, subtitle, isOpen, onToggle, t }) {
 // ── Section: About + How It Works ────────────────────────────────────────
 function AboutSection({ t }) {
   return (
-    <div id="about-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div id="about-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0", width:"100%", boxSizing:"border-box" }}>
       {/* About */}
       <div style={{ marginBottom:36 }}>
         <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:10 }}>{t.aboutTitle}</h2>
@@ -1839,7 +2106,7 @@ function AboutSection({ t }) {
 function FAQSection({ t }) {
   const [open, setOpen] = React.useState(null);
   return (
-    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0", width:"100%", boxSizing:"border-box" }}>
       <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:16 }}>{t.faqTitle}</h2>
       <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
         {t.faqs.map((faq, i) => (
@@ -1864,7 +2131,7 @@ function FAQSection({ t }) {
 // ── Section: Tips ─────────────────────────────────────────────────────────
 function TipsSection({ t }) {
   return (
-    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0", width:"100%", boxSizing:"border-box" }}>
       <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:16 }}>{t.tipsTitle}</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:14 }}>
         {t.tips.map((tip, i) => (
@@ -1882,7 +2149,7 @@ function TipsSection({ t }) {
 // ── Section: Privacy & About ─────────────────────────────────────────────
 function PrivacySection({ t }) {
   return (
-    <div id="privacy-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
+    <div id="privacy-section" style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0", width:"100%", boxSizing:"border-box" }}>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:20 }}>
         <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"20px 22px" }}>
           <h2 style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:10 }}>{t.privacyTitle}</h2>
@@ -1926,8 +2193,8 @@ function ContactSection({ t }) {
   }
 
   return (
-    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0" }}>
-      <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"24px 28px", maxWidth:560 }}>
+    <div style={{ maxWidth:980, margin:"0 auto", padding:"40px 18px 0", width:"100%", boxSizing:"border-box" }}>
+      <div style={{ background:"#0d1a2e", border:"1px solid #1e3050", borderRadius:10, padding:"24px 20px", maxWidth:560, boxSizing:"border-box" }}>
         <h2 id="contact-section" style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#d4e8ff", marginBottom:8 }}>{t.contactTitle}</h2>
         <p style={{ fontSize:13, color:"#7a9ab8", marginBottom:20, lineHeight:1.6 }}>{t.contactText}</p>
 
@@ -1938,7 +2205,7 @@ function ContactSection({ t }) {
         ) : (
           <div>
             <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+              <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
                 <input value={name} onChange={e => setName(e.target.value)} placeholder={t.contactName}
                   style={{ padding:"11px 14px", background:"#060e1a", border:"1px solid #1e3050", borderRadius:8, color:"#c0d0e8", fontSize:13, fontFamily:"'DM Sans',sans-serif", outline:"none" }} />
                 <input value={email} onChange={e => setEmail(e.target.value)} placeholder={t.contactEmail} type="email"
@@ -1964,7 +2231,7 @@ function ContactSection({ t }) {
 // ── Footer ────────────────────────────────────────────────────────────────
 function Footer({ t }) {
   return (
-    <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050" }}>
+    <footer style={{ maxWidth:980, margin:"40px auto 0", padding:"24px 18px 32px", borderTop:"1px solid #1e3050", width:"100%", boxSizing:"border-box" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16 }}>
         <div>
           <div style={{ fontFamily:"'Bebas Neue'", fontSize:16, letterSpacing:"0.1em", color:"#4fffb0", marginBottom:4 }}>NetPay.tax</div>
@@ -1999,6 +2266,8 @@ export default function App() {
     const bl = (navigator.language || navigator.userLanguage || "en").slice(0,2).toLowerCase();
     if (bl === "fr") return "fr";
     if (bl === "es") return "es";
+    if (bl === "de") return "de";
+    if (bl === "ar") return "ar";
     return "en";
   });
   const [salary, setSalary]    = useState("");
@@ -2094,9 +2363,9 @@ export default function App() {
   const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
 
   return (
-    <div style={{ minHeight:"100vh", background:"#0a0f1a", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0" }}>
+    <div dir={t.rtl ? "rtl" : "ltr"} style={{ minHeight:"100vh", background:"#0a0f1a", fontFamily:"'DM Sans',sans-serif", color:"#e8eaf0", overflowX:"hidden", width:"100%", direction: t.rtl ? "rtl" : "ltr" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Bebas+Neue&family=Noto+Sans+Arabic:wght@400;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
         ::-webkit-scrollbar{width:4px}
         ::-webkit-scrollbar-track{background:#0d1117}
@@ -2106,7 +2375,8 @@ export default function App() {
         .salary-inp:focus{box-shadow:0 0 0 4px rgba(79,255,176,0.15) !important;transform:scaleX(1.03);transform-origin:left;}
         .row:hover{background:#0e1520 !important}
         .grow:hover{background:#0c1d2c !important}
-        html,body,#root{background:#0a0f1a;margin:0;padding:0;min-height:100%;}
+        html,body,#root{background:#0a0f1a;margin:0;padding:0;min-height:100%;overflow-x:hidden;}
+        [dir=rtl]{font-family:'Noto Sans Arabic','DM Sans',sans-serif !important;}
         @keyframes fi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
         :root{--blue:#4a80d4;--green:#4fffb0;--green-logo:#4a9e50;}
         .logo-blue{color:var(--blue)!important;}
@@ -2116,7 +2386,7 @@ export default function App() {
 
       {/* ── Header ── */}
       <div style={{ background:"linear-gradient(135deg,#0a1428 0%,#0d1a2e 50%,#080b12 100%)", borderBottom:"1px solid #1e3a60", padding:"18px 22px 16px" }}>
-        <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12, flexWrap:"wrap" }}>
+        <div style={{ maxWidth:980, margin:"0 auto", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12, flexWrap:"wrap", width:"100%", boxSizing:"border-box" }}>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:5 }}>
               <div style={{ width:5, height:28, background:"#4fffb0", borderRadius:3 }} />
@@ -2132,7 +2402,7 @@ export default function App() {
 
       <AboutSection t={t} />
 
-      <div style={{ maxWidth:980, margin:"0 auto", padding:"20px 18px" }}>
+      <div style={{ maxWidth:980, margin:"0 auto", padding:"20px 18px", width:"100%", boxSizing:"border-box" }}>
 
         {/* ── Salary input ── */}
         <div style={{ marginBottom:20 }}>
