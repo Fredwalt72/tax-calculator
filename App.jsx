@@ -1421,11 +1421,11 @@ function FlagImg({ src, abbr, size = 22 }) {
 
 // ── Language switcher ─────────────────────────────────────────────────────
 const LANGS = [
-  { code:"en", label:"EN", tooltip:"English"  },
-  { code:"fr", label:"FR", tooltip:"Français" },
-  { code:"es", label:"ES", tooltip:"Español"  },
-  { code:"de", label:"DE", tooltip:"Deutsch"  },
-  { code:"ar", label:"عر", tooltip:"العربية"  },
+  { code:"en", label:"EN", flag:"🇬🇧", tooltip:"English"  },
+  { code:"fr", label:"FR", flag:"🇫🇷", tooltip:"Français" },
+  { code:"es", label:"ES", flag:"🇪🇸", tooltip:"Español"  },
+  { code:"de", label:"DE", flag:"🇩🇪", tooltip:"Deutsch"  },
+  { code:"ar", label:"عر", flag:"🇸🇦", tooltip:"العربية"  },
 ];
 
 function LangSwitcher({ lang, setLang }) {
@@ -1436,12 +1436,13 @@ function LangSwitcher({ lang, setLang }) {
           style={{
             background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
             border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.15)"}`,
-            borderRadius:7, padding:"5px 12px", cursor:"pointer",
+            borderRadius:7, padding:"5px 9px", cursor:"pointer", display:"flex", alignItems:"center", gap:5,
             transition:"all 0.18s",
             opacity: lang===l.code ? 1 : 0.55,
             boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.25)" : "none",
           }}>
-          <span style={{ fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:700, color: lang===l.code ? "#4fffb0" : "#8aaac8", letterSpacing:"0.08em" }}>{l.label}</span>
+          <span style={{ fontSize:14 }}>{l.flag}</span>
+          <span style={{ fontSize:11, fontFamily:"'DM Mono',monospace", fontWeight:700, color: lang===l.code ? "#4fffb0" : "#8aaac8", letterSpacing:"0.06em" }}>{l.label}</span>
         </div>
       ))}
     </div>
