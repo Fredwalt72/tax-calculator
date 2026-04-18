@@ -1537,7 +1537,7 @@ function CompareModal({ items, onRemove, onClose, fmt, t, salaryUSD, getCalc }) 
     <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
       onClick={onClose}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(560px,95vw)", padding:"22px 20px 18px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(560px,95vw)", maxHeight:"88vh", overflowY:"auto", padding:"22px 20px 18px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
 
         {/* Header */}
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:18 }}>
@@ -1545,8 +1545,9 @@ function CompareModal({ items, onRemove, onClose, fmt, t, salaryUSD, getCalc }) 
           <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>{t.compareClose}</button>
         </div>
 
-        {/* Table */}
-        <div style={{ display:"grid", gridTemplateColumns:`120px repeat(${items.length}, 1fr)`, gap:6, marginBottom:16 }}>
+        {/* Table — scrollable on mobile */}
+        <div style={{ overflowX:"auto", marginBottom:16, WebkitOverflowScrolling:"touch" }}>
+        <div style={{ display:"grid", gridTemplateColumns:`80px repeat(${items.length}, minmax(110px,1fr))`, gap:6, minWidth: items.length >= 3 ? 420 : "auto" }}>
           {/* Header row */}
           <div />
           {items.map(item => (
@@ -1573,6 +1574,7 @@ function CompareModal({ items, onRemove, onClose, fmt, t, salaryUSD, getCalc }) 
               ))}
             </React.Fragment>
           ))}
+        </div>
         </div>
 
         {/* Share buttons */}
@@ -2009,12 +2011,19 @@ export default function App() {
     if (!salaryUSD) return [];
     const caNet = Math.max(...PROVINCES_CA.map(p => provCalcs[p.name]?.netUSD || 0));
     const usNet = Math.max(...STATES_US.map(s => stateCalcs[s.name]?.netUSD || 0));
-    return [
+    const all = [
       { id:"__CA__", isGroup:true, group:"CA", flag:"🇨🇦", name:t.canada, netUSD:caNet, effectiveRate:0 },
       { id:"__US__", isGroup:true, group:"US", flag:"🇺🇸", name:t.usa,    netUSD:usNet, effectiveRate:0 },
       ...OTHER_COUNTRIES.map(c => ({ id:c.name, isGroup:false, flag:c.flag, name:c.name, ...countryCalcs[c.name] })),
     ].sort((a,b) => b.netUSD - a.netUSD);
-  }, [salaryUSD, provCalcs, stateCalcs, countryCalcs, lang]);
+    // Put recently viewed at top (preserve their relative order)
+    if (recentList.length > 0) {
+      const recents = recentList.map(id => all.find(x => x.id === id)).filter(Boolean);
+      const rest = all.filter(x => !recentList.includes(x.id));
+      return [...recents, ...rest];
+    }
+    return all;
+  }, [salaryUSD, provCalcs, stateCalcs, countryCalcs, lang, recentList]);
 
   const maxNet       = sortedList[0]?.netUSD || 1;
   const sortedProvs  = useMemo(() => [...PROVINCES_CA].sort((a,b) => (provCalcs[b.name]?.netUSD||0)-(provCalcs[a.name]?.netUSD||0)), [provCalcs]);
