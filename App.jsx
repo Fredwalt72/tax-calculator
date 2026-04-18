@@ -1761,18 +1761,18 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
   const barPct = maxNetUSD > 0 ? (netUSD / maxNetUSD) * 100 : 0;
   return (
     <div onClick={onClick}
-      style={{ background:isSelected?"#0b1e2e":"#0c1525", border:`1px solid ${isSelected?"#4fffb0":"#1a2e48"}`, borderRadius:8, padding:"8px 10px", display:"flex", alignItems:"center", gap:5, cursor:"pointer", transition:"all 0.15s", overflow:"hidden" }}>
+      style={{ background:isSelected?"#0b1e2e":"#0c1525", border:`1px solid ${isSelected?"#4fffb0":"#1a2e48"}`, borderRadius:8, padding:"11px 12px", display:"flex", alignItems:"center", gap:8, cursor:"pointer", transition:"all 0.15s", overflow:"hidden" }}>
       <div style={{ width:18,height:18,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:8,fontWeight:700,fontFamily:"'DM Mono',monospace",flexShrink:0,
         background:rank===1?"rgba(79,255,176,0.1)":rank<4?"rgba(100,150,255,0.07)":"#0c1525",
         color:rank===1?"#4fffb0":rank===2?"#5588ff":rank===3?"#ffaa30":"#8aaac8",
         border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#1a2e48"}`
       }}>{rank}</div>
-      <span style={{ fontSize:16, flexShrink:0 }}>{flag}</span>
-      <div style={{ flex:1, minWidth:0 }}>
-        <div style={{ fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b0b8cc", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{name}</div>
+      <span style={{ fontSize:20, flexShrink:0 }}>{flag}</span>
+      <div style={{ flex:3, minWidth:0 }}>
+        <div style={{ fontSize:15, fontWeight:600, color:isSelected?"#4fffb0":"#d0d8e8", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{name}</div>
       </div>
       <div style={{ textAlign:"right", flexShrink:0 }}>
-        <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
+        <div style={{ fontFamily:"'DM Mono',monospace", fontSize:12, fontWeight:600, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
         <div style={{ fontSize:7, color:"#8aaac8", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
       <div style={{ padding:"2px 5px", borderRadius:4, fontSize:8, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, flexShrink:0, textAlign:"center", minWidth:34 }}>
