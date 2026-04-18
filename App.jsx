@@ -67,6 +67,19 @@ const T = {
     indicesBtn: "📊 Indices — incl. NetBigMac",
     indicesTitle: "Indices",
     indicesClose: "✕ Close",
+    recentLabel: "Recently viewed",
+    compareBtn: (n) => `Compare (${n}/3)`,
+    compareTitle: "Comparison",
+    compareClose: "✕ Close",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Click + on a country to add it",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: net ${i.net} (${i.rate}% tax)`).join(' | ') + ' — netpay.tax',
+    gross: "GROSS",
+    compareSalaryLabel: "GROSS SALARY",
+    compareTaxLabel: "TAX",
+    compareNetLabel: "NET",
+    compareRateLabel: "RATE",
     funFactBtn: "🎲 Amusing Facts",
     funFactTitle: "Amusing Facts",
     funFactClose: "✕ Close",
@@ -134,6 +147,19 @@ const T = {
     indicesBtn: "📊 Indices — incl. NetBigMac",
     indicesTitle: "Indices",
     indicesClose: "✕ Close",
+    recentLabel: "Recently viewed",
+    compareBtn: (n) => `Compare (${n}/3)`,
+    compareTitle: "Comparison",
+    compareClose: "✕ Close",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Click + on a country to add it",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: net ${i.net} (${i.rate}% tax)`).join(' | ') + ' — netpay.tax',
+    gross: "GROSS",
+    compareSalaryLabel: "GROSS SALARY",
+    compareTaxLabel: "TAX",
+    compareNetLabel: "NET",
+    compareRateLabel: "RATE",
     funFactBtn: "🎲 Amusing Facts",
     funFactTitle: "Amusing Facts",
     funFactClose: "✕ Close",
@@ -222,6 +248,18 @@ const T = {
     indicesBtn: "📊 Indices — dont le NetBigMac",
     indicesTitle: "Indices",
     indicesClose: "✕ Fermer",
+    recentLabel: "Récemment consultés",
+    compareBtn: (n) => `Comparer (${n}/3)`,
+    compareTitle: "Comparaison",
+    compareClose: "✕ Fermer",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Cliquez + sur un pays pour l'ajouter",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name} : net ${i.net} (${i.rate}% impôt)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "SALAIRE BRUT",
+    compareTaxLabel: "IMPÔT",
+    compareNetLabel: "NET",
+    compareRateLabel: "TAUX",
     funFactBtn: "🎲 Faits amusants",
     funFactTitle: "Faits amusants",
     funFactClose: "✕ Fermer",
@@ -289,6 +327,18 @@ const T = {
     indicesBtn: "📊 Indices — dont le NetBigMac",
     indicesTitle: "Indices",
     indicesClose: "✕ Fermer",
+    recentLabel: "Récemment consultés",
+    compareBtn: (n) => `Comparer (${n}/3)`,
+    compareTitle: "Comparaison",
+    compareClose: "✕ Fermer",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Cliquez + sur un pays pour l'ajouter",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name} : net ${i.net} (${i.rate}% impôt)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "SALAIRE BRUT",
+    compareTaxLabel: "IMPÔT",
+    compareNetLabel: "NET",
+    compareRateLabel: "TAUX",
     funFactBtn: "🎲 Faits amusants",
     funFactTitle: "Faits amusants",
     funFactClose: "✕ Fermer",
@@ -377,6 +427,18 @@ const T = {
     indicesBtn: "📊 Índices — incl. NetBigMac",
     indicesTitle: "Índices",
     indicesClose: "✕ Cerrar",
+    recentLabel: "Vistos recientemente",
+    compareBtn: (n) => `Comparar (${n}/3)`,
+    compareTitle: "Comparación",
+    compareClose: "✕ Cerrar",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Haz clic en + en un país para añadirlo",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: neto ${i.net} (${i.rate}% impuesto)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "SALARIO BRUTO",
+    compareTaxLabel: "IMPUESTO",
+    compareNetLabel: "NETO",
+    compareRateLabel: "TASA",
     funFactBtn: "🎲 Datos curiosos",
     funFactTitle: "Datos curiosos",
     funFactClose: "✕ Cerrar",
@@ -444,6 +506,18 @@ const T = {
     indicesBtn: "📊 Índices — incl. NetBigMac",
     indicesTitle: "Índices",
     indicesClose: "✕ Cerrar",
+    recentLabel: "Vistos recientemente",
+    compareBtn: (n) => `Comparar (${n}/3)`,
+    compareTitle: "Comparación",
+    compareClose: "✕ Cerrar",
+    compareAdd: "+",
+    compareRemove: "✕",
+    comparePlaceholder: "Haz clic en + en un país para añadirlo",
+    compareShare: (items) => items.map(i => `${i.flag} ${i.name}: neto ${i.net} (${i.rate}% impuesto)`).join(' | ') + ' — netpay.tax',
+    compareSalaryLabel: "SALARIO BRUTO",
+    compareTaxLabel: "IMPUESTO",
+    compareNetLabel: "NETO",
+    compareRateLabel: "TASA",
     funFactBtn: "🎲 Datos curiosos",
     funFactTitle: "Datos curiosos",
     funFactClose: "✕ Cerrar",
@@ -1448,6 +1522,87 @@ function IndicesModal({ countryKey, isUSState, salaryUSD, calc, t, onClose }) {
   );
 }
 
+
+// ── Compare Modal ─────────────────────────────────────────────────────────
+function CompareModal({ items, onRemove, onClose, fmt, t, salaryUSD, getCalc }) {
+  const shareText = t.compareShare(items.map(item => ({
+    flag: item.flag,
+    name: item.name,
+    net: fmt(item.calc.netUSD),
+    rate: item.calc.effectiveRate.toFixed(1),
+  })));
+  const encoded = encodeURIComponent(shareText);
+
+  return (
+    <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
+      onClick={onClose}>
+      <div onClick={e => e.stopPropagation()}
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(560px,95vw)", padding:"22px 20px 18px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
+
+        {/* Header */}
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:18 }}>
+          <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.compareTitle}</span>
+          <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"5px 11px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>{t.compareClose}</button>
+        </div>
+
+        {/* Table */}
+        <div style={{ display:"grid", gridTemplateColumns:`120px repeat(${items.length}, 1fr)`, gap:6, marginBottom:16 }}>
+          {/* Header row */}
+          <div />
+          {items.map(item => (
+            <div key={item.id} style={{ textAlign:"center" }}>
+              <div style={{ fontSize:22, marginBottom:2 }}>{item.flag}</div>
+              <div style={{ fontSize:10, fontWeight:600, color:"#c0d0e8", fontFamily:"'DM Mono',monospace", lineHeight:1.3 }}>{item.name}</div>
+              <button onClick={() => onRemove(item.id)} style={{ marginTop:4, background:"none", border:"none", color:"#5a7090", fontSize:9, cursor:"pointer", fontFamily:"'DM Mono',monospace" }}>{t.compareRemove}</button>
+            </div>
+          ))}
+
+          {/* Rows */}
+          {[
+            { label: t.compareSalaryLabel, key: "gross",  color:"#7799cc", fn: c => fmt(c.netUSD + c.totalTaxUSD) },
+            { label: t.compareTaxLabel,    key: "tax",    color:"#dd4444", fn: c => fmt(c.totalTaxUSD) },
+            { label: t.compareNetLabel,    key: "net",    color:"#4fffb0", fn: c => fmt(c.netUSD) },
+            { label: t.compareRateLabel,   key: "rate",   color:"#ff9955", fn: c => `${c.effectiveRate.toFixed(1)}%` },
+          ].map(row => (
+            <React.Fragment key={row.key}>
+              <div style={{ display:"flex", alignItems:"center", fontSize:8, fontFamily:"'DM Mono',monospace", color:"#6a8aaa", letterSpacing:"0.08em", paddingRight:8 }}>{row.label}</div>
+              {items.map(item => (
+                <div key={item.id} style={{ background:"rgba(10,20,40,0.8)", border:"1px solid #1a2e48", borderRadius:8, padding:"8px 6px", textAlign:"center" }}>
+                  <div style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:700, color:row.color }}>{row.fn(item.calc)}</div>
+                </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Share buttons */}
+        {items.length >= 2 && (
+          <div style={{ borderTop:"1px solid #1a2e40", paddingTop:14, display:"flex", gap:8, flexWrap:"wrap", alignItems:"center" }}>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>PARTAGER</span>
+            {[
+              { label:"𝕏", color:"#444",   href:`https://twitter.com/intent/tweet?text=${encoded}` },
+              { label:"in", color:"#0077b5", href:`https://www.linkedin.com/sharing/share-offsite/?url=https://netpay.tax&summary=${encoded}` },
+              { label:"f",  color:"#1877f2", href:`https://www.facebook.com/sharer/sharer.php?u=https://netpay.tax&quote=${encoded}` },
+              { label:"W",  color:"#25d366", href:`https://wa.me/?text=${encoded}` },
+              { label:"r/", color:"#ff4500", href:`https://www.reddit.com/submit?url=https://netpay.tax&title=${encoded}` },
+            ].map(b => (
+              <a key={b.label} href={b.href} target="_blank" rel="noopener noreferrer"
+                style={{ background:"rgba(0,0,0,0.3)", border:`1px solid ${b.color}`, borderRadius:7, padding:"6px 12px", color:b.color, textDecoration:"none", fontSize:12, fontWeight:700, fontFamily:"'DM Mono',monospace" }}>
+                {b.label}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* Placeholder if < 2 */}
+        {items.length < 2 && (
+          <div style={{ textAlign:"center", padding:"8px 0", fontSize:11, color:"#3a5570", fontFamily:"'DM Mono',monospace" }}>{t.comparePlaceholder}</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Detail Panel ──────────────────────────────────────────────────────────
 function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, onClose, t, countryKey, lang, salaryUSD, isUSState }) {
   const [showFact, setShowFact]       = React.useState(false);
@@ -1530,6 +1685,7 @@ function DetailPanel({ label, flagEl, subtitle, calc, hasProv, fmt, currCode, on
 
       {showIndices && <IndicesModal countryKey={countryKey} isUSState={isUSState} salaryUSD={salaryUSD} calc={calc} t={t} onClose={() => setShowIndices(false)} />}
       {showFact && <FunFactModal countryKey={countryKey} lang={lang} t={t} onClose={() => setShowFact(false)} />}
+
     </div>
   );
 }
@@ -1563,7 +1719,7 @@ function SubRow({ name, abbr, flagImg, subtitle, isSelected, calc, maxNetUSD, fm
 }
 
 // ── Country row ───────────────────────────────────────────────────────────
-function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNetUSD, fmt, onClick, t }) {
+function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNetUSD, fmt, onClick, t, onCompare, inCompare }) {
   const rc = rateColor(effectiveRate);
   const barPct = maxNetUSD > 0 ? (netUSD / maxNetUSD) * 100 : 0;
   return (
@@ -1575,7 +1731,7 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
         border:`1px solid ${rank===1?"rgba(79,255,176,0.2)":"#1a2e48"}`
       }}>{rank}</div>
       <span style={{ fontSize:17, minWidth:22 }}>{flag}</span>
-      <div style={{ minWidth:140, flex:"0 0 140px" }}>
+      <div style={{ minWidth:110, flex:"0 0 110px" }}>
         <div style={{ fontSize:12, fontWeight:500, color:isSelected?"#4fffb0":"#b0b8cc" }}>{name}</div>
       </div>
       <div style={{ flex:1, minWidth:30 }}>
@@ -1583,12 +1739,16 @@ function CountryRow({ rank, flag, name, isSelected, netUSD, effectiveRate, maxNe
           <div style={{ height:"100%", width:`${barPct}%`, background:isSelected?"#4fffb0":"#162535", borderRadius:3, transition:"width 0.5s" }} />
         </div>
       </div>
-      <div style={{ textAlign:"right", minWidth:92 }}>
+      <div style={{ textAlign:"right", minWidth:80 }}>
         <div style={{ fontFamily:"'DM Mono',monospace", fontSize:13, fontWeight:500, color:isSelected?"#4fffb0":"#c8ccd8" }}>{fmt(netUSD)}</div>
         <div style={{ fontSize:8, color:"#8aaac8", fontFamily:"'DM Mono',monospace" }}>{t.netYear}</div>
       </div>
-      <div style={{ padding:"2px 7px", borderRadius:4, fontSize:9, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:48, textAlign:"center" }}>
+      <div style={{ padding:"2px 7px", borderRadius:4, fontSize:9, fontFamily:"'DM Mono',monospace", fontWeight:600, background:"rgba(0,0,0,0.5)", color:rc, border:`1px solid ${rc}22`, minWidth:40, textAlign:"center" }}>
         {effectiveRate===0 ? "0%" : `${effectiveRate.toFixed(1)}%`}
+      </div>
+      <div onClick={onCompare} title="Comparer"
+        style={{ width:18, height:18, borderRadius:"50%", border:`1px solid ${inCompare?"#4fffb0":"#2a3e58"}`, background:inCompare?"rgba(79,255,176,0.15)":"transparent", display:"flex", alignItems:"center", justifyContent:"center", fontSize:10, color:inCompare?"#4fffb0":"#4a6a88", cursor:"pointer", flexShrink:0, fontWeight:700, transition:"all 0.15s" }}>
+        {inCompare ? "✓" : "+"}
       </div>
     </div>
   );
@@ -1816,6 +1976,11 @@ export default function App() {
   const [caOpen, setCaOpen]    = useState(false);
   const [usOpen, setUsOpen]    = useState(false);
   const [period, setPeriod]    = useState("annual");
+  const [compareList, setCompareList] = useState([]); // [{id, name, flag, calc}]
+  const [showCompare, setShowCompare] = useState(false);
+  const [recentList,  setRecentList]  = useState(() => {
+    try { return JSON.parse(localStorage.getItem("np_recent") || "[]"); } catch { return []; }
+  });
 
   const t               = T[lang];
   const CURRENCY_OPTIONS = t.currencies;
@@ -1864,6 +2029,26 @@ export default function App() {
     if (prov)     detail = { label:prov.name,    flagEl:<FlagImg src={prov.flagImg}   abbr={prov.abbr}   size={24}/>, subtitle:t.caDetail, calc:provCalcs[prov.name],       hasProv:true,  countryKey:prov.name,    isUSState:false };
     else if (state)   detail = { label:state.name,   flagEl:<FlagImg src={state.flagImg}  abbr={state.abbr}  size={24}/>, subtitle:t.usDetail, calc:stateCalcs[state.name],     hasProv:true,  countryKey:state.name,   isUSState:true  };
     else if (country) detail = { label:country.name, flagEl:<span style={{fontSize:26}}>{country.flag}</span>,           subtitle:null,        calc:countryCalcs[country.name], hasProv:false, countryKey:country.name, isUSState:false };
+  }
+
+  // Track recently viewed
+  function selectAndTrack(id) {
+    setSelected(prev => prev === id ? null : id);
+    if (id) setRecentList(prev => {
+      const updated = [id, ...prev.filter(x => x !== id)].slice(0, 5);
+      try { localStorage.setItem("np_recent", JSON.stringify(updated)); } catch {}
+      return updated;
+    });
+  }
+
+  // Add/remove from compare list
+  function toggleCompare(e, item) {
+    e.stopPropagation();
+    setCompareList(prev => {
+      if (prev.find(x => x.id === item.id)) return prev.filter(x => x.id !== item.id);
+      if (prev.length >= 3) return prev;
+      return [...prev, item];
+    });
   }
 
   const match = (name) => !search || name.toLowerCase().includes(search.toLowerCase());
@@ -1946,12 +2131,47 @@ export default function App() {
               </div>
             )}
 
+            {/* Recently viewed */}
+            {recentList.length > 0 && !search && (() => {
+              const recentItems = recentList.map(id => {
+                const c = OTHER_COUNTRIES.find(x => x.name === id);
+                const p = PROVINCES_CA.find(x => x.name === id);
+                const s = STATES_US.find(x => x.name === id);
+                const calc = countryCalcs[id] || provCalcs[id] || stateCalcs[id];
+                if (!calc) return null;
+                return { id, name: id, flag: c?.flag || "🏴", flagEl: c ? <span style={{fontSize:14}}>{c.flag}</span> : <FlagImg src={p?.flagImg||s?.flagImg} abbr={p?.abbr||s?.abbr} size={14}/> };
+              }).filter(Boolean);
+              if (!recentItems.length) return null;
+              return (
+                <div style={{ marginBottom:10 }}>
+                  <div style={{ fontSize:8, fontFamily:"'DM Mono',monospace", color:"#4a6a88", letterSpacing:"0.12em", marginBottom:5 }}>{t.recentLabel}</div>
+                  <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+                    {recentItems.map(item => (
+                      <div key={item.id} onClick={() => selectAndTrack(item.id)}
+                        style={{ display:"flex", alignItems:"center", gap:5, background:"#0d1a2e", border:`1px solid ${selected===item.id?"#4fffb0":"#1a2e48"}`, borderRadius:6, padding:"4px 9px", cursor:"pointer", fontSize:11, color:selected===item.id?"#4fffb0":"#8aaac8", fontFamily:"'DM Mono',monospace", transition:"all 0.15s" }}>
+                        {item.flagEl}
+                        <span>{item.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
+
             {/* List header */}
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10, flexWrap:"wrap", gap:8 }}>
               <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.14em" }}>{t.rankingLabel}</span>
-              <input className="inp" type="text" placeholder={t.searchPlaceholder} value={search} onChange={e => setSearch(e.target.value)}
-                style={{ background:"#0d1a2e", border:"1px solid #152030", borderRadius:7, color:"#c0c8d8", padding:"6px 11px", fontSize:11, width:190, transition:"all 0.2s" }}
-              />
+              <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+                {compareList.length > 0 && (
+                  <button onClick={() => setShowCompare(true)}
+                    style={{ background:"rgba(79,255,176,0.08)", border:"1px solid #4fffb0", borderRadius:7, color:"#4fffb0", padding:"5px 12px", cursor:"pointer", fontSize:10, fontFamily:"'DM Mono',monospace", fontWeight:600, animation:"fi 0.2s ease" }}>
+                    ⚖️ {t.compareBtn(compareList.length)}
+                  </button>
+                )}
+                <input className="inp" type="text" placeholder={t.searchPlaceholder} value={search} onChange={e => setSearch(e.target.value)}
+                  style={{ background:"#0d1a2e", border:"1px solid #152030", borderRadius:7, color:"#c0c8d8", padding:"6px 11px", fontSize:11, width:160, transition:"all 0.2s" }}
+                />
+              </div>
             </div>
 
             {/* List */}
@@ -1970,7 +2190,7 @@ export default function App() {
                             <SubRow key={p.name} name={p.name} abbr={p.abbr} flagImg={p.flagImg}
                               subtitle={t.fedProv} isSelected={selected===p.name}
                               calc={provCalcs[p.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
-                              onClick={() => setSelected(prev => prev===p.name ? null : p.name)}
+                              onClick={() => selectAndTrack(p.name)}
                             />
                           ))}
                         </div>
@@ -1987,7 +2207,7 @@ export default function App() {
                             <SubRow key={s.name} name={s.name} abbr={s.abbr} flagImg={s.flagImg}
                               subtitle={t.fedState} isSelected={selected===s.name}
                               calc={stateCalcs[s.name]} maxNetUSD={maxNet} fmt={fmt} t={t}
-                              onClick={() => setSelected(prev => prev===s.name ? null : s.name)}
+                              onClick={() => selectAndTrack(s.name)}
                             />
                           ))}
                         </div>
@@ -1995,11 +2215,14 @@ export default function App() {
                     </div>
                   );
 
+                  const cCalc = countryCalcs[r.name] || { netUSD: r.netUSD, effectiveRate: r.effectiveRate, totalTaxUSD: salaryUSD - r.netUSD, taxUSD: 0, provTaxUSD: 0 };
                   return (
                     <CountryRow key={r.id} rank={rank} flag={r.flag} name={r.name}
                       isSelected={selected===r.id}
                       netUSD={r.netUSD} effectiveRate={r.effectiveRate} maxNetUSD={maxNet} fmt={fmt} t={t}
-                      onClick={() => setSelected(prev => prev===r.id ? null : r.id)}
+                      onClick={() => selectAndTrack(r.id)}
+                      inCompare={!!compareList.find(x => x.id === r.id)}
+                      onCompare={(e) => toggleCompare(e, { id:r.id, name:r.name, flag:r.flag, calc:cCalc })}
                     />
                   );
                 })}
@@ -2024,6 +2247,16 @@ export default function App() {
       <PrivacySection t={t} />
       <ContactSection t={t} />
       <Footer t={t} />
+
+      {/* Compare modal — App level */}
+      {showCompare && compareList.length > 0 && (
+        <CompareModal
+          items={compareList}
+          onRemove={(id) => setCompareList(prev => prev.filter(x => x.id !== id))}
+          onClose={() => setShowCompare(false)}
+          fmt={fmt} t={t} salaryUSD={salaryUSD}
+        />
+      )}
     </div>
   );
 }
