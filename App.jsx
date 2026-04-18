@@ -74,6 +74,10 @@ const T = {
     compareReset: "🔄 Compare other countries",
     compareNewTitle: "Add countries with + in the list",
     compareMinMsg: "⚠️ Please select at least 2 countries to compare.",
+    compareShareTitle: "SHARE MESSAGE",
+    compareCustomMsg: "OR WRITE YOUR OWN",
+    compareCustomPlaceholder: "Add your own punchy message...",
+    comparePrivacyNote: "✓ No amounts shared — rates and rankings only",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -158,6 +162,10 @@ const T = {
     compareReset: "🔄 Compare other countries",
     compareNewTitle: "Add countries with + in the list",
     compareMinMsg: "⚠️ Please select at least 2 countries to compare.",
+    compareShareTitle: "SHARE MESSAGE",
+    compareCustomMsg: "OR WRITE YOUR OWN",
+    compareCustomPlaceholder: "Add your own punchy message...",
+    comparePrivacyNote: "✓ No amounts shared — rates and rankings only",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -263,6 +271,10 @@ const T = {
     compareReset: "🔄 Comparer d'autres pays",
     compareNewTitle: "Ajoutez des pays avec + dans la liste",
     compareMinMsg: "⚠️ Veuillez sélectionner au moins 2 pays pour comparer.",
+    compareShareTitle: "MESSAGE DE PARTAGE",
+    compareCustomMsg: "OU ÉCRIVEZ LE VÔTRE",
+    compareCustomPlaceholder: "Ajoutez votre propre message percutant...",
+    comparePrivacyNote: "✓ Aucun montant partagé — taux et classement uniquement",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -346,6 +358,10 @@ const T = {
     compareReset: "🔄 Comparer d'autres pays",
     compareNewTitle: "Ajoutez des pays avec + dans la liste",
     compareMinMsg: "⚠️ Veuillez sélectionner au moins 2 pays pour comparer.",
+    compareShareTitle: "MESSAGE DE PARTAGE",
+    compareCustomMsg: "OU ÉCRIVEZ LE VÔTRE",
+    compareCustomPlaceholder: "Ajoutez votre propre message percutant...",
+    comparePrivacyNote: "✓ Aucun montant partagé — taux et classement uniquement",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -450,6 +466,10 @@ const T = {
     compareReset: "🔄 Comparar otros países",
     compareNewTitle: "Agrega países con + en la lista",
     compareMinMsg: "⚠️ Selecciona al menos 2 países para comparar.",
+    compareShareTitle: "MENSAJE DE COMPARTIR",
+    compareCustomMsg: "O ESCRIBE EL TUYO",
+    compareCustomPlaceholder: "Añade tu propio mensaje impactante...",
+    comparePrivacyNote: "✓ Ningún monto compartido — solo tasas y clasificación",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -533,6 +553,10 @@ const T = {
     compareReset: "🔄 Comparar otros países",
     compareNewTitle: "Agrega países con + en la lista",
     compareMinMsg: "⚠️ Selecciona al menos 2 países para comparar.",
+    compareShareTitle: "MENSAJE DE COMPARTIR",
+    compareCustomMsg: "O ESCRIBE EL TUYO",
+    compareCustomPlaceholder: "Añade tu propio mensaje impactante...",
+    comparePrivacyNote: "✓ Ningún monto compartido — solo tasas y clasificación",
 
     compareAdd: "+",
     compareRemove: "✕",
@@ -637,6 +661,10 @@ const T = {
     compareReset: "🔄 Andere Länder vergleichen",
     compareNewTitle: "Länder mit + hinzufügen",
     compareMinMsg: "⚠️ Bitte mindestens 2 Länder zum Vergleichen auswählen.",
+    compareShareTitle: "SHARE-NACHRICHT",
+    compareCustomMsg: "ODER SCHREIBEN SIE IHRE EIGENE",
+    compareCustomPlaceholder: "Fügen Sie eine eigene Botschaft hinzu...",
+    comparePrivacyNote: "✓ Keine Beträge geteilt — nur Steuersätze und Ränge",
     compareAdd: "+",
     compareRemove: "✕",
     comparePlaceholder: "Klicke + bei einem Land, um es hinzuzufügen",
@@ -770,6 +798,10 @@ const T = {
     compareReset: "🔄 مقارنة دول أخرى",
     compareNewTitle: "أضف دولاً بالنقر على +",
     compareMinMsg: "⚠️ الرجاء اختيار دولتين على الأقل للمقارنة.",
+    compareShareTitle: "رسالة المشاركة",
+    compareCustomMsg: "أو اكتب رسالتك",
+    compareCustomPlaceholder: "أضف رسالتك المؤثرة الخاصة...",
+    comparePrivacyNote: "✓ لا تُشارك أي مبالغ — المعدلات والتصنيف فقط",
     compareAdd: "+",
     compareRemove: "✕",
     comparePlaceholder: "انقر + على دولة لإضافتها",
@@ -1816,14 +1848,88 @@ function IndicesModal({ countryKey, isUSState, salaryUSD, calc, t, onClose }) {
 
 
 // ── Compare Modal ─────────────────────────────────────────────────────────
-function CompareModal({ items, onRemove, onClose, onReset, fmt, t }) {
-  const shareText = t.compareShare(items.map(item => ({
-    flag: item.flag,
-    name: item.name,
-    net: fmt(item.calc.netUSD),
-    rate: item.calc.effectiveRate.toFixed(1),
-  })));
-  const encoded = encodeURIComponent(shareText);
+// ── Smart share message generator ─────────────────────────────────────────
+function generateSmartMessages(items, lang) {
+  if (items.length < 2) return [];
+  const sorted = [...items].sort((a,b) => a.calc.effectiveRate - b.calc.effectiveRate);
+  const lowest  = sorted[0];
+  const highest = sorted[sorted.length - 1];
+  const diff    = highest.calc.effectiveRate - lowest.calc.effectiveRate;
+  const mult    = lowest.calc.effectiveRate < 1
+    ? null
+    : (highest.calc.effectiveRate / lowest.calc.effectiveRate).toFixed(1);
+  const hasZero = items.some(i => i.calc.effectiveRate === 0);
+  const topRank = items.find(i => i.rank <= 5);
+  const msgs = { en:[], fr:[], es:[], de:[], ar:[] };
+
+  // Message 1 — big gap
+  if (diff >= 20) {
+    msgs.en.push(`${highest.flag} ${highest.name} taxes ${diff.toFixed(0)}% more than ${lowest.flag} ${lowest.name} — same salary, different country. What's your rate? → netpay.tax`);
+    msgs.fr.push(`${highest.flag} ${highest.name} taxe ${diff.toFixed(0)}% de plus que ${lowest.flag} ${lowest.name} — même salaire, pays différent. Quel est votre taux ? → netpay.tax`);
+    msgs.es.push(`${highest.flag} ${highest.name} cobra ${diff.toFixed(0)}% más que ${lowest.flag} ${lowest.name} — mismo salario, país distinto. ¿Cuál es tu tasa? → netpay.tax`);
+    msgs.de.push(`${highest.flag} ${highest.name} besteuert ${diff.toFixed(0)}% mehr als ${lowest.flag} ${lowest.name} — gleiches Gehalt, anderes Land. Was ist Ihr Steuersatz? → netpay.tax`);
+    msgs.ar.push(`${highest.flag} ${highest.name} تفرض ${diff.toFixed(0)}% ضريبة أكثر من ${lowest.flag} ${lowest.name} — نفس الراتب، بلد مختلف. ما معدل ضريبتك؟ → netpay.tax`);
+  }
+
+  // Message 2 — multiplier
+  if (mult && parseFloat(mult) >= 1.5) {
+    msgs.en.push(`With the same salary, ${lowest.flag} ${lowest.name} puts ${mult}x more money in your pocket than ${highest.flag} ${highest.name}. Verify yours → netpay.tax`);
+    msgs.fr.push(`À salaire égal, ${lowest.flag} ${lowest.name} vous laisse ${mult}x plus en poche que ${highest.flag} ${highest.name}. Vérifiez le vôtre → netpay.tax`);
+    msgs.es.push(`Con el mismo salario, ${lowest.flag} ${lowest.name} te deja ${mult}x más dinero que ${highest.flag} ${highest.name}. Verifica el tuyo → netpay.tax`);
+    msgs.de.push(`Beim gleichen Gehalt lässt ${lowest.flag} ${lowest.name} ${mult}x mehr Geld übrig als ${highest.flag} ${highest.name}. Überprüfen Sie Ihres → netpay.tax`);
+    msgs.ar.push(`بنفس الراتب، ${lowest.flag} ${lowest.name} يترك لك ${mult}x أموالًا أكثر من ${highest.flag} ${highest.name}. تحقق من معدلك → netpay.tax`);
+  }
+
+  // Message 3 — zero tax country
+  if (hasZero) {
+    const zeroCountry = items.find(i => i.calc.effectiveRate === 0);
+    msgs.en.push(`${zeroCountry.flag} ${zeroCountry.name} has 0% income tax. That's not a typo. Compare with your own country → netpay.tax`);
+    msgs.fr.push(`${zeroCountry.flag} ${zeroCountry.name} prélève 0% d'impôt sur le revenu. Ce n'est pas une faute. Comparez avec votre pays → netpay.tax`);
+    msgs.es.push(`${zeroCountry.flag} ${zeroCountry.name} tiene un 0% de impuesto sobre la renta. No es un error. Compara con tu país → netpay.tax`);
+    msgs.de.push(`${zeroCountry.flag} ${zeroCountry.name} hat 0% Einkommensteuer. Kein Tippfehler. Vergleichen Sie mit Ihrem Land → netpay.tax`);
+    msgs.ar.push(`${zeroCountry.flag} ${zeroCountry.name} تفرض 0% ضريبة دخل. هذه ليست خطأ. قارن مع بلدك → netpay.tax`);
+  }
+
+  // Message 4 — challenge
+  msgs.en.push(`I just compared tax rates across ${items.map(i=>i.flag+' '+i.name).join(', ')}. The gap surprised me — what about your country? → netpay.tax`);
+  msgs.fr.push(`Je viens de comparer les taux d'imposition de ${items.map(i=>i.flag+' '+i.name).join(', ')}. L'écart m'a surpris — et votre pays ? → netpay.tax`);
+  msgs.es.push(`Acabo de comparar los tipos impositivos de ${items.map(i=>i.flag+' '+i.name).join(', ')}. La diferencia me sorprendió — ¿y tu país? → netpay.tax`);
+  msgs.de.push(`Ich habe gerade die Steuersätze von ${items.map(i=>i.flag+' '+i.name).join(', ')} verglichen. Der Unterschied hat mich überrascht — und Ihr Land? → netpay.tax`);
+  msgs.ar.push(`لقد قارنت للتو معدلات الضرائب في ${items.map(i=>i.flag+' '+i.name).join(', ')}. الفرق فاجأني — وبلدك؟ → netpay.tax`);
+
+  // Message 5 — rank based
+  if (topRank) {
+    msgs.en.push(`${topRank.flag} ${topRank.name} ranks in the top 5 most tax-friendly countries in the world. Is your country close? → netpay.tax`);
+    msgs.fr.push(`${topRank.flag} ${topRank.name} figure dans le top 5 mondial des pays les plus avantageux fiscalement. Et le vôtre ? → netpay.tax`);
+    msgs.es.push(`${topRank.flag} ${topRank.name} está en el top 5 mundial de países más ventajosos fiscalmente. ¿Y el tuyo? → netpay.tax`);
+    msgs.de.push(`${topRank.flag} ${topRank.name} ist unter den Top 5 der steuerfreundlichsten Länder weltweit. Und Ihres? → netpay.tax`);
+    msgs.ar.push(`${topRank.flag} ${topRank.name} في أفضل 5 دول من حيث الضرائب عالميًا. وبلدك؟ → netpay.tax`);
+  }
+
+  return (msgs[lang] || msgs.en).filter(Boolean);
+}
+
+function CompareModal({ items, onRemove, onClose, onReset, fmt, t, lang, sortedList }) {
+  const [customMsg, setCustomMsg] = React.useState("");
+  const [selectedMsg, setSelectedMsg] = React.useState(0);
+
+  const itemsWithRank = items.map(item => ({
+    ...item,
+    rank: sortedList ? (sortedList.findIndex(r => r.id === item.id) + 1) || 99 : 99,
+  }));
+
+  const smartMsgs = React.useMemo(() => generateSmartMessages(itemsWithRank, lang), [items, lang]);
+  const totalItems = items.length;
+  const activeMsg = customMsg.trim() || (smartMsgs[selectedMsg] || "");
+
+  const shareLines = [
+    "🏆 " + (t.compareTitle) + " — netpay.tax",
+    ...itemsWithRank.map(i => `${i.flag} ${i.name} : ${i.calc.effectiveRate.toFixed(1)}% · #${i.rank}/160`),
+    "",
+    activeMsg,
+  ].join("\n");
+
+  const encoded = encodeURIComponent(shareLines);
   const rows = [
     { label: t.compareSalaryLabel, color:"#7799cc", fn: c => fmt(c.netUSD + c.totalTaxUSD) },
     { label: t.compareTaxLabel,    color:"#dd4444", fn: c => fmt(c.totalTaxUSD) },
@@ -1835,7 +1941,7 @@ function CompareModal({ items, onRemove, onClose, onReset, fmt, t }) {
     <div style={{ position:"fixed", inset:0, zIndex:2000, display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(0,0,0,0.85)", backdropFilter:"blur(6px)" }}
       onClick={onClose}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(500px,94vw)", maxHeight:"90vh", overflowY:"auto", padding:"18px 16px 16px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
+        style={{ background:"linear-gradient(135deg,#0a1628,#0d1e34)", border:"1px solid #4fffb0", borderRadius:16, width:"min(500px,94vw)", maxHeight:"92vh", overflowY:"auto", padding:"18px 16px 16px", boxShadow:"0 0 60px rgba(79,255,176,0.1)", animation:"fi 0.25s ease" }}>
 
         {/* Header */}
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:14 }}>
@@ -1843,46 +1949,73 @@ function CompareModal({ items, onRemove, onClose, onReset, fmt, t }) {
           <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"4px 10px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>{t.compareClose}</button>
         </div>
 
-        {/* Cards side by side — no scroll, fit on screen */}
-        <div style={{ display:"grid", gridTemplateColumns:`repeat(${items.length}, 1fr)`, gap:8, marginBottom:14 }}>
-          {items.map(item => (
+        {/* Cards */}
+        <div style={{ display:"grid", gridTemplateColumns:`repeat(${totalItems}, 1fr)`, gap:8, marginBottom:14 }}>
+          {itemsWithRank.map(item => (
             <div key={item.id} style={{ background:"rgba(10,20,40,0.8)", border:"1px solid #1a3050", borderRadius:10, padding:"10px 8px" }}>
-              {/* Country header */}
               <div style={{ textAlign:"center", marginBottom:10, paddingBottom:8, borderBottom:"1px solid #1a2e48" }}>
-                <div style={{ fontSize:26, marginBottom:3 }}>{item.flag}</div>
-                <div style={{ fontSize:10, fontWeight:600, color:"#c0d0e8", fontFamily:"'DM Mono',monospace", lineHeight:1.3, marginBottom:4 }}>{item.name}</div>
+                <div style={{ fontSize:26, marginBottom:2 }}>{item.flag}</div>
+                <div style={{ fontSize:10, fontWeight:600, color:"#c0d0e8", fontFamily:"'DM Mono',monospace", lineHeight:1.3, marginBottom:2 }}>{item.name}</div>
+                <div style={{ fontSize:9, color:"#4a6a88", fontFamily:"'DM Mono',monospace", marginBottom:4 }}>#{item.rank}/160</div>
                 <button onClick={() => onRemove(item.id)}
                   style={{ background:"none", border:"1px solid #1a2e48", borderRadius:5, color:"#5a7090", fontSize:9, cursor:"pointer", fontFamily:"'DM Mono',monospace", padding:"2px 8px" }}>
                   {t.compareRemove}
                 </button>
               </div>
-              {/* Rows */}
               {rows.map(row => (
                 <div key={row.label} style={{ marginBottom:7 }}>
                   <div style={{ fontSize:7, fontFamily:"'DM Mono',monospace", color:"#5a7a98", letterSpacing:"0.08em", marginBottom:2 }}>{row.label}</div>
-                  <div style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:700, color:row.color }}>{row.fn(item.calc)}</div>
+                  <div dir="ltr" style={{ fontSize:13, fontFamily:"'DM Mono',monospace", fontWeight:700, color:row.color }}>{row.fn(item.calc)}</div>
                 </div>
               ))}
             </div>
           ))}
         </div>
 
-        {/* Share */}
+        {/* Smart messages + custom input */}
         {items.length >= 2 && (
-          <div style={{ borderTop:"1px solid #1a2e40", paddingTop:12, display:"flex", gap:7, flexWrap:"wrap", alignItems:"center" }}>
-            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>PARTAGER</span>
-            {[
-              { label:"𝕏",  color:"#666",   href:`https://twitter.com/intent/tweet?text=${encoded}` },
-              { label:"in", color:"#0077b5", href:`https://www.linkedin.com/sharing/share-offsite/?url=https://netpay.tax&summary=${encoded}` },
-              { label:"f",  color:"#1877f2", href:`https://www.facebook.com/sharer/sharer.php?u=https://netpay.tax&quote=${encoded}` },
-              { label:"W",  color:"#25d366", href:`https://wa.me/?text=${encoded}` },
-              { label:"r/", color:"#ff4500", href:`https://www.reddit.com/submit?url=https://netpay.tax&title=${encoded}` },
-            ].map(b => (
-              <a key={b.label} href={b.href} target="_blank" rel="noopener noreferrer"
-                style={{ background:"rgba(0,0,0,0.3)", border:`1px solid ${b.color}`, borderRadius:7, padding:"5px 11px", color:b.color, textDecoration:"none", fontSize:12, fontWeight:700, fontFamily:"'DM Mono',monospace" }}>
-                {b.label}
-              </a>
-            ))}
+          <div style={{ marginBottom:14 }}>
+            <div style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em", marginBottom:8 }}>{t.compareShareTitle || "MESSAGE DE PARTAGE"}</div>
+
+            {/* Suggested messages */}
+            <div style={{ display:"flex", flexDirection:"column", gap:6, marginBottom:10 }}>
+              {smartMsgs.slice(0,4).map((msg, i) => (
+                <div key={i} onClick={() => { setSelectedMsg(i); setCustomMsg(""); }}
+                  style={{ background: selectedMsg===i && !customMsg ? "rgba(79,255,176,0.08)" : "rgba(10,20,40,0.6)", border:`1px solid ${selectedMsg===i && !customMsg ? "#4fffb0" : "#1a2e48"}`, borderRadius:8, padding:"8px 11px", cursor:"pointer", transition:"all 0.15s" }}>
+                  <div style={{ fontSize:11, color: selectedMsg===i && !customMsg ? "#c0e8d0" : "#8aaac8", lineHeight:1.5 }}>{msg}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Custom message */}
+            <div style={{ marginBottom:10 }}>
+              <div style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#5a7a98", letterSpacing:"0.08em", marginBottom:5 }}>{t.compareCustomMsg || "OU ÉCRIVEZ LE VÔTRE"}</div>
+              <textarea value={customMsg} onChange={e => setCustomMsg(e.target.value)}
+                placeholder={t.compareCustomPlaceholder || "Ajoutez votre propre message percutant..."}
+                style={{ width:"100%", background:"#060e1a", border:"1px solid #1a2e48", borderRadius:8, color:"#c0d0e8", padding:"9px 12px", fontSize:12, fontFamily:"'DM Sans',sans-serif", resize:"none", height:60, boxSizing:"border-box", outline:"none" }} />
+            </div>
+
+            {/* Share buttons */}
+            <div style={{ display:"flex", gap:7, flexWrap:"wrap", alignItems:"center" }}>
+              <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#8aaac8", letterSpacing:"0.1em" }}>PARTAGER</span>
+              {[
+                { label:"𝕏",  color:"#666",   href:`https://twitter.com/intent/tweet?text=${encoded}` },
+                { label:"in", color:"#0077b5", href:`https://www.linkedin.com/sharing/share-offsite/?url=https://netpay.tax&summary=${encoded}` },
+                { label:"f",  color:"#1877f2", href:`https://www.facebook.com/sharer/sharer.php?u=https://netpay.tax&quote=${encoded}` },
+                { label:"W",  color:"#25d366", href:`https://wa.me/?text=${encoded}` },
+                { label:"r/", color:"#ff4500", href:`https://www.reddit.com/submit?url=https://netpay.tax&title=${encoded}` },
+              ].map(b => (
+                <a key={b.label} href={b.href} target="_blank" rel="noopener noreferrer"
+                  style={{ background:"rgba(0,0,0,0.3)", border:`1px solid ${b.color}`, borderRadius:7, padding:"5px 11px", color:b.color, textDecoration:"none", fontSize:12, fontWeight:700, fontFamily:"'DM Mono',monospace" }}>
+                  {b.label}
+                </a>
+              ))}
+            </div>
+
+            {/* Privacy note */}
+            <div style={{ marginTop:8, fontSize:9, color:"#3a5570", fontFamily:"'DM Mono',monospace", fontStyle:"italic" }}>
+              {t.comparePrivacyNote || "✓ Aucun montant partagé — taux et classement uniquement"}
+            </div>
           </div>
         )}
 
@@ -2584,7 +2717,7 @@ export default function App() {
           onRemove={(id) => setCompareList(prev => prev.filter(x => x.id !== id))}
           onClose={() => setShowCompare(false)}
           onReset={() => { setCompareList([]); setShowCompare(false); }}
-          fmt={fmt} t={t} salaryUSD={salaryUSD}
+          fmt={fmt} t={t} lang={lang} sortedList={sortedList}
         />
       )}
     </div>
