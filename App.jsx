@@ -2310,7 +2310,7 @@ function ContactSection({ t }) {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("https://formspree.io/f/xkgjznqw", {
+      const res = await fetch("https://formspree.io/f/mojywzkv", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ name, email, message }),
