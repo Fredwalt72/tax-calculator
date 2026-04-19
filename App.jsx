@@ -1915,7 +1915,14 @@ function CompareModal({ items, onRemove, onClose, onReset, fmt, t, lang, sortedL
 
   const itemsWithRank = items.map(item => ({
     ...item,
-    rank: sortedList ? (sortedList.findIndex(r => r.id === item.id) + 1) || 99 : 99,
+    rank: (() => {
+      if (!sortedList) return 99;
+      // Only count non-group items for ranking
+      const realItems = sortedList.filter(r => !r.isGroup);
+      const idx = realItems.findIndex(r => r.id === item.id);
+      return idx >= 0 ? idx + 1 : 99;
+    })(),
+    total: sortedList ? sortedList.filter(r => !r.isGroup).length : 160,
   }));
 
   const smartMsgs = React.useMemo(() => generateSmartMessages(itemsWithRank, lang), [items, lang]);
@@ -1959,7 +1966,7 @@ function CompareModal({ items, onRemove, onClose, onReset, fmt, t, lang, sortedL
               <div style={{ textAlign:"center", marginBottom:10, paddingBottom:8, borderBottom:"1px solid #1a2e48" }}>
                 <div style={{ fontSize:26, marginBottom:2 }}>{item.flag}</div>
                 <div style={{ fontSize:10, fontWeight:600, color:"#c0d0e8", fontFamily:"'DM Mono',monospace", lineHeight:1.3, marginBottom:2 }}>{item.name}</div>
-                <div style={{ fontSize:9, color:"#4a6a88", fontFamily:"'DM Mono',monospace", marginBottom:4 }}>#{item.rank}/160</div>
+                <div style={{ fontSize:9, color:"#4a6a88", fontFamily:"'DM Mono',monospace", marginBottom:4 }}>#{item.rank}/{item.total}</div>
                 <button onClick={() => onRemove(item.id)}
                   style={{ background:"none", border:"1px solid #1a2e48", borderRadius:5, color:"#5a7090", fontSize:9, cursor:"pointer", fontFamily:"'DM Mono',monospace", padding:"2px 8px" }}>
                   {t.compareRemove}
