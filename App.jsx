@@ -1945,7 +1945,10 @@ function CompareModal({ items, onRemove, onClose, onReset, fmt, t, lang, sortedL
 
         {/* Header */}
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:14 }}>
-          <span style={{ fontFamily:"'Bebas Neue'", fontSize:20, letterSpacing:"0.08em", color:"#4fffb0" }}>{t.compareTitle}</span>
+          <div style={{ display:"flex", flexDirection:"column" }}>
+            <span style={{ fontFamily:"'Bebas Neue'", fontSize:22, letterSpacing:"0.1em", color:"#4fffb0", lineHeight:1 }}>NetPay.tax</span>
+            <span style={{ fontSize:9, fontFamily:"'DM Mono',monospace", color:"#3a5a78", letterSpacing:"0.12em", marginTop:1 }}>{t.compareTitle}</span>
+          </div>
           <button onClick={onClose} style={{ background:"none", border:"1px solid #1a2c3a", borderRadius:7, color:"#7898b8", padding:"4px 10px", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }}>{t.compareClose}</button>
         </div>
 
