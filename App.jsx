@@ -1468,13 +1468,12 @@ function LangSwitcher({ lang, setLang }) {
           style={{
             background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
             border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.15)"}`,
-            borderRadius:7, padding:"5px 9px", cursor:"pointer", display:"flex", alignItems:"center", gap:5,
+            borderRadius:7, padding:"5px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:5,
             transition:"all 0.18s",
             opacity: lang===l.code ? 1 : 0.55,
             boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.25)" : "none",
           }}>
-          <span style={{ fontSize:14 }}>{l.flag}</span>
-          <span style={{ fontSize:11, fontFamily:"'DM Mono',monospace", fontWeight:700, color: lang===l.code ? "#4fffb0" : "#8aaac8", letterSpacing:"0.06em" }}>{l.label}</span>
+          <span style={{ fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:700, color: lang===l.code ? "#4fffb0" : "#8aaac8", letterSpacing:"0.08em" }}>{l.label}</span>
         </div>
       ))}
     </div>
@@ -2675,9 +2674,9 @@ export default function App() {
               <p style={{ fontSize:9, color:"#8ab0cc", lineHeight:1.9, fontFamily:"'DM Mono',monospace" }}>{t.disclaimer}</p>
             </div>
 
-            {/* Floating compare button */}
+            {/* Floating compare button — fixed to bottom of screen */}
             {compareList.length > 0 && (
-              <div style={{ position:"sticky", bottom:12, display:"flex", flexDirection:"column", alignItems:"center", gap:8, marginTop:14, zIndex:200 }}>
+              <div style={{ position:"fixed", bottom:20, left:"50%", transform:"translateX(-50%)", display:"flex", flexDirection:"column", alignItems:"center", gap:8, zIndex:500 }}>
                 {compareList.length === 1 && showCompareWarn && (
                   <div style={{ background:"#0d1a2e", border:"1px solid #ff9955", borderRadius:10, padding:"8px 16px", fontSize:11, color:"#ff9955", fontFamily:"'DM Mono',monospace", textAlign:"center", animation:"fi 0.2s ease" }}>
                     {t.compareMinMsg}
