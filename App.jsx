@@ -1453,11 +1453,11 @@ function FlagImg({ src, abbr, size = 22 }) {
 
 // ── Language switcher ─────────────────────────────────────────────────────
 const LANGS = [
-  { code:"en", label:"EN", flag:"🇬🇧", tooltip:"English"  },
-  { code:"fr", label:"FR", flag:"🇫🇷", tooltip:"Français" },
-  { code:"es", label:"ES", flag:"🇪🇸", tooltip:"Español"  },
-  { code:"de", label:"DE", flag:"🇩🇪", tooltip:"Deutsch"  },
-  { code:"ar", label:"عر", flag:"🇸🇦", tooltip:"العربية"  },
+  { code:"en", label:"EN", flagImg:"https://flagcdn.com/w20/gb.png",  tooltip:"English"  },
+  { code:"fr", label:"FR", flagImg:"https://flagcdn.com/w20/fr.png",  tooltip:"Français" },
+  { code:"es", label:"ES", flagImg:"https://flagcdn.com/w20/es.png",  tooltip:"Español"  },
+  { code:"de", label:"DE", flagImg:"https://flagcdn.com/w20/de.png",  tooltip:"Deutsch"  },
+  { code:"ar", label:"عر", flagImg:"https://flagcdn.com/w20/sa.png",  tooltip:"العربية"  },
 ];
 
 function LangSwitcher({ lang, setLang }) {
@@ -1468,11 +1468,12 @@ function LangSwitcher({ lang, setLang }) {
           style={{
             background: lang===l.code ? "rgba(79,255,176,0.12)" : "transparent",
             border: `2px solid ${lang===l.code ? "#4fffb0" : "rgba(255,255,255,0.15)"}`,
-            borderRadius:7, padding:"5px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:5,
+            borderRadius:7, padding:"5px 9px", cursor:"pointer", display:"flex", alignItems:"center", gap:6,
             transition:"all 0.18s",
             opacity: lang===l.code ? 1 : 0.55,
             boxShadow: lang===l.code ? "0 0 8px rgba(79,255,176,0.25)" : "none",
           }}>
+          <img src={l.flagImg} alt={l.label} style={{ width:20, height:14, objectFit:"cover", borderRadius:2, flexShrink:0 }} />
           <span style={{ fontSize:12, fontFamily:"'DM Mono',monospace", fontWeight:700, color: lang===l.code ? "#4fffb0" : "#8aaac8", letterSpacing:"0.08em" }}>{l.label}</span>
         </div>
       ))}
